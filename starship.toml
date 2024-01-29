@@ -1,0 +1,104 @@
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$docker_context\
+$nodejs\
+$bun\
+$rust\
+$python\
+$cmd_duration $jobs $time\
+$line_break\
+$character"""
+
+[username]
+show_always = true
+format = "[󱄳](green) [$user]($style) [󰞁](bright-purple) "
+style_user = "bright-yellow bold "
+style_root = "red bold"
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed purple"
+disabled = true
+
+[nodejs]
+format = "[ $version ](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+[fill]
+symbol = " "
+
+[directory]
+style = "bright-blue"
+read_only = " "
+truncation_length = 2
+truncate_to_repo = false
+
+[character]
+success_symbol = "[󱐋](cyan)"
+error_symbol = "[󰣙](red)"
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bright-black"
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[memory_usage]
+symbol = " "
+
+
+[docker_context]
+format = '[$symbol ](dimmed blue bold)'
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+symbol = " "
+
+[rust]
+format = "[$symbol$version ]($style)"
+symbol = " "
+style = "bold red"
+
+[python]
+format = "[$symbol $version ]($style)[($virtualenv )](yellow)"
+symbol = "󱔎"
+style = "bold green"
+
+[bun]
+format = "[$symbol $version ]($style)"
+symbol = ""
+style = "bold yellow"
+
+[time]
+disabled = false
+style = "bold purple "
+format = "[$time]($style)"
