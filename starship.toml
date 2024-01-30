@@ -15,7 +15,8 @@ $rust\
 $python\
 $cmd_duration $jobs $time\
 $line_break\
-$character"""
+$character
+"""
 
 [username]
 show_always = true

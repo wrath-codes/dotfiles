@@ -5,10 +5,10 @@ eval "$(starship init zsh)"
 
 # setup oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 plugins=(
 	git
+	gh
 	docker
 	npm
 	pep8
@@ -21,6 +21,8 @@ plugins=(
 	zsh-syntax-highlighting
 	web-search
 	)
+
+source $ZSH/oh-my-zsh.sh
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
@@ -62,7 +64,6 @@ alias wrathDocker="systemctl --user start docker-desktop"
 
 # zoxide
 eval "$(zoxide init zsh)"
-alias cd="z"
 
 # fd
 alias find="fd"
@@ -75,3 +76,4 @@ alias grep="rg"
 
 neofetch
 
+vim .config/rio/config.toml

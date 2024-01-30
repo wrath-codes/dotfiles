@@ -5,7 +5,7 @@
 #
 # Whenever the key binding `OpenConfigEditor` is triggered it will
 # use the value of the editor along with the rio configuration path.
-editor = 'vim'
+editor = 'nvim'
 
 # Cursor
 #
@@ -46,7 +46,7 @@ padding-x = 10
 #
 # This config only works on MacOs.
 # Possible choices: 'both', 'left' and 'right'.
-
+option-as-alt = "both"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset the working
@@ -97,7 +97,7 @@ padding-x = 10
 #
 # Example:
 [window]
-width = 800
+width = 1000
 height = 800
 mode = "Windowed"
 foreground-opacity = 1.0
