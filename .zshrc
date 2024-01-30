@@ -22,34 +22,6 @@ plugins=(
 	web-search
 	)
 
-# vim alias
-alias vim="nvim"
-
-# python alias
-alias python="python3"
-
-# lsd
-alias ls="lsd"
-
-# docker
-alias wrathDocker="systemctl --user start docker-desktop"
-
-# zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
-
-# fd
-alias find="fd"
-
-# bat
-alias cat="bat"
-
-# ripgrep
-alias grep="rg"
-
-
-neofetch
-
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:$HOME/.poetry/bin
@@ -75,3 +47,31 @@ eval "$(pyenv virtualenv-init -)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# vim alias
+alias vim="nvim"
+
+# python alias
+alias python="python3"
+
+# lsd
+alias ls="lsd"
+
+# docker
+alias wrathDocker="systemctl --user start docker-desktop"
+
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# fd
+alias find="fd"
+
+# bat
+alias cat="bat"
+
+# ripgrep
+alias grep="rg"
+
+neofetch
+
