@@ -1,1 +1,2 @@
-require("lua.wrath.lazy")
+require("wrath.core")
+require("wrath.lazy")

@@ -75,4 +75,6 @@ alias cat="bat"
 # ripgrep
 alias grep="rg"
 
+neofetch
+
 vim ~/.config/rio/config.toml
