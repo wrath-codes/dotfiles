@@ -1,3 +1,4 @@
+export TERM=xterm-256color
 export COLORTERM=truecolor
 
 # starship intialization
@@ -74,6 +75,4 @@ alias cat="bat"
 # ripgrep
 alias grep="rg"
 
-neofetch
-
-vim .config/rio/config.toml
+vim ~/.config/rio/config.toml
