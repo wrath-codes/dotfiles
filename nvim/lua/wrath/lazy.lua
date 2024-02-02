@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "wrath.plugins" }, { import = "wrath.plugins.lsp" } }, {
+require("lazy").setup({ { import = "wrath.plugins" } }, {
   install = {
     colorscheme = { "tokionight" },
   },
@@ -23,3 +23,5 @@ require("lazy").setup({ { import = "wrath.plugins" }, { import = "wrath.plugins.
     notify = false,
   },
 })
+
+-- require("lazy").setup({ { import = "wrath.plugins" }, { import = "wrath.plugins.lsp" } }, {
