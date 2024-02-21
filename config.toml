@@ -12,11 +12,12 @@ option-as-alt = "both"
 [window]
 width = 1000
 height = 800
-mode = "Windowed"
-foreground-opacity = 1.0
-background-opacity = 0.7
-blur = true
+mode = "Maximized"
 decorations = "Enabled"
+foreground-opacity = 1.0
+background-opacity = 0.5
+blur = true
+
 
 [renderer]
 performance = "Low"

@@ -1,4 +1,4 @@
-export TERM=xterm-256color
+export TERM="alacritty"
 export COLORTERM=truecolor
 
 # starship intialization
@@ -8,6 +8,7 @@ eval "$(starship init zsh)"
 export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
+  asdf
 	git
 	gh
 	docker
@@ -16,7 +17,7 @@ plugins=(
 	pip
 	pyenv
 	python
-  	poetry
+  poetry
 	sudo
 	zsh-autosuggestions
 	zsh-syntax-highlighting
@@ -51,6 +52,10 @@ eval "$(pyenv virtualenv-init -)"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# asdf 
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 # vim alias
 alias vim="nvim"
 
@@ -65,6 +70,7 @@ alias wrathDocker="systemctl --user start docker-desktop"
 
 # zoxide
 eval "$(zoxide init zsh)"
+alias cd="z"
 
 # fd
 alias find="fd"
@@ -77,4 +83,9 @@ alias grep="rg"
 
 neofetch
 
-vim ~/.config/rio/config.toml
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
