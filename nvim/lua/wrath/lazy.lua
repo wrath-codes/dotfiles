@@ -13,10 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "wrath.plugins" },
-	{ import = "wrath.plugins.lsp" },
 }, {
 	install = {
-		colorscheme = { "tokyonight " },
 	},
 	checker = {
 		enabled = true,
@@ -27,4 +25,3 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd([[colorscheme tokyonight]])

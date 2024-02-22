@@ -450,6 +450,10 @@ map('n', '<leader>fnD', function()
 end)
 
 -- Project Commands
+-- run java file
+map('n', '<leader>jrf', function()
+    vim.fn.VSCodeNotify('java.debug.runJavaFile')
+end)
 
 else
     -- ordinary Neovim

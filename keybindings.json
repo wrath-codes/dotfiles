@@ -320,5 +320,15 @@
         "key": "ctrl+g",
         "command": "workbench.panel.chat.view.copilot.focus",
         "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "vscode-neovim.send-cmdline",
+        "when": "neovim.init && neovim.mode == 'cmdline'"
+    },
+    // toggle sidebar
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility"
     }
 ]
