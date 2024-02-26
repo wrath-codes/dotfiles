@@ -26,7 +26,7 @@ VSCodeMap('<leader>fae', FindAndReplace) -- Find and Replace
 VSCodeMap('<leader>frn', Rename)         -- Rename
 VSCodeMap('<leader>frf', Refactor)       -- Refactor
 VSCodeMap('<leader>fax', AutoFix)        -- Auto Fix
-VSCodeMap('<leader.>', QuickFix)         -- Quick Fix
+VSCodeMap('<leader>.', QuickFix)         -- Quick Fix
 VSCodeMap('<leader>fot', ToggleFold)     -- Toggle Fold
 VSCodeMap('<leader>foa', FoldAll)        -- Fold All
 VSCodeMap('<leader>fou', UnfoldAll)      -- Unfold All
