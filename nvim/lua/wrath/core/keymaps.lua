@@ -22,3 +22,12 @@ Map("v", ">", ">gv")
 -- Move selected line / block of text in visual mode
 Map("x", "k", ":move '<-2<cr>gv-gv")
 Map("x", "J", ":move '>+1<CR>gv-gv")
+
+-- equivalent to ctrl + d in vscode
+Map({ 'n', 'v' }, 'gb', 'mciw*<Cmd>nohl<CR>', { remap = true })
+
+-- spider motions
+Map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+Map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+Map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+Map({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
