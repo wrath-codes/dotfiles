@@ -52,10 +52,6 @@ eval "$(pyenv virtualenv-init -)"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# asdf 
-echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
-. /usr/local/opt/asdf/libexec/asdf.sh
-
 # vim alias
 alias vim="nvim"
 
@@ -82,3 +78,4 @@ alias cat="bat"
 alias grep="rg"
 
 neofetch
+

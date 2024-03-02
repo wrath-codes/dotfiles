@@ -18,7 +18,7 @@ VSCodeMap('<leader>fnD', NewDirectoryRoot)    -- New Directory at Root
 VSCodeMap('<leader>fcn', CopyFileName)        -- Copy File Name
 VSCodeMap('<leader>fdl', DeleteFile)          -- Delete File
 VSCodeMap('<leader>fdp', DuplicateFile)       -- Duplicate File
-VSCodeMap('<leader>frn', RenameFile)          -- Rename File
+VSCodeMap('<leader>frr', RenameFile)          -- Rename File
 VSCodeMap('<leader>fmv', MoveFile)            -- Move File
 
 -- Quick Editing Commands
@@ -37,7 +37,7 @@ VSCodeMap('gs', OpenDefinitionToSide)    -- Open Definition to the Side
 VSCodeMap('gH', ReferenceSearch)         -- Reference Search
 VSCodeMap('gS', GoToSymbol)              -- Go to Symbol in File
 VSCodeMap('gT', GoToTypeDefinition)      -- Go to Type Definition
-VSCodeMap('gI', GoToImplementation)      -- Go to Implementation
+VSCodeMap('gt', GoToImplementation)      -- Go to Implementation
 
 -- Formatting Commands
 VSCodeMap('<leader>fif', FormatFile)       -- Format File
@@ -90,7 +90,7 @@ VSCodeMap('<leader>gin', GitInit)            -- Git Init
 VSCodeMap('<leader>gig', GitClone)           -- Git Clone
 VSCodeMap('<leader>gst', GitStatus)          -- Git Status
 VSCodeMap('<leader>gcl', GitClone)           -- Git Clone
-VSCodeMap('<leader>gpu', GitPublish)         -- Git Publish
+VSCodeMap('<leader>gpb', GitPublish)         -- Git Publish
 VSCodeMap('<leader>gpl', GitPull)            -- Git Pull
 VSCodeMap('<leader>gplo', GitPullOrigin)     -- Git Pull Origin
 VSCodeMap('<leader>gpc', GitPush)            -- Git Push
@@ -138,3 +138,14 @@ VSCodeMap('<leader>hh', HarpoonMark1)    -- Harpoon Mark 1
 VSCodeMap('<leader>ht', HarpoonMark2)    -- Harpoon Mark 2
 VSCodeMap('<leader>hn', HarpoonMark3)    -- Harpoon Mark 3
 VSCodeMap('<leader>hs', HarpoonMark4)    -- Harpoon Mark 4
+
+-- Rest Client Commands
+VSCodeMap('<leader>rqs', RestRequestSend)       -- Rest Request Send
+VSCodeMap('<leader>rql', RestRequestReRunLast)  -- Rest Request ReRun Last
+VSCodeMap('<leader>rqc', RestRequestCancel)     -- Rest Request Cancel
+VSCodeMap('<leader>rpf', RestResponseSaveFull)  -- Rest Response Save Full
+VSCodeMap('<leader>rpb', RestResponseSaveBody)  -- Rest Response Save Body
+VSCodeMap('<leader>rhv', RestHistoryView)       -- Rest History View
+VSCodeMap('<leader>rhc', RestHistoryClear)      -- Rest History Clear
+VSCodeMap('<leader>rse', RestSwitchEnvironment) -- Rest Switch Environment
+VSCodeMap('<leader>rsg', RestSnippetGenerate)   -- Rest Snippet Generate

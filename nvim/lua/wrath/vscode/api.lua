@@ -11,7 +11,7 @@ function FindFile() VSCodeNotify("workbench.action.quickOpen") end
 
 function FindWord() VSCodeNotify("actions.find") end
 
-function FindEmoji() VSCodeNotify("emoji.show") end
+function FindEmoji() VSCodeNotify("emoji.insert") end
 
 function FindGitProject() VSCodeNotify("projectManager.listProjects") end
 
@@ -239,3 +239,22 @@ function HarpoonMark2() VSCodeNotify("vscode-harpoon.gotoGlobalEditor2") end
 function HarpoonMark3() VSCodeNotify("vscode-harpoon.gotoGlobalEditor3") end
 
 function HarpoonMark4() VSCodeNotify("vscode-harpoon.gotoGlobalEditor4") end
+
+-- Rest Client Commands
+function RestRequestSend() VSCodeNotify("rest-client.request") end
+
+function RestRequestReRunLast() VSCodeNotify("rest-client.rerun-last-request") end
+
+function RestRequestCancel() VSCodeNotify("rest-client.cancel-request") end
+
+function RestResponseSaveFull() VSCodeNotify("rest-client.save-response") end
+
+function RestResponseSaveBody() VSCodeNotify("rest-client.save-response-body") end
+
+function RestHistoryView() VSCodeNotify("rest-client.history") end
+
+function RestHistoryClear() VSCodeNotify("rest-client.clear-history") end
+
+function RestSwitchEnvironment() VSCodeNotify("rest-client.switch-environment") end
+
+function RestSnippetGenerate() VSCodeNotify("rest-client.generate-codesnippet") end
