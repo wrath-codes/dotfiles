@@ -42,3 +42,6 @@ Map("n", "<C-u>", "<C-u>zz")
 
 -- Paste without overwriting register
 Map("v", "p", '"_dP')
+
+-- Select entire file
+Map("n", "==", "gg<S-v>G")
