@@ -76,7 +76,7 @@ function CloseOtherEditors() VSCodeNotify("workbench.action.closeOtherEditors") 
 
 function CloseEditorsToRight() VSCodeNotify("workbench.action.closeEditorsToTheRight") end
 
-function CloseEditorsToLeft() VSCodeNotify("workbench.action.closeEditorsToLeft") end
+function CloseEditorsToLeft() VSCodeNotify("workbench.action.closeEditorsToTheLeft") end
 
 function CloseAllEditors() VSCodeNotify("workbench.action.closeAllEditors") end
 
