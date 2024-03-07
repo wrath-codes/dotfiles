@@ -138,6 +138,10 @@ function JavaRunFile() VSCodeNotify("java.debug.runJavaFile") end
 
 function JavaDebugFile() VSCodeNotify("java.debug.debugJavaFile") end
 
+function JavaTestRun() VSCodeNotify("testing.runAtCursor") end
+
+function JavaTestDebug() VSCodeNotify("testing.debugAtCursor") end
+
 function JavaProjectMaven() VSCodeNotify("spring.initializr.maven-project") end
 
 function JavaProjectGradle() VSCodeNotify("spring.initializr.gradle-project") end
@@ -168,12 +172,12 @@ function ShowExtensionsUpdates() VSCodeNotify("workbench.views.extensions.search
 
 function ShowDisabledExtensions() VSCodeNotify("workbench.views.extensions.searchDisabled.focus") end
 
--- Git Commands
+-- -- Git Commands
 function GitInit() VSCodeNotify("git.init") end
 
 function GitIgnore() VSCodeNotify("git.ignore") end
 
-function GitStatus() VSCodeNotify("giteasy.doStatus") end
+function GitStatus() VSCodeNotify("gitlens.gitCommands.status") end
 
 function GitClone() VSCodeNotify("git.clone") end
 
@@ -181,47 +185,45 @@ function GitPublish() VSCodeNotify("git.publish") end
 
 function GitPull() VSCodeNotify("git.pull") end
 
-function GitPullOrigin() VSCodeNotify("giteasy.doOriginCurrentPull") end
-
 function GitPush() VSCodeNotify("git.push") end
 
 function GitPushForce() VSCodeNotify("git.pushForce") end
 
-function GitPushOrigin() VSCodeNotify("giteasy.doOriginCurrentPush") end
+function GitStageCurrentFile() VSCodeNotify("git.stageFile") end
 
-function GitPushRemote() VSCodeNotify("giteasy.doRemoteCurrentPush") end
+function GitStageAll() VSCodeNotify("git.stageAll") end
 
-function GitCommit() VSCodeNotify("giteasy.doCommit") end
+function GitUnstageAll() VSCodeNotify("git.unstageAll") end
 
-function GitCreateBranch() VSCodeNotify("giteasy.doCreateBranch") end
+function GitUnstageCurrentFile() VSCodeNotify("git.unstageFile") end
 
-function GitCheckoutBranch() VSCodeNotify("giteasy.doCheckoutBranch") end
+function GitBranchCreate() VSCodeNotify("gitlens.gitCommands.branch.create") end
 
-function GitCheckoutFile() VSCodeNotify("giteasy.doCheckoutCurrentFile") end
+function GitBranchDelete() VSCodeNotify("gitlens.gitCommands.branch.delete") end
 
-function GitLogCurrent() VSCodeNotify("giteasy.doLogCurrentFile") end
+function GitBranchRename() VSCodeNotify("gitlens.gitCommands.branch.rename") end
 
-function GitLogAll() VSCodeNotify("giteasy.doLogAll") end
+function GitRemoteAdd() VSCodeNotify("gitlens.gitCommands.remote.add") end
 
-function GitAddRemote() VSCodeNotify("giteasy.doAddRemote") end
+function GitRemoteRemove() VSCodeNotify("gitlens.gitCommands.remote.remove") end
 
-function GitAddOrigin() VSCodeNotify("giteasy.doAddOrigin") end
+function GitRebase() VSCodeNotify("gitlens.gitCommands.rebase") end
 
-function GitRebase() VSCodeNotify("git.rebase") end
+function GitCheckout() VSCodeNotify("gitlens.gitCommands.checkout") end
 
-function GitRebasePull() VSCodeNotify("git.pullRebase") end
+function GitCherryPick() VSCodeNotify("gitlens.gitCommands.cherryPick") end
 
-function GitRebaseAbort() VSCodeNotify("git.rebaseAbort") end
+function GitMerge() VSCodeNotify("gitlens.gitCommands.merge") end
 
-function GitSync() VSCodeNotify("git.syncRebase") end
+function GitHistoryRepo() VSCodeNotify("gitlens.showQuickRepoHistory") end
 
-function GitAddCurrent() VSCodeNotify("giteasy.doAddCurrentFile") end
+function GitHistoryFile() VSCodeNotify("gitlens.showQuickFileHistory") end
 
-function GitAddAll() VSCodeNotify("giteasy.doAddAll") end
+function GitHistoryBranch() VSCodeNotify("gitlens.showQuickBranchHistory") end
 
-function GitAddDirectory() VSCodeNotify("giteasy.doAdd") end
+function GitCommitSearch() VSCodeNotify("gitlens.showCommitSearch") end
 
-function GitUnstageCurrent() VSCodeNotify("giteasy.doUnstageCurrentFile") end
+function GitCommitMessage() VSCodeNotify("git-commit.commit") end
 
 -- Harpoon Commands
 function HarpoonAdd() VSCodeNotify("vscode-harpoon.addGlobalEditor") end

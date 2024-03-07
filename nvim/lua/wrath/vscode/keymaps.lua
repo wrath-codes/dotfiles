@@ -86,32 +86,32 @@ VSCodeMap('<leader>eo', ShowExtensionsUpdates)  -- Show Extensions Updates
 VSCodeMap('<leader>ed', ShowDisabledExtensions) -- Show Extensions Disabled
 
 -- Git Commands
-VSCodeMap('<leader>gin', GitInit)            -- Git Init
-VSCodeMap('<leader>gig', GitClone)           -- Git Clone
-VSCodeMap('<leader>gst', GitStatus)          -- Git Status
-VSCodeMap('<leader>gcl', GitClone)           -- Git Clone
-VSCodeMap('<leader>gpb', GitPublish)         -- Git Publish
-VSCodeMap('<leader>gpl', GitPull)            -- Git Pull
-VSCodeMap('<leader>gplo', GitPullOrigin)     -- Git Pull Origin
-VSCodeMap('<leader>gpc', GitPush)            -- Git Push
-VSCodeMap('<leader>gpo', GitPushOrigin)      -- Git Push Origin
-VSCodeMap('<leader>gpr', GitPushRemote)      -- Git Push Remote
-VSCodeMap('<leader>gbc', GitCreateBranch)    -- Git Branch Create
-VSCodeMap('<leader>gcob', GitCheckoutBranch) -- Git Checkout Branch
-VSCodeMap('<leader>gcof', GitCheckoutFile)   -- Git Checkout File
-VSCodeMap('<leader>gra', GitAddRemote)       -- Git Add Remote
-VSCodeMap('<leader>goa', GitAddOrigin)       -- Git Add Origin
-VSCodeMap('<leader>grb', GitRebase)          -- Git Rebase
-VSCodeMap('<leader>grp', GitRebasePull)      -- Git Rebase Pull
-VSCodeMap('<leader>grA', GitRebaseAbort)     -- Git Rebase Abort
-VSCodeMap('<leader>grs', GitSync)            -- Git Sync
-VSCodeMap('<leader>gac', GitAddCurrent)      -- Git Add Current
-VSCodeMap('<leader>gad', GitAddDirectory)    -- Git Add All
-VSCodeMap('<leader>gaa', GitAddAll)          -- Git Add All
-VSCodeMap('<leader>guc', GitUnstageCurrent)  -- Git Unstage Current
-VSCodeMap('<leader>gcm', GitCommit)          -- Git Commit
-VSCodeMap('<leader>glc', GitLogCurrent)      -- Git Log Current
-VSCodeMap('<leader>gla', GitLogAll)          -- Git Log All
+VSCodeMap('<leader>gin', GitInit)             -- Git Init
+VSCodeMap('<leader>gig', GitIgnore)           -- Git Ignore
+VSCodeMap('<leader>gst', GitStatus)           -- Git Status
+VSCodeMap('<leader>gcl', GitClone)            -- Git Clone
+VSCodeMap('<leader>gpb', GitPublish)          -- Git Publish
+VSCodeMap('<leader>gpl', GitPull)             -- Git Pull
+VSCodeMap('<leader>gpu', GitPush)             -- Git Push
+VSCodeMap('<leader>gpf', GitPushForce)        -- Git Push Force
+VSCodeMap('<leader>gsa', GitStageAll)         -- Git Add All
+VSCodeMap('<leader>gua', GitUnstageAll)       -- Git Unstage All
+VSCodeMap('<leader>gsf', GitStageCurrentFile) -- Git Stage Current File
+VSCodeMap('<leader>guf', GitStageCurrentFile) -- Git Unstage Current File
+VSCodeMap('<leader>gbc', GitBranchCreate)     -- Git Branch Create
+VSCodeMap('<leader>gbd', GitBranchDelete)     -- Git Branch Delete
+VSCodeMap('<leader>gbr', GitBranchRename)     -- Git Branch Rename
+VSCodeMap('<leader>gra', GitRemoteAdd)        -- Git Remote Add
+VSCodeMap('<leader>grr', GitRemoteRemove)     -- Git Remote Remove
+VSCodeMap('<leader>grb', GitRebase)           -- Git Rebase
+VSCodeMap('<leader>gco', GitCheckout)         -- Git Checkout
+VSCodeMap('<leader>gcp', GitCherryPick)       -- Git Cherry Pick
+VSCodeMap('<leader>gmr', GitMerge)            -- Git Merge
+VSCodeMap('<leader>ghr', GitHistoryRepo)      -- Git History Repo
+VSCodeMap('<leader>ghf', GitHistoryFile)      -- Git History File
+VSCodeMap('<leader>ghb', GitHistoryBranch)    -- Git History Branch
+VSCodeMap('<leader>gcm', GitCommitMessage)    -- Git Commit Message
+VSCodeMap('<leader>gca', GitCommitSearch)     -- Git Commit Search
 
 -- Python Commands
 VSCodeMap('<leader>prf', PythonRunFile)        -- Python Run
@@ -121,13 +121,15 @@ VSCodeMap('<leader>psl', PythonSetLinter)      -- Python Set Linter
 VSCodeMap('<leader>psr', PythonRestartLS)      -- Python Restart Language Server
 
 -- Java Commands
-VSCodeMap('<leader>jrf', JavaRunFile)                -- Java Run File
-VSCodeMap('<leader>jdf', JavaDebugFile)              -- Java Debug File
-VSCodeMap('<leader>jpm', JavaProjectMaven)           -- Java Project Maven
-VSCodeMap('<leader>jpg', JavaProjectGradle)          -- Java Project Gradle
-VSCodeMap('<leader>jps', JavaProjectSB)              -- Java Project Spring Boot
-VSCodeMap('<leader>jma', JavaMavenAddDependency)     -- Java Maven Add Dependency
-VSCodeMap('<leader>jme', JavaMavenExcludeDependency) -- Java Maven Exclude Dependency
+VSCodeMap('<leader>jrf', JavaRunFile)                 -- Java Run File
+VSCodeMap('<leader>jrt', JavaTestRun)                 -- Java Run Test
+VSCodeMap('<leader>jdf', JavaDebugFile)               -- Java Debug File
+VSCodeMap('<leader>jdt', JavaTestDebug)               -- Java Debug Test
+VSCodeMap('<leader>jsm', JavaProjectMaven)            -- Java Project Maven
+VSCodeMap('<leader>jsg', JavaProjectGradle)           -- Java Project Gradle
+VSCodeMap('<leader>jss', JavaProjectSB)               -- Java Project Spring Boot
+VSCodeMap('<leader>jsmd', JavaMavenAddDependency)     -- Java Maven Add Dependency
+VSCodeMap('<leader>jsme', JavaMavenExcludeDependency) -- Java Maven Exclude Dependency
 
 -- Harpoon Commands
 VSCodeMap('<leader>ha', HarpoonAdd)      -- Harpoon Add
