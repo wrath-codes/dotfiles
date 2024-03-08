@@ -187,6 +187,8 @@ function GitPull() VSCodeNotify("git.pull") end
 
 function GitPush() VSCodeNotify("git.push") end
 
+function GitPushToBranch() VSCodeNotify("git.pushTo") end
+
 function GitPushForce() VSCodeNotify("git.pushForce") end
 
 function GitStageCurrentFile() VSCodeNotify("git.stageFile") end

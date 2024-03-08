@@ -92,7 +92,8 @@ VSCodeMap('<leader>gst', GitStatus)             -- Git Status
 VSCodeMap('<leader>gcl', GitClone)              -- Git Clone
 VSCodeMap('<leader>gpb', GitPublish)            -- Git Publish
 VSCodeMap('<leader>gpl', GitPull)               -- Git Pull
-VSCodeMap('<leader>gpu', GitPush)               -- Git Push
+VSCodeMap('<leader>gps', GitPush)               -- Git Push
+VSCodeMap('<leader>gpt', GitPushToBranch)       -- Git Push To Branch
 VSCodeMap('<leader>gpf', GitPushForce)          -- Git Push Force
 VSCodeMap('<leader>gsa', GitStageAll)           -- Git Add All
 VSCodeMap('<leader>gua', GitUnstageAll)         -- Git Unstage All
