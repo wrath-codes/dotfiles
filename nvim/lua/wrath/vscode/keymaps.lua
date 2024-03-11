@@ -127,6 +127,7 @@ VSCodeMap('<leader>jrf', JavaRunFile)                 -- Java Run File
 VSCodeMap('<leader>jrt', JavaTestRun)                 -- Java Run Test
 VSCodeMap('<leader>jdf', JavaDebugFile)               -- Java Debug File
 VSCodeMap('<leader>jdt', JavaTestDebug)               -- Java Debug Test
+VSCodeMap('<leader>jct', JavaTestCoverage)            -- Java Test Coverage
 VSCodeMap('<leader>jsm', JavaProjectMaven)            -- Java Project Maven
 VSCodeMap('<leader>jsg', JavaProjectGradle)           -- Java Project Gradle
 VSCodeMap('<leader>jss', JavaProjectSB)               -- Java Project Spring Boot

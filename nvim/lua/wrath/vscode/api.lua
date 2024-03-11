@@ -142,6 +142,8 @@ function JavaTestRun() VSCodeNotify("testing.runAtCursor") end
 
 function JavaTestDebug() VSCodeNotify("testing.debugAtCursor") end
 
+function JavaTestCoverage() VSCodeNotify("testing.coverageAtCursor") end
+
 function JavaProjectMaven() VSCodeNotify("spring.initializr.maven-project") end
 
 function JavaProjectGradle() VSCodeNotify("spring.initializr.gradle-project") end
