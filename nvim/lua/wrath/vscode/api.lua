@@ -185,6 +185,8 @@ function GitPublish() VSCodeNotify("git.publish") end
 
 function GitPull() VSCodeNotify("git.pull") end
 
+function GitPullFromBranch() VSCodeNotify("git.pullFrom") end
+
 function GitPush() VSCodeNotify("git.push") end
 
 function GitPushToBranch() VSCodeNotify("git.pushTo") end
