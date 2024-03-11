@@ -94,7 +94,7 @@ VSCodeMap('<leader>gpb', GitPublish)            -- Git Publish
 VSCodeMap('<leader>gpl', GitPull)               -- Git Pull
 VSCodeMap('<leader>gpL', GitPullFromBranch)     -- Git Pull from Branch
 VSCodeMap('<leader>gps', GitPush)               -- Git Push
-VSCodeMap('<leader>gpT', GitPushToBranch)       -- Git Push To Branch
+VSCodeMap('<leader>gpt', GitPushToBranch)       -- Git Push To Branch
 VSCodeMap('<leader>gpf', GitPushForce)          -- Git Push Force
 VSCodeMap('<leader>gsa', GitStageAll)           -- Git Add All
 VSCodeMap('<leader>gua', GitUnstageAll)         -- Git Unstage All
