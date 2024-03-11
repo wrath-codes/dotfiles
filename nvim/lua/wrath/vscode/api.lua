@@ -201,7 +201,7 @@ function GitStageAll() VSCodeNotify("git.stageAll") end
 
 function GitUnstageAll() VSCodeNotify("git.unstageAll") end
 
-function GitUnstageCurrentFile() VSCodeNotify("git.unstageFile") end
+function GitUnstageCurrentFile() VSCodeNotify("giteasy.doUnstageCurrentFile") end
 
 function GitBranchCreate() VSCodeNotify("gitlens.gitCommands.branch.create") end
 
