@@ -195,13 +195,13 @@ function GitPushToBranch() VSCodeNotify("git.pushTo") end
 
 function GitPushForce() VSCodeNotify("git.pushForce") end
 
-function GitStageCurrentFile() VSCodeNotify("git.stageFile") end
+function GitStageCurrentFile() VSCodeNotify("giteasy.doAddCurrentFile") end
 
 function GitStageAll() VSCodeNotify("git.stageAll") end
 
 function GitUnstageAll() VSCodeNotify("git.unstageAll") end
 
-function GitUnstageCurrentFile() VSCodeNotify("git.unstageFile") end
+function GitUnstageCurrentFile() VSCodeNotify("giteasy.doUnstageCurrentFile") end
 
 function GitBranchCreate() VSCodeNotify("gitlens.gitCommands.branch.create") end
 
