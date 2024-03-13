@@ -185,7 +185,7 @@ function GitClone() VSCodeNotify("git.clone") end
 
 function GitPublish() VSCodeNotify("git.publish") end
 
-function GitPull() VSCodeNotify("git.pull") end
+function GitPull() VSCodeNotify("gitlens.pullRepositories") end
 
 function GitPullFromBranch() VSCodeNotify("git.pullFrom") end
 
@@ -230,6 +230,8 @@ function GitHistoryBranch() VSCodeNotify("gitlens.showQuickBranchHistory") end
 function GitCommitSearch() VSCodeNotify("gitlens.showCommitSearch") end
 
 function GitCommitMessage() VSCodeNotify("git-commit.commit") end
+
+function GitGraphShow() VSCodeNotify("gitlens.showGraph") end
 
 -- Harpoon Commands
 function HarpoonAdd() VSCodeNotify("vscode-harpoon.addGlobalEditor") end

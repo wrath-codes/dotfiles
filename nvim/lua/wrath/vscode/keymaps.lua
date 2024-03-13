@@ -114,6 +114,7 @@ VSCodeMap('<leader>ghf', GitHistoryFile)        -- Git History File
 VSCodeMap('<leader>ghb', GitHistoryBranch)      -- Git History Branch
 VSCodeMap('<leader>gcm', GitCommitMessage)      -- Git Commit Message
 VSCodeMap('<leader>gca', GitCommitSearch)       -- Git Commit Search
+VSCodeMap('<leader>ggs', GitGraphShow)          -- Git Show Graph
 
 -- Python Commands
 VSCodeMap('<leader>prf', PythonRunFile)        -- Python Run
