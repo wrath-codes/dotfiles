@@ -58,8 +58,15 @@ VSCodeMap('<leader>wl', CloseEditorsToLeft)  -- Close Editors to the Left in Gro
 VSCodeMap('<leader>wr', CloseEditorsToRight) -- Close Editors to the Right in Group
 
 -- Window Commands
-VSCodeMap('<leader>ww', CloseWindow) -- Close Window
-VSCodeMap('<leader>wn', NewWindow)   -- New Window
+VSCodeMap('<leader>ww', CloseWindow)  -- Close Window
+VSCodeMap('<leader>wn', NewWindow)    -- New Window
+VSCodeMap('<leader>wR', ReloadWindow) -- Reload Window
+
+-- Navigation Commands
+VSCodeMap('<leader>nt', NotificationsToggle)       -- Notifications Toggle
+VSCodeMap('<leader>nc', NotificationsClear)        -- Notifications Clear
+VSCodeMap('<leader>nd', NotificationsDismiss)      -- Notifications Dismiss
+VSCodeMap('<leader>no', NotificationsDoNotDisturb) -- Notifications Do Not Disturb
 
 --  Toggle Commands
 VSCodeMap('<leader>tbm', ToggleMenuBar)     -- Toggle Menu Bar
@@ -132,8 +139,8 @@ VSCodeMap('<leader>jct', JavaTestCoverage)            -- Java Test Coverage
 VSCodeMap('<leader>jsm', JavaProjectMaven)            -- Java Project Maven
 VSCodeMap('<leader>jsg', JavaProjectGradle)           -- Java Project Gradle
 VSCodeMap('<leader>jss', JavaProjectSB)               -- Java Project Spring Boot
-VSCodeMap('<leader>jsmd', JavaMavenAddDependency)     -- Java Maven Add Dependency
-VSCodeMap('<leader>jsme', JavaMavenExcludeDependency) -- Java Maven Exclude Dependency
+VSCodeMap('<leader>jsma', JavaMavenAddDependency)     -- Java Maven Add Dependency
+VSCodeMap('<leader>jsmd', JavaMavenExcludeDependency) -- Java Maven Exclude Dependency
 
 -- Harpoon Commands
 VSCodeMap('<leader>ha', HarpoonAdd)      -- Harpoon Add

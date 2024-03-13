@@ -85,6 +85,19 @@ function NewWindow() VSCodeNotify("workbench.action.newWindow") end
 
 function CloseWindow() VSCodeNotify("workbench.action.closeWindow") end
 
+function ReloadWindow() VSCodeNotify("workbench.action.reloadWindow") end
+
+-- Notification Commands
+
+
+function NotificationsToggle() VSCodeNotify("notifications.toggleList") end
+
+function NotificationsDoNotDisturb() VSCodeNotify("notifications.toggleDoNotDisturbMode") end
+
+function NotificationsClear() VSCodeNotify("notifications.clearAll") end
+
+function NotificationsDismiss() VSCodeNotify("notifications.hideToasts") end
+
 -- Toggle Commands
 function ToggleFullScreen() VSCodeNotify("workbench.action.toggleFullScreen") end
 
