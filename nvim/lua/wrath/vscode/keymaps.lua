@@ -131,16 +131,23 @@ VSCodeMap('<leader>psl', PythonSetLinter)      -- Python Set Linter
 VSCodeMap('<leader>psr', PythonRestartLS)      -- Python Restart Language Server
 
 -- Java Commands
-VSCodeMap('<leader>jrf', JavaRunFile)                 -- Java Run File
-VSCodeMap('<leader>jrt', JavaTestRun)                 -- Java Run Test
-VSCodeMap('<leader>jdf', JavaDebugFile)               -- Java Debug File
-VSCodeMap('<leader>jdt', JavaTestDebug)               -- Java Debug Test
-VSCodeMap('<leader>jct', JavaTestCoverage)            -- Java Test Coverage
-VSCodeMap('<leader>jsm', JavaProjectMaven)            -- Java Project Maven
-VSCodeMap('<leader>jsg', JavaProjectGradle)           -- Java Project Gradle
-VSCodeMap('<leader>jss', JavaProjectSB)               -- Java Project Spring Boot
-VSCodeMap('<leader>jsma', JavaMavenAddDependency)     -- Java Maven Add Dependency
-VSCodeMap('<leader>jsmd', JavaMavenExcludeDependency) -- Java Maven Exclude Dependency
+VSCodeMap('<leader>jrf', JavaRunFile)                  -- Java Run File
+VSCodeMap('<leader>jrt', JavaTestRun)                  -- Java Run Test
+VSCodeMap('<leader>jdf', JavaDebugFile)                -- Java Debug File
+VSCodeMap('<leader>jdt', JavaTestDebug)                -- Java Debug Test
+VSCodeMap('<leader>jct', JavaTestCoverage)             -- Java Test Coverage
+VSCodeMap('<leader>jsm', JavaSBProjectNewMaven)        -- Java Project Maven
+VSCodeMap('<leader>jsg', JavaSBProjectNewGradle)       -- Java Project Gradle
+VSCodeMap('<leader>jss', JavaSBProjectNewRegular)      -- Java Project Spring Boot
+VSCodeMap('<leader>jmad', JavaMavenAddDependency)      -- Java Maven Add Dependency
+VSCodeMap('<leader>jmed', JavaMavenExcludeDependency)  -- Java Maven Exclude Dependency
+VSCodeMap('<leader>jmcl', JavaMavenClean)              -- Java Maven Clean
+VSCodeMap('<leader>jmin', JavaMavenInstall)            -- Java Maven Install
+VSCodeMap('<leader>jmvl', JavaMavenValidate)           -- Java Maven Validate
+VSCodeMap('<leader>jmcp', JavaMavenCompile)            -- Java Maven Compile
+VSCodeMap('<leader>jmvr', JavaMavenVerify)             -- Java Maven Verify
+VSCodeMap('<leader>jmna', JavaMavenProjectNewArchtype) -- Java Maven Project New Archtype
+VSCodeMap('<leader>jmhr', JavaMavenHistory)            -- Java Maven History
 
 -- Harpoon Commands
 VSCodeMap('<leader>ha', HarpoonAdd)      -- Harpoon Add

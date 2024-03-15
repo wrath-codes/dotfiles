@@ -157,15 +157,29 @@ function JavaTestDebug() VSCodeNotify("testing.debugAtCursor") end
 
 function JavaTestCoverage() VSCodeNotify("testing.coverageAtCursor") end
 
-function JavaProjectMaven() VSCodeNotify("spring.initializr.maven-project") end
+function JavaSBProjectNewMaven() VSCodeNotify("spring.initializr.maven-project") end
 
-function JavaProjectGradle() VSCodeNotify("spring.initializr.gradle-project") end
+function JavaSBProjectNewGradle() VSCodeNotify("spring.initializr.gradle-project") end
 
-function JavaProjectSB() VSCodeNotify("spring.initializr.createProject") end
+function JavaSBProjectNewRegular() VSCodeNotify("spring.initializr.createProject") end
 
 function JavaMavenAddDependency() VSCodeNotify("maven.project.addDependency") end
 
 function JavaMavenExcludeDependency() VSCodeNotify("maven.project.excludeDependency") end
+
+function JavaMavenClean() VSCodeNotify("maven.goal.clean") end
+
+function JavaMavenInstall() VSCodeNotify("maven.goal.install") end
+
+function JavaMavenValidate() VSCodeNotify("maven.goal.validate") end
+
+function JavaMavenVerify() VSCodeNotify("maven.goal.validate") end
+
+function JavaMavenHistory() VSCodeNotify("maven.goal.history") end
+
+function JavaMavenCompile() VSCodeNotify("maven.goal.compile") end
+
+function JavaMavenProjectNewArchtype() VSCodeNotify("maven.goal.clean") end
 
 -- Settings Commands
 function OpenSettings() VSCodeNotify("workbench.action.openSettings") end
@@ -242,7 +256,7 @@ function GitHistoryBranch() VSCodeNotify("gitlens.showQuickBranchHistory") end
 
 function GitCommitSearch() VSCodeNotify("gitlens.showCommitSearch") end
 
-function GitCommitMessage() VSCodeNotify("git-commit.commit") end
+function GitCommitMessage() VSCodeNotify("extension.conventionalCommits") end
 
 function GitGraphShow() VSCodeNotify("gitlens.showGraph") end
 
