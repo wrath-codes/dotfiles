@@ -148,6 +148,7 @@ VSCodeMap('<leader>jmcp', JavaMavenCompile)            -- Java Maven Compile
 VSCodeMap('<leader>jmvr', JavaMavenVerify)             -- Java Maven Verify
 VSCodeMap('<leader>jmna', JavaMavenProjectNewArchtype) -- Java Maven Project New Archtype
 VSCodeMap('<leader>jmhr', JavaMavenHistory)            -- Java Maven History
+VSCodeMap('<leader>jmcm', JavaMavenCommands)           -- Java Execute Maven Command
 
 -- Harpoon Commands
 VSCodeMap('<leader>ha', HarpoonAdd)      -- Harpoon Add

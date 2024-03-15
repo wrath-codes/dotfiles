@@ -179,7 +179,9 @@ function JavaMavenHistory() VSCodeNotify("maven.goal.history") end
 
 function JavaMavenCompile() VSCodeNotify("maven.goal.compile") end
 
-function JavaMavenProjectNewArchtype() VSCodeNotify("maven.goal.clean") end
+function JavaMavenCommands() VSCodeNotify("maven.goal.execute") end
+
+function JavaMavenProjectNewArchtype() VSCodeNotify("maven.archetype.generate") end
 
 -- Settings Commands
 function OpenSettings() VSCodeNotify("workbench.action.openSettings") end
