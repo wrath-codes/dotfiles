@@ -52,6 +52,10 @@ eval "$(pyenv virtualenv-init -)"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# Java
+alias java-8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_231`"
+alias java-17="export JAVA_HOME=`/usr/libexec/java_home -v 17`"
+alias java-21="export JAVA_HOME=`/usr/libexec/java_home -v 21`"
 
 # vim alias
 alias vim="nvim"

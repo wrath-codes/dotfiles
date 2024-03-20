@@ -167,17 +167,9 @@ function JavaMavenAddDependency() VSCodeNotify("maven.project.addDependency") en
 
 function JavaMavenExcludeDependency() VSCodeNotify("maven.project.excludeDependency") end
 
-function JavaMavenClean() VSCodeNotify("maven.goal.clean") end
-
-function JavaMavenInstall() VSCodeNotify("maven.goal.install") end
-
-function JavaMavenValidate() VSCodeNotify("maven.goal.validate") end
-
-function JavaMavenVerify() VSCodeNotify("maven.goal.validate") end
+function JavaMavenFavorites() VSCodeNotify("maven.favorites") end
 
 function JavaMavenHistory() VSCodeNotify("maven.goal.history") end
-
-function JavaMavenCompile() VSCodeNotify("maven.goal.compile") end
 
 function JavaMavenCommands() VSCodeNotify("maven.goal.execute") end
 

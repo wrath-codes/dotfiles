@@ -141,14 +141,10 @@ VSCodeMap('<leader>jsg', JavaSBProjectNewGradle)       -- Java Project Gradle
 VSCodeMap('<leader>jss', JavaSBProjectNewRegular)      -- Java Project Spring Boot
 VSCodeMap('<leader>jmad', JavaMavenAddDependency)      -- Java Maven Add Dependency
 VSCodeMap('<leader>jmed', JavaMavenExcludeDependency)  -- Java Maven Exclude Dependency
-VSCodeMap('<leader>jmcl', JavaMavenClean)              -- Java Maven Clean
-VSCodeMap('<leader>jmin', JavaMavenInstall)            -- Java Maven Install
-VSCodeMap('<leader>jmvl', JavaMavenValidate)           -- Java Maven Validate
-VSCodeMap('<leader>jmcp', JavaMavenCompile)            -- Java Maven Compile
-VSCodeMap('<leader>jmvr', JavaMavenVerify)             -- Java Maven Verify
 VSCodeMap('<leader>jmna', JavaMavenProjectNewArchtype) -- Java Maven Project New Archtype
 VSCodeMap('<leader>jmhr', JavaMavenHistory)            -- Java Maven History
 VSCodeMap('<leader>jmcm', JavaMavenCommands)           -- Java Execute Maven Command
+VSCodeMap('<leader>jmfv', JavaMavenFavorites)          -- Java Maven Favorites
 
 -- Harpoon Commands
 VSCodeMap('<leader>ha', HarpoonAdd)      -- Harpoon Add
