@@ -5,5 +5,6 @@
   "nvim-spider": { "branch": "main", "commit": "bcc9fa38a62637491b75b02e364191553fd858a2" },
   "plenary.nvim": { "branch": "master", "commit": "f7adfc4b3f4f91aab6caebf42b3682945fbc35be" },
   "vim-ReplaceWithRegister": { "branch": "master", "commit": "aad1e8fa31cb4722f20fe40679caa56e25120032" },
-  "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" }
+  "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
+  "vscode-multi-cursor.nvim": { "branch": "main", "commit": "67e101404db09a26acdfccb3a0fdbcc49768b834" }
 }
