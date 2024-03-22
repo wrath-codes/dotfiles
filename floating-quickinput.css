@@ -1,0 +1,10 @@
+.quick-input-widget {
+    position: absolute;
+    width: 600px;
+    z-index: 2550;
+    left: 50%;
+    top: 50% !important;
+    margin-left: -300px;
+    -webkit-app-region: no-drag;
+    border-radius: 8px;
+}
