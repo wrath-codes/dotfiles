@@ -3,6 +3,7 @@
         "undefined-global"
     ],
     "conventionalCommits.scopes": [
-        "commands"
+        "commands",
+        "ui"
     ]
 }
