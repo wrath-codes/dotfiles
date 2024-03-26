@@ -1,50 +1,47 @@
 .quick-input-widget {
+    left: 0 !important;
     top: auto !important;
+    bottom: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0), 0 0 0 100vw rgba(0, 0, 0, 0.15) !important;
     width: 75% !important;
     margin-left: 2px !important;
-    left: 0 !important;
+    margin-bottom: 24px !important;
     overflow-x: auto !important;
-    display: flex;
-    flex-direction: column-reverse;
-    bottom: 0;
-    margin-bottom: 24px;
-    position: absolute;
-}
-
-.quick-input-widget .monaco-inputbox {
-    border-radius: 10px !important;
-    font-size: 14px !important;
-}
-
-.quick-input-list {
     display: flex;
     flex-direction: column-reverse !important;
     justify-content: flex-end !important;
+    position: absolute !important;
+}
+
+.quick-input-widget .monaco-inputbox {
+    padding: 10px !important;
+    border-radius: 5px !important;
+    font-size: 10px !important;
 }
 
 .quick-input-widget .quick-input-action {
     font-size: 10px !important;
+    display: flex;
+    flex-direction: column-reverse !important;
 }
 
 .quick-input-widget .monaco-list-rows {
-    font-size: 10px !important;
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    justify-content: flex-end !important;
+    height: auto;
+    font-size: 13px !important;
 }
 
 .quick-input-widget .monaco-list-row {
+    padding: 5px !important;
     height: auto !important;
-    flex: 0 0 auto !important;
 }
 
 .quick-input-widget .quick-input-list-entry {
     position: relative;
+    padding: 0px 5px 0px 15px;
 }
 
-
 .quick-input-widget .quick-input-list-entry .codicon[class*=codicon-] {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .quick-input-widget .quick-input-list .quick-input-list-entry.quick-input-list-separator-border {
@@ -53,4 +50,8 @@
 
 .quick-input-widget .quick-input-list .quick-input-list-label-meta .monaco-highlighted-label:before {
     content: ' ▸ ';
+}
+
+.quick-input-widget .quick-input-list .quick-input-list-entry .monaco-action-bar.animated.quick-input-list-entry-action-bar {
+    height: unset;
 }
