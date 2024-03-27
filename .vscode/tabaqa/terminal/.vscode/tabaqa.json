@@ -1,0 +1,10 @@
+{
+    "settings": {
+        "debug.terminal.clearBeforeReusing": true,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.defaultProfile.osx": "zsh",
+        "terminal.integrated.fontSize": 10,
+        "terminal.integrated.fontWeight": "500",
+        "terminal.integrated.fontFamily": "MesloLGS Nerd Font Mono"
+    }
+}

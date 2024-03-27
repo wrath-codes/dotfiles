@@ -1,0 +1,17 @@
+{
+    "settings": {
+        "explorer.confirmDelete": false,
+        "explorer.confirmDragAndDrop": false,
+        "explorer.compactFolders": true,
+        "explorer.expandSingleFolderWorkspaces": false,
+        "explorer.fileNesting.enabled": true,
+        "explorer.sortOrder": "foldersNestsFiles",
+        "explorer.fileNesting.patterns": {
+            "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-lock*, bun.lockb, nest*",
+            "tailwind.config.js": "tailwind.config*, postcss.config*",
+            ".env.local": ".env*",
+            ".env": ".env*"
+        },
+        "security.workspace.trust.untrustedFiles": "open"
+    }
+}

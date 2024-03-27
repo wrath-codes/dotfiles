@@ -313,3 +313,6 @@ function ServerRemove() VSCodeNotify("server.remove") end
 function ServerCreate() VSCodeNotify("server.createServer") end
 
 function ServerAddLocal() VSCodeNotify("server.addLocation") end
+
+-- Which-key
+function WhichKey() VSCodeNotify("whichkey.show") end

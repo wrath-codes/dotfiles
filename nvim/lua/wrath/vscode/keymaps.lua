@@ -179,3 +179,6 @@ VSCodeMap('<leader>ste', ServerTerminate)          -- Server Terminate
 VSCodeMap('<leader>srm', ServerRemove)             -- Server Remove
 VSCodeMap('<leader>scr', ServerCreate)             -- Server Create
 VSCodeMap('<leader>sla', ServerAddLocal)           -- Server Add Local
+
+-- Which Key Commands
+VSCodeMap('<leader>', WhichKey) -- Which Key Show

@@ -1,0 +1,27 @@
+{
+    "settings": {
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+        "editor.fontFamily": "MesloLGS Nerd Font Mono",
+        "editor.fontWeight": "500",
+        "editor.lineHeight": 0,
+        "editor.lineNumbers": "relative",
+        "editor.fontLigatures": "true",
+        "editor.tabSize": 4,
+        "editor.fontSize": 11,
+        "editor.inlineSuggest.enabled": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.fixAll.stylelint": "explicit"
+        },
+        "editor.formatOnPaste": true,
+        "editor.minimap.enabled": false,
+        "editor.rename.enablePreview": false,
+        "editor.linkedEditing": true,
+        "editor.unicodeHighlight.includeComments": true,
+        "editor.unicodeHighlight.includeStrings": "inUntrustedWorkspace",
+        "editor.scrollbar.vertical": "hidden",
+        "editor.hideCursorInOverviewRuler": true,
+        "editor.cursorStyle": "block"
+    }
+}

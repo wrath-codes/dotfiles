@@ -1,0 +1,11 @@
+{
+    "settings": {
+        "advancedNewFile.exclude": {
+            "node_modules": true,
+            "node_modules_electron": true,
+            "dev": true,
+            "dist": true
+        },
+        "advancedNewFile.showInformationMessages": true
+    }
+}

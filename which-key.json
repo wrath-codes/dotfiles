@@ -1,0 +1,24 @@
+{
+    "whichkey.showIcons": true,
+    "whichkey.bindings": [
+        {
+            "key": "f",
+            "name": "+ File... | + Find...",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "f",
+                    "name": "Find File",
+                    "type": "command",
+                    "command": "workbench.action.quickOpen"
+                },
+                {
+                    "key": "o",
+                    "name": "File Open",
+                    "type": "command",
+                    "command": "workbench.action.files.openFile"
+                }
+            ]
+        }
+    ]
+}

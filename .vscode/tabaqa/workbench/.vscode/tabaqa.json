@@ -1,0 +1,30 @@
+{
+    "settings": {
+        "workbench.startupEditor": "newUntitledFile",
+        "workbench.editorAssociations": {
+            "*.csv": "default",
+            "*.svg": "default",
+            "*.db": "default"
+        },
+        "workbench.iconTheme": "catppuccin-macchiato",
+        "workbench.tree.indent": 20,
+        "workbench.editor.highlightModifiedTabs": true,
+        "workbench.editor.revealIfOpen": true,
+        "window.commandCenter": false,
+        "workbench.layoutControl.enabled": false,
+        "workbench.activityBar.location": "hidden",
+        "zenMode.hideLineNumbers": false,
+        "zenMode.hideStatusBar": false,
+        "files.associations": {
+            ".sequelizerc": "javascript",
+            ".stylelintrc": "json",
+            ".prettierrc": "json",
+            "*.tsx": "typescriptreact",
+            ".env.*": "dotenv"
+        },
+        "breadcrumbs.enabled": false,
+        "update.showReleaseNotes": false,
+        "window.titleBarStyle": "native",
+        "workbench.editor.labelFormat": "short"
+    }
+}

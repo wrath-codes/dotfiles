@@ -1,4 +1,5 @@
 Map = vim.keymap.set
+MapNR = vim.keymap.nnoremap
 Cmd = vim.cmd
 Opt = vim.opt
 AuGroup = vim.api.nvim_create_augroup

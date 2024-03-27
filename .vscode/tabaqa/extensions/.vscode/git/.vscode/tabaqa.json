@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "git.autofetch": true,
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false,
+        "git.openRepositoryInParentFolders": "never",
+        "github.copilot.enable": {
+            "*": true,
+            "plaintext": true,
+            "markdown": true,
+            "scminput": false,
+            "yaml": true
+        },
+        "projectManager.git.baseFolders": []
+    }
+}

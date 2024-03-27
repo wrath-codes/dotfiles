@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "errorLens.statusBarIconsEnabled": true,
+        "errorLens.gutterIconsEnabled": true,
+        "errorLens.margin": "3ch",
+        "errorLens.enableOnDiffView": true,
+        "errorLens.problemRangeDecorationEnabled": true,
+        "errorLens.enabledDiagnosticLevels": [
+            "error",
+            "warning",
+            "hint",
+            "info"
+        ],
+        "typescript.implementationsCodeLens.enabled": true
+    }
+}
