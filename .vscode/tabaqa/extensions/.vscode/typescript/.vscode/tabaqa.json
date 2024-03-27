@@ -1,8 +1,0 @@
-{
-    "settings": {
-        "tailwindCSS.emmetCompletions": true,
-        "typescript.preferences.quoteStyle": "double",
-        "typescript.updateImportsOnFileMove.enabled": "always",
-        "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false
-    }
-}

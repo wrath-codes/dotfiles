@@ -17,7 +17,7 @@ plugins=(
 	pip
 	pyenv
 	python
-  poetry
+	poetry
 	sudo
 	zsh-autosuggestions
 	zsh-syntax-highlighting
