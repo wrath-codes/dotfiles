@@ -15,7 +15,7 @@ $rust\
 $python\
 $cmd_duration $jobs $time\
 $line_break\
-$character
+$character\
 """
 
 [username]
@@ -35,6 +35,9 @@ disabled = true
 format = "[ $version ](bold green) "
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
+
+[line_break]
+disabled = true
 
 [fill]
 symbol = " "
