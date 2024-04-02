@@ -37,7 +37,7 @@ detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
 
 [line_break]
-disabled = true
+
 
 [fill]
 symbol = " "
