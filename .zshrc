@@ -64,7 +64,7 @@ alias vim="nvim"
 alias python="python3"
 
 # lsd
-alias ls="lsd"
+alias ls="eza"
 
 # docker
 alias wrathDocker="systemctl --user start docker-desktop"
