@@ -15,7 +15,8 @@ function M.config()
     g = { name = "Git" },
     l = { name = "LSP" },
     L = { name = "Lazy" },
-    t = { name = "Test" },
+    T = { name = "Test" },
+    t = { name = "Toggle" },
     a = {
       name = "Tab",
       n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
@@ -24,7 +25,7 @@ function M.config()
       h = { "<cmd>-tabmove<cr>", "Move Left" },
       l = { "<cmd>+tabmove<cr>", "Move Right" },
     },
-    T = { name = "Treesitter" },
+    c = { name = "Treesitter" },
   }
 
   local which_key = require "which-key"

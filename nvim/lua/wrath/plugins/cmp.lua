@@ -113,11 +113,11 @@ function M.config()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif check_backspace() then
-          -- fallback()
-          require("neotab").tabout()
+          fallback()
+          --require("neotab").tabout()
         else
-          require("neotab").tabout()
-          -- fallback()
+          --require("neotab").tabout()
+          fallback()
         end
       end, {
         "i",
@@ -138,6 +138,8 @@ function M.config()
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
+
+      expandable_indicator = true,
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
@@ -232,7 +234,7 @@ function M.config()
           -- make the color square 2 chars wide
           vim_item.kind = string.rep("▣", 1)
 
-          -- return vim_item
+          --return vim_item
         end
 
         if entry.source.name == "copilot" then
@@ -328,7 +330,7 @@ function M.config()
   }
 
   pcall(function()
-    -- local function on_confirm_done(...)
+    --local function on_confirm_done(...)
     --   require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
     -- end
     -- require("cmp").event:off("confirm_done", on_confirm_done)

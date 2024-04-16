@@ -18,6 +18,8 @@ M.execs = {
   "yamlls",
   "marksman",
   "tailwindcss",
+  "ruff",
+  "ruff_lsp",
   "rust_analyzer",
   "eslint",
 }

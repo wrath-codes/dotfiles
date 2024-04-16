@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   spec = LAZY_PLUGIN_SPEC,
   install = {
-    colorscheme = { "gleam", "default" },
+    colorscheme = { "tokyonight", "default" },
   },
   ui = {
     border = "rounded",
@@ -36,3 +36,5 @@ wk.register {
   ["<leader>Ll"] = { "<cmd>Lazy log<cr>", "Log" },
   ["<leader>Ld"] = { "<cmd>Lazy debug<cr>", "Debug" },
 }
+
+
