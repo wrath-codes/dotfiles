@@ -14,7 +14,7 @@ function M.config()
     f = { name = "Find" },
     g = { name = "Git" },
     l = { name = "LSP" },
-    p = { name = "Plugins" },
+    L = { name = "Lazy" },
     t = { name = "Test" },
     a = {
       name = "Tab",

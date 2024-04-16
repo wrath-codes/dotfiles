@@ -25,14 +25,14 @@ require("lazy").setup {
   },
 }
 
--- local wk = require "which-key"
---wk.register {
--- ["<leader>pi"] = { "<cmd>Lazy install<cr>", "Install" },
---  ["<leader>ps"] = { "<cmd>Lazy sync<cr>", "Sync" },
---  ["<leader>pS"] = { "<cmd>Lazy clear<cr>", "Status" },
---  ["<leader>pc"] = { "<cmd>Lazy clean<cr>", "Clean" },
---  ["<leader>pu"] = { "<cmd>Lazy update<cr>", "Update" },
---  ["<leader>pp"] = { "<cmd>Lazy profile<cr>", "Profile" },
---  ["<leader>pl"] = { "<cmd>Lazy log<cr>", "Log" },
---  ["<leader>pd"] = { "<cmd>Lazy debug<cr>", "Debug" }j,
---}
+local wk = require "which-key"
+wk.register {
+  ["<leader>Li"] = { "<cmd>Lazy install<cr>", "Install" },
+  ["<leader>Ls"] = { "<cmd>Lazy sync<cr>", "Sync" },
+  ["<leader>LS"] = { "<cmd>Lazy clear<cr>", "Status" },
+  ["<leader>Lx"] = { "<cmd>Lazy clean<cr>", "Clean" },
+  ["<leader>Lu"] = { "<cmd>Lazy update<cr>", "Update" },
+  ["<leader>Lp"] = { "<cmd>Lazy profile<cr>", "Profile" },
+  ["<leader>Ll"] = { "<cmd>Lazy log<cr>", "Log" },
+  ["<leader>Ld"] = { "<cmd>Lazy debug<cr>", "Debug" },
+}

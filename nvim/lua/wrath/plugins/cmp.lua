@@ -305,7 +305,7 @@ function M.config()
         selection_order = "top_down",
       },
       docs = {
-        auto_open = false,
+        auto_open = true,
       },
     },
     window = {
