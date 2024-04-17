@@ -14,7 +14,7 @@ function M.config()
     'EndOfBuffer',
   },
   extra_groups = {
-    "NvimTreeNormal",  -- NvimTreBufferLineTabClose",
+    "NvimTreeNormal", "NvimTreBufferLineTabClose", "vimTreeNormalNC",
     "BufferlineBufferSelected",
     "BufferLineFill",
     "BufferLineBackground",

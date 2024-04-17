@@ -28,11 +28,11 @@ function M.config()
       color = "#cbcb41",
       name = "lockb",
     },
-    -- ["bunfig.toml"] = {
-    --   icon = "󰳮",
-    --   color = "#fbf0df",
-    --   name = "bunfig.toml",
-    -- },
+    ["bunfig.toml"] = {
+      icon = "󰳮",
+      color = "#fbf0df",
+      name = "bunfig.toml",
+    },
     ["tsx"] = {
       icon = "",
       color = "#519aba",

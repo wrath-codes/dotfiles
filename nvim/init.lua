@@ -1,4 +1,4 @@
--- Add core and Initialize plugin table
+-- Add core and Initializeplugin table
 require("wrath.lazy.launch")
 require("wrath.core.options")
 require("wrath.core.keymaps")
@@ -17,8 +17,14 @@ spec("wrath.plugins.lsp.none-ls")
 spec("wrath.plugins.cmp")
 spec("wrath.plugins.schemastore")
 
+spec("wrath.plugins.lualine")
+spec("wrath.plugins.comment")
+spec("wrath.plugins.nvimtree")
 spec("wrath.plugins.telescope")
 spec("wrath.plugins.which-key")
+
+-- Extras
+spec("wrath.plugins.extras.copilot")
 
 -- Start Lazy
 require("wrath.lazy.lazy")
