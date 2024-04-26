@@ -1,3 +1,6 @@
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
+export PATH
 export TERM="alacritty"
 export COLORTERM=truecolor
 
@@ -25,6 +28,7 @@ plugins=(
 	)
 
 source $ZSH/oh-my-zsh.sh
+
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"

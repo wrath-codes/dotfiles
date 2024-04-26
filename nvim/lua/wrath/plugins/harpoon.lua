@@ -11,7 +11,7 @@ function M.config()
   local wk = require("which-key")
 
   wk.register {
-    ["<leader>a"] = {function() M.mark_file() end, "Add a file", opts},
+    ["<C-a>"] = {function() M.mark_file() end, "Add a file", opts},
     ["<C-e>"] = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Harpoon", opts},
     ["<C-h>"] = {function() harpoon:list():select(1) end, "Harpoon 1", opts },
     ["<C-t>"] = {function() harpoon:list():select(2) end, "Harpoon 2", opts},
@@ -27,8 +27,8 @@ function M.config()
     pattern = "harpoon",
     callback = function()
       vim.cmd [[highlight link HarpoonBorder TelescopeBorder]]
-      -- vim.cmd [[setlocal nonumber]]
-      -- vim.cmd [[highlight HarpoonWindow guibg=#313132]]
+      vim.cmd [[setlocal nonumber]]
+      vim.cmd [[highlight HarpoonWindow guibg=#313132]]
     end,
   })
 end

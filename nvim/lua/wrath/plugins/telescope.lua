@@ -9,7 +9,7 @@ function M.config()
     ["<leader>bb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
 
     ["<leader>fb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    ["<leader>fC"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
     ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
     ["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
@@ -22,7 +22,7 @@ function M.config()
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
     ["<leader>fR"] = { "<cmd>Telescope registers<cr>", "Registers" },
     ["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    ["<leader>fc"] = { "<cmd>Telescope commands<cr>", "Commands" },
+    ["<leader>fC"] = { "<cmd>Telescope commands<cr>", "Commands" },
 
     ["<leader>go"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     ["<leader>gb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },

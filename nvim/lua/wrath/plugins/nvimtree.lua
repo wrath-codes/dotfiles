@@ -7,7 +7,7 @@ function M.config()
 
   local wk = require "which-key"
   wk.register {
-    ["<leader>e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+    ["<C-b>"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
   }
 
   local function my_on_attach(bufnr)
@@ -19,6 +19,11 @@ function M.config()
 
     api.config.mappings.default_on_attach(bufnr)
 
+    vim.keymap.set("n", "l", api.node.open.edit, opts "Open")
+    vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
+    vim.keymap.set("n", "<S-v>", api.node.open.vertical, opts "Open: Vertical Split")
+    vim.keymap.del("n", "<C-k>", { buffer = bufnr })
+    vim.keymap.set("n", "<S-k>", api.node.open.preview, opts "Open Preview")
   end
 
   local icons = require "wrath.utils.icons"

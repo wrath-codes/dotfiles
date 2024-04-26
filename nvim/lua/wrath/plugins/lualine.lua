@@ -2,11 +2,25 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "AndreM222/copilot-lualine",
+    { "abeldekat/harpoonline", version = "*" },
   },
 }
 
+local function get_full_path(root_dir, value)
+    if vim.loop.os_uname().sysname == "Windows_NT" then
+        return root_dir .. "\\" .. value
+    end
+
+    return root_dir .. "/" .. value
+end
+
+local function is_relative_path(path)
+    return string.sub(path, 1, 1) ~= "/"
+end
+
+
 function M.config()
-  local icons = require "wrath.utils.icons"
+  local icons = require("wrath.utils.icons")
   local diff = {
     "diff",
     colored = true,
@@ -16,11 +30,15 @@ function M.config()
   local diagnostics = {
     "diagnostics",
     sections = { "error", "warn" },
-    colored = false, -- Displays diagnostics status in color if set to true.
+    colored = true,      -- Displays diagnostics status in color if set to true.
     always_visible = true, -- Show diagnostics even if there are none.
   }
 
   local filetype = {
+    "filetype",
+    colored = true, -- Displays filetype icon in color if set to true
+    icon_only = true, -- Display only an icon for filetype
+    icon = { align = "right" },
     function()
       local filetype = vim.bo.filetype
       local upper_case_filetypes = {
@@ -32,7 +50,7 @@ function M.config()
         "scss",
         "html",
         "xml",
-        "xhtml"
+        "xhtml",
       }
 
       if vim.tbl_contains(upper_case_filetypes, filetype) then
@@ -43,23 +61,58 @@ function M.config()
     end,
   }
 
-  require("lualine").setup {
+  local harpoonline = require("harpoonline")
+
+  harpoonline.setup({
+    formatter = "extended",
+    icon = "󱡅",
+    formatter_opts = {
+      extended = { -- remove all decodespaces...
+        indicators = {
+          " H ",
+          " T ",
+          " N ",
+          " S ",
+        },
+        active_indicators = {
+          " [H] ",
+          " [T] ",
+          " [N] ",
+          " [S] ",
+        },
+        empty_slot = "·",
+        more_marks_indicator = "…", -- horizontal elipsis. Disable with empty string
+        more_marks_active_indicator = "[…]", -- Disable with empty string
+      },
+    },
+    on_update = function()
+      require("lualine").refresh()
+    end,
+  })
+
+  require("lualine").setup({
     options = {
       component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
 
       ignore_focus = { "NvimTree" },
+      -- Define custom colors for regular and active indicators
     },
     sections = {
-      lualine_a = {"mode"},
-      lualine_b = {{"branch", icon ="", diff,  diagnostics}},
-      lualine_c = { "filename" },
-      lualine_x = { "encoding", "fileformat" , filetype, "copilot" },
-      lualine_y = { "searchcount", "progress" },
-      lualine_z = {"location"},
+      lualine_a = { { "mode", icon = "" } },
+      lualine_b = { { "branch", icon = "" }, diff, diagnostics },
+      lualine_c = {
+        "%=",
+        {
+          harpoonline.format,
+        },
+      },
+      lualine_x = { "filename", filetype, "encoding" },
+      lualine_y = { "copilot" },
+      lualine_z = { "progress", "location" },
     },
     extensions = { "quickfix", "man", "fugitive", "oil" },
-  }
+  })
 end
 
 return M

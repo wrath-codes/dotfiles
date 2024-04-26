@@ -42,7 +42,7 @@ function M.config()
   local wk = require("which-key")
 
   wk.register{
-  ["<leader>tt"] = { "<cmd>TransparentToggle<cr>", "Find" },
+  ["<leader>Tt"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
   }
 vim.cmd("highlight Pmenu guibg=NONE")
 

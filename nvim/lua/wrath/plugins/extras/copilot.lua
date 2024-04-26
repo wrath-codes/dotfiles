@@ -42,9 +42,9 @@ function M.config()
   }
 
   local opts = { noremap = true, silent = true }
-  vim.api.nvim_set_keymap("n", "<c-s>", ":lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<c-m>", ":lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 
-  -- require("copilot_cmp").setup()
+  require("copilot_cmp").setup()
 end
 
 return M
