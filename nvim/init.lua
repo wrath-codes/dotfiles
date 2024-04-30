@@ -34,6 +34,7 @@ spec "wrath.plugins.telescope"
 spec "wrath.plugins.which-key"
 spec "wrath.plugins.illuminate"
 spec "wrath.plugins.neotest"
+spec "wrath.plugins.toggleterm"
 
 -- Extras
 spec "wrath.plugins.extras.copilot"
