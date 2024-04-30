@@ -25,7 +25,7 @@ function M.config()
         accept = "<c-l>",
         next = "<c-j>",
         prev = "<c-k>",
-        dismiss = "<c-h>",
+        dismiss = "<c-w>",
       },
     },
     filetypes = {

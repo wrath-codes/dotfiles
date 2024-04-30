@@ -1,37 +1,34 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.font_size = 13.0
-config.font = wezterm.font ("Liga SFMono Nerd Font", { bold = false, italic = false })
+config.font_size = 14.0
+config.font = wezterm.font ("CaskaydiaCove Nerd Font Mono", { bold = false, italic = false })
 config.font_rules = {
   {
     intensity = "Normal",
     italic = false,
-    font = wezterm.font("Liga SFMono Nerd Font", { italic = false, bold = false }),
+    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = false, bold = false }),
   },
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font("Liga SFMono Nerd Font", { bold = true, italic = false }),
+    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { bold = true, italic = false }),
   },
   {
     italic = true,
-    font = wezterm.font("Liga SFMono Nerd Font", { italic = true, bold = false}),
+    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = false}),
   },
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font("Liga SFMono Nerd Font", { italic = true, bold = true}),
+    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = true}),
   },
 }
-
+config.line_height = 1.0
 
 config.bold_brightens_ansi_colors = true
 config.freetype_load_target = "Light"
-
 config.front_end = "WebGpu"
-config.freetype_load_flags = 'FORCE_AUTOHINT'
-config.cell_width = 0.9
 
 config.color_scheme = "Tokyo Night Moon"
 

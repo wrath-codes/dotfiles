@@ -22,6 +22,7 @@ M.execs = {
   "ruff_lsp",
   "rust_analyzer",
   "eslint",
+  "taplo",
 }
 
 function M.config()

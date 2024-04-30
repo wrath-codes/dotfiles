@@ -6,19 +6,6 @@ local M = {
   },
 }
 
-local function get_full_path(root_dir, value)
-    if vim.loop.os_uname().sysname == "Windows_NT" then
-        return root_dir .. "\\" .. value
-    end
-
-    return root_dir .. "/" .. value
-end
-
-local function is_relative_path(path)
-    return string.sub(path, 1, 1) ~= "/"
-end
-
-
 function M.config()
   local icons = require("wrath.utils.icons")
   local diff = {

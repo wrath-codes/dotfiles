@@ -5,9 +5,9 @@ require "wrath.core.keymaps"
 require "wrath.core.autocmds"
 
 -- Utils
---require("wrath.utils.transparent") -- Add transparency
 
 -- Plugins
+spec "wrath.plugins.alpha"
 spec "wrath.plugins.colorscheme"
 spec "wrath.plugins.transparent"
 spec "wrath.plugins.devicons"
@@ -19,6 +19,7 @@ spec "wrath.plugins.cmp"
 spec "wrath.plugins.schemastore"
 spec "wrath.plugins.autopairs"
 spec "wrath.plugins.autotag"
+spec "wrath.plugins.project"
 
 spec "wrath.plugins.gitsigns"
 spec "wrath.plugins.neogit"
@@ -36,6 +37,8 @@ spec "wrath.plugins.neotest"
 
 -- Extras
 spec "wrath.plugins.extras.copilot"
+spec "wrath.plugins.extras.cmp-tabnine"
+spec "wrath.plugins.extras.hlchunk"
 spec "wrath.plugins.extras.gx"
 spec "wrath.plugins.extras.hop"
 spec "wrath.plugins.extras.lab"
@@ -44,7 +47,10 @@ spec "wrath.plugins.extras.oil"
 spec "wrath.plugins.extras.tabby"
 spec "wrath.plugins.extras.ufo"
 spec "wrath.plugins.extras.neotab"
+spec "wrath.plugins.extras.gitlinker"
+spec "wrath.plugins.extras.zenmode"
+spec "wrath.plugins.extras.twilight"
+spec "wrath.plugins.extras.fidget"
 
 -- Start Lazy
 require "wrath.lazy.lazy"
-
