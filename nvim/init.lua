@@ -21,6 +21,7 @@ spec "wrath.plugins.autopairs"
 spec "wrath.plugins.autotag"
 
 spec "wrath.plugins.gitsigns"
+spec "wrath.plugins.neogit"
 spec "wrath.plugins.harpoon"
 spec "wrath.plugins.harpoon-lualine"
 spec "wrath.plugins.navic"
