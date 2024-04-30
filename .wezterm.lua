@@ -16,12 +16,12 @@ config.font_rules = {
   },
   {
     italic = true,
-    font = wezterm.font("Operator Mono", { italic = true, bold = false}),
+    font = wezterm.font("Liga SFMono Nerd Font", { italic = true, bold = false}),
   },
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font("Operator Mono", { italic = true, bold = true}),
+    font = wezterm.font("Liga SFMono Nerd Font", { italic = true, bold = true}),
   },
 }
 
