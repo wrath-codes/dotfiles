@@ -329,11 +329,11 @@ function M.config()
 	})
 
 	pcall(function()
-		--local function on_confirm_done(...)
-		--   require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
-		-- end
-		-- require("cmp").event:off("confirm_done", on_confirm_done)
-		-- require("cmp").event:on("confirm_done", on_confirm_done)
+		local function on_confirm_done(...)
+		  require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
+		end
+		require("cmp").event:off("confirm_done", on_confirm_done)
+		require("cmp").event:on("confirm_done", on_confirm_done)
 	end)
 end
 

@@ -2,12 +2,9 @@
 editor = 'nvim'
 cursor = '▇'
 blinking-cursor = true
-theme = "tokionights"
+theme = "tokyonight-storm"
 padding-x = 10
 option-as-alt = "both"
-# working-dir = "/Users/raphael/Documents/"
-# env-vars = []
-# use-fork = false
 
 [window]
 width = 1000
@@ -15,12 +12,12 @@ height = 800
 mode = "Maximized"
 decorations = "Enabled"
 foreground-opacity = 1.0
-background-opacity = 0.5
+background-opacity = 0.75
 blur = true
 
 
 [renderer]
-performance = "Low"
+performance = "High"
 backend = "Automatic"
 disable-renderer-when-unfocused = false
 
@@ -29,8 +26,9 @@ use-kitty-keyboard-protocol = false
 disable-ctlseqs-alt = false
 
 [fonts]
-   family = "MesloLGL Nerd Font Mono"
-   size = 16
+family = "Liga SFMono Nerd Font"
+extras = [{ family = "Liga SFMono Nerd Font" }]
+size = 16
 
 [scroll]
 multiplier = 5.0
@@ -41,9 +39,3 @@ mode = "Breadcrumb"
 clickable = false
 use-current-path = true
 color-automation = []
-
-# [shell]
-# program = "/opt/homebrew/bin/tmux"
-# args = ["new-session", "-c", "/var/www"]
-
-

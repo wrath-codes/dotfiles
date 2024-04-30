@@ -31,12 +31,12 @@ vim.opt.laststatus = 3
 vim.opt.showcmd = true
 vim.opt.ruler = false
 vim.opt.relativenumber = true -- set relative numbered lines
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.opt.numberwidth = 5 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.opt.guifont = "Liga SFMono Nerd Font:h24" -- the font used in graphical neovim applications
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 -- colorcolumn = "80",
@@ -53,4 +53,6 @@ vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
+
+
 

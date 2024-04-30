@@ -1,7 +1,4 @@
-PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-
-export PATH
-export TERM="alacritty"
+export TERM="xterm-256color"
 export COLORTERM=truecolor
 
 # starship intialization

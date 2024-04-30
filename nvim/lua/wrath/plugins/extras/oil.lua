@@ -6,6 +6,9 @@ local M = {
 function M.config()
   require("oil").setup({
     default_file_explorer = true,
+    view_options =  {
+      show_hidden = false,
+    },
     float = {
       max_height = 40,
       max_width = 80,
