@@ -12,7 +12,7 @@ config.font_rules = {
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font("Operator Mono", { bold = true, italic = false }),
+    font = wezterm.font("Liga SFMono Nerd Font", { bold = true, italic = false }),
   },
   {
     italic = true,
