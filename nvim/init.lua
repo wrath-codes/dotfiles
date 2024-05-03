@@ -11,6 +11,7 @@ spec "wrath.plugins.alpha"
 spec "wrath.plugins.colorscheme"
 spec "wrath.plugins.transparent"
 spec "wrath.plugins.devicons"
+spec "wrath.plugins.diffview"
 spec "wrath.plugins.treesitter"
 spec "wrath.plugins.lsp.mason"
 spec "wrath.plugins.lsp.lspconfig"
@@ -55,3 +56,4 @@ spec "wrath.plugins.extras.fidget"
 
 -- Start Lazy
 require "wrath.lazy.lazy"
+

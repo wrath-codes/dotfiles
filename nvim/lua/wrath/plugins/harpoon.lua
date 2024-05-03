@@ -10,6 +10,16 @@ function M.config()
   local harpoon = require("harpoon")
   local wk = require("which-key")
 
+  harpoon:setup({
+    settings = {
+      save_on_toggle = true,
+    sync_on_ui_close = true,
+    key = function()
+        return vim.loop.cwd()
+    end,
+    }
+  })
+
   wk.register {
     ["<C-a>"] = {function() M.mark_file() end, "Add a file", opts},
     ["<C-e>"] = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Harpoon", opts},
