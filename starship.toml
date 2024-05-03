@@ -32,7 +32,7 @@ style = "bold dimmed purple"
 disabled = true
 
 [nodejs]
-format = "[ $version ](bold green) "
+format = "[ $version ](bold green) "
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
 
@@ -80,7 +80,6 @@ style = "yellow"
 
 [memory_usage]
 symbol = " "
-
 
 [docker_context]
 format = '[$symbol ](dimmed blue bold)'

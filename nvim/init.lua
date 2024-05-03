@@ -53,6 +53,8 @@ spec "wrath.plugins.extras.gitlinker"
 spec "wrath.plugins.extras.zenmode"
 spec "wrath.plugins.extras.twilight"
 spec "wrath.plugins.extras.fidget"
+spec "wrath.plugins.extras.dressing"
+spec "wrath.plugins.extras.noice"
 
 -- Start Lazy
 require "wrath.lazy.lazy"
