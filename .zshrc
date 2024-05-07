@@ -25,7 +25,22 @@ plugins=(
 	web-search
 	)
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  # Despite homebrew docs, running compinit after loading oh-my-zsh
+  # seems to work, without the need to rebuild zcompdump
+  #autoload -Uz compinit
+  #compinit
+fi
+
 source $ZSH/oh-my-zsh.sh
+
+if type brew &>/dev/null; then
+  autoload -Uz compinit
+  # Use `-u` to silence `zsh compinit: insecure directories`
+  # See: https://stackoverflow.com/a/19601821/4378637
+  compinit -u
+fi
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
@@ -54,7 +69,7 @@ eval "$(pyenv init -)"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Java
-# alias java-8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_231`"
+# alias java-8="sudo export JAVA_HOME=`/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home`"
 # alias java-17="export JAVA_HOME=`/usr/libexec/java_home -v 17`"
 # alias java-21="export JAVA_HOME=`/usr/libexec/java_home -v 21`"
 
@@ -86,3 +101,4 @@ alias grep="rg"
 neofetch
 
 
+export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"

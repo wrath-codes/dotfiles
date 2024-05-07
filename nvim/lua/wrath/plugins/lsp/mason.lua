@@ -36,6 +36,7 @@ function M.config()
       border = "rounded",
     },
   }
+
   require("mason-lspconfig").setup {
     ensure_installed = M.execs,
   }
