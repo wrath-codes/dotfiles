@@ -36,6 +36,13 @@ function M.config()
     "SagaBorder",
     "SagaNormal",
     "NormalFloat:DiagnosticError",
+    "HarpoonInactive",
+    "HarpoonActive",
+    "HarpoonNumberActive",
+    "HarpoonNumberInactive",
+    "HarpoonEmpty",
+    "HarpoonNumberEmpty",
+    "TabLineFill",
     }, -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
 })
@@ -43,12 +50,11 @@ function M.config()
   local wk = require("which-key")
 
   wk.register{
-  ["<leader>Tt"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
+  ["<leader>TT"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
   }
 vim.cmd("highlight Pmenu guibg=NONE")
 
 end
 
 return M
-
 
