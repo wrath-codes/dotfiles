@@ -19,7 +19,16 @@ function M.config()
 
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
+      "comment",
+      "diff",
+      "dot",
+      "git_rebase",
+      "gitcommit",
+      "gitattributes",
+      "gitignore",
+      "make",
 			"lua",
+      "sql",
 			"markdown",
 			"markdown_inline",
 			"bash",

@@ -1,3 +1,4 @@
+local Util = require("wrath.utils.lazy")
 local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -34,14 +35,14 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(bufnr, true)
+  if client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(true)
   end
 end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.common_capabilities()
@@ -68,8 +69,8 @@ function M.common_capabilities()
 end
 
 function M.config()
-  local wk = require "which-key"
-  wk.register {
+  local wk = require("which-key")
+  wk.register({
     ["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     ["<leader>lf"] = {
       "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
@@ -82,29 +83,29 @@ function M.config()
     ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     ["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  }
+  })
 
-  wk.register {
+  wk.register({
     ["<leader>la"] = {
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
     },
-  }
+  })
 
-  local lspconfig = require "lspconfig"
-  local icons = require "wrath.utils.icons"
+  local lspconfig = require("lspconfig")
+  local icons = require("wrath.utils.icons")
 
   local servers = {
     "lua_ls",
     "cssls",
     "html",
     -- "tsserver",
+    "jdtls",
     "astro",
     "pyright",
     "bashls",
     "lemminx",
     "jsonls",
-    "jdtls",
     "yamlls",
     "marksman",
     "tailwindcss",
@@ -118,9 +119,9 @@ function M.config()
       active = true,
       values = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
       },
     },
     virtual_text = true,
@@ -143,7 +144,8 @@ function M.config()
   end
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   require("lspconfig.ui.windows").default_options.border = "rounded"
 
   for _, server in pairs(servers) do
@@ -158,7 +160,24 @@ function M.config()
     end
 
     if server == "lua_ls" then
-      require("neodev").setup {}
+      require("neodev").setup({})
+    end
+
+    if server == "jdtls" then
+      require("java").setup({
+        java_test = {
+          enable = Util.has("nvim-dap"),
+        },
+        java_debug_adapter = {
+          enable = Util.has("nvim-dap"),
+        },
+        jdk = {
+          auto_install = true,
+        },
+        notifications = {
+          dap = Util.has("nvim-dap"),
+        },
+      })
     end
 
     lspconfig[server].setup(opts)

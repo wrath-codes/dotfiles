@@ -14,12 +14,11 @@ M.execs = {
   "astro",
   "pyright",
   "bashls",
+  "jdtls",
   "jsonls",
   "yamlls",
   "marksman",
   "tailwindcss",
-  "ruff",
-  "ruff_lsp",
   "rust_analyzer",
   "eslint",
   "taplo",
@@ -43,3 +42,4 @@ function M.config()
 end
 
 return M
+

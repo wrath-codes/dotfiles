@@ -12,33 +12,36 @@ local M = {
     "rouge8/neotest-rust",
     "lawrence-laz/neotest-zig",
     "rcasia/neotest-bash",
-    "nvim-neotest/nvim-nio"
+    "nvim-neotest/nvim-nio",
+    "rcasia/neotest-java",
   },
 }
 
 function M.config()
-  local wk = require "which-key"
-  wk.register {
+  local wk = require("which-key")
+  wk.register({
     ["<leader>tt"] = { "<cmd>lua require'neotest'.run.run()<cr>", "Test Nearest" },
     ["<leader>tf"] = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test File" },
     ["<leader>td"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test" },
     ["<leader>ts"] = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
     ["<leader>ta"] = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
-  }
+  })
 
   ---@diagnostic disable: missing-fields
-  require("neotest").setup {
+  require("neotest").setup({
     adapters = {
-      require "neotest-python" {
+      require("neotest-python")({
         dap = { justMyCode = false },
-      },
-      require "neotest-vitest",
-      require "neotest-zig",
-      require "neotest-vim-test" {
-        ignore_file_types = { "python", "vim", "lua", "javascript", "typescript" },
-      },
+      }),
+      require("neotest-vitest"),
+      require("neotest-zig"),
+      require("neotest-java")(),
+      require("neotest-vim-test")({
+
+        ignore_file_types = { "python", "vim", "lua", "javascript", "typescript", "java" },
+      }),
     },
-  }
+  })
 end
 
 return M
