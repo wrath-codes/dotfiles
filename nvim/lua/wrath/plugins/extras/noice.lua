@@ -17,6 +17,9 @@ local M = {
 function M.config()
   require("noice").setup {
     lsp = {
+      progress = {
+        enabled = false,
+      },
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -35,7 +38,28 @@ function M.config()
         view = nil, -- when nil, use defaults from documentation
         opts = {}, -- merged with defaults from documentation
       },
+      message = {
+        enable = false,
+      },
     },
+
+    messages = {
+      enable = false,
+    },
+
+    notify = {
+      enable = false,
+      view = "notify",
+    },
+
+    view = {
+      markdown = {
+        win_options = {
+          winblend = 0,
+        }
+      }
+    },
+
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
       command_palette = true, -- position the cmdline and popupmenu together

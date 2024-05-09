@@ -11,7 +11,7 @@ function M.config()
       'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
       'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
       'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-      'EndOfBuffer', 'Title', 'Question', 'WarningMsg', 'ErrorMsg', 'MoreMsg',
+      'EndOfBuffer',
     },
     extra_groups = {
       "NvimTreeNormal", "NvimTreBufferLineTabClose", "vimTreeNormalNC",
@@ -22,15 +22,12 @@ function M.config()
       "BufferLineIndicatorSelected",
       "IndentBlanklineChar",
       "MsgArea",
-      "NonText",
+
 
       -- make floating windows transparent
-      "LspFloatWinNormal",
       "Normal",
       "NormalFloat",
       "Pmenu",
-      "Special",
-      "PmenuSel",
       "Float",
       "FloatBorder",
       "TelescopeNormal",
@@ -48,31 +45,25 @@ function M.config()
       "TabLineFill",
       "FidgetTitle",
       "FidgetTask",
-      "NoiceMini",
-      "DiagnosticSignWarn",
-      "NoiceFormatEvent",
-      "NoiceFormatKind",
-      "NoiceFormatLevelDebug",
-      "NoiceFormatLevelError",
-      "NoiceFormatLevelInfo",
-      "NoiceFormatLevelWarn",
-      "NoiceFormatLevelTrace",
-      "NoiceFormatLevelOff",
-      "NoiceFormatLevelProgressDone",
-      "NoiceFormatLevelProgressTodo",
+      "NoiceLspProgressTitle",
       "NoiceLspProgressClient",
       "NoiceLspProgressSpinner",
-      "NoiceLspProgressTitle",
+      "NoiceFormatKind",
+      "NoiceFormatLevelTrace",
+      "NoiceFormatLevelDebug",
+      "NoiceFormatLevelInfo",
+      "NoiceFormatLevelWarn",
+      "NoiceFormatLevelError",
+      "NoiceFormatLevelOff",
+      "NoiceFormatProgressTodo",
+      "NoiceFormatProgressDone",
+      "NoiceFormatTitle",
+      "NoiceFormatEvent",
+      "NoiceFormatDate",
+      "NoiceFormatConfirm",
+      "NoiceFormatConfirmDefault",
       "NoiceMini",
-      "NoicePopup",
-      "NoicePopupBorder",
-      "NoicePopupmenu",
-      "NoicePopupmenuBorder",
-      "NoicePopupmenuMatch",
-      "NoicePopupmenuSelected",
-      "NoiceScrollbar",
-      "NoiceScrollbarThumb",
-    },                   -- table: additional groups that should be cleared
+    },
     exclude_groups = {}, -- table: groups you don't want to clear
   })
 
@@ -82,6 +73,7 @@ function M.config()
     ["<leader>TT"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
   }
   vim.cmd("highlight Pmenu guibg=NONE")
+  vim.api.nvim_set_hl(0, "NoiceMini", { bg = "none" })
 end
 
 return M
