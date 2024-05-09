@@ -2,6 +2,7 @@ local Util = require("wrath.utils.lazy")
 local M = {
   {
     "nvim-java/nvim-java",
+    lazy = true,
     ft = "java",
     dependencies = {
       "nvim-java/lua-async-await",
@@ -38,6 +39,26 @@ local M = {
                 },
               },
             },
+          },
+        },
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          handlers = {
+            ["jdtls"] = function()
+              require("java").setup({
+                java_test = {
+                  enable = Util.has("nvim-dap"),
+                },
+                java_debug_adapter = {
+                  enable = Util.has("nvim-dap"),
+                },
+                jdk = {
+                  auto_install = false,
+                },
+              })
+            end,
           },
         },
       },

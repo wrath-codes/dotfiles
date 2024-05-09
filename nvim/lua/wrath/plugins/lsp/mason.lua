@@ -1,45 +1,53 @@
 local M = {
-  "williamboman/mason-lspconfig.nvim",
-  dependencies = {
-    "williamboman/mason.nvim",
-    "nvim-lua/plenary.nvim",
-  },
+	"williamboman/mason.nvim",
+	dependencies = {
+		"nvim-lua/plenary.nvim", -- lua functions that many plugins use
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+	},
 }
 
-M.execs = {
-  "lua_ls",
-  "cssls",
-  "html",
-  "tsserver",
-  "astro",
-  "pyright",
-  "bashls",
-  "jdtls",
-  "jsonls",
-  "yamlls",
-  "marksman",
-  "tailwindcss",
-  "rust_analyzer",
-  "eslint",
-  "taplo",
+M.tools = {
+	"prettier", -- prettier formatter
+	"stylua", -- lua formatter
+	"isort", -- python formatter
+	"black", -- python formatter
+	"pylint", -- python linter
+	"eslint_d", -- eslint
+	"standardrb",
+	"prettierd",
+	"ktlint",
+	"google-java-format",
+	"htmlbeautifier",
+	"beautysh",
+	"buf",
+	"rustfmt",
+	"yamlfix",
+	"taplo",
+	"shellcheck",
 }
 
 function M.config()
-  local wk = require "which-key"
-  wk.register {
-    ["<leader>lI"] = { "<cmd>Mason<cr>", "Mason Info" },
-  }
+	local wk = require("which-key")
+	wk.register({
+		["<leader>lI"] = { "<cmd>Mason<cr>", "Mason Info" },
+	})
 
-  require("mason").setup {
-    ui = {
-      border = "rounded",
-    },
-  }
+	require("mason").setup({
+		ui = {
+			border = "rounded",
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	})
 
-  require("mason-lspconfig").setup {
-    ensure_installed = M.execs,
-  }
+	require("mason-tool-installer").setup({
+		ensure_installed = {
+			M.tools,
+		},
+	})
 end
 
 return M
-

@@ -145,7 +145,7 @@ function M.config()
 					harpoon_files,
 				},
 			},
-			lualine_x = { "filename", filetype, "encoding" },
+			lualine_x = {  filetype, "encoding" },
 			lualine_y = { "copilot" },
 			lualine_z = { "progress", "location" },
 		},

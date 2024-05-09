@@ -1,48 +1,194 @@
 local M = {
-	"hrsh7th/nvim-cmp",
+	"VonHeikemen/lsp-zero.nvim",
+	branch = "v2.x",
 	dependencies = {
-		{
-			"hrsh7th/cmp-nvim-lsp",
-			event = "InsertEnter",
+		-- LSP Support
+		{ "neovim/nvim-lspconfig" }, -- Required
+		{ -- Optional
+			"williamboman/mason.nvim",
+			build = function()
+				pcall(vim.cmd, "MasonUpdate")
+			end,
 		},
+		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+		-- Autocompletion
 		{
-			"hrsh7th/cmp-emoji",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-buffer",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-path",
-			event = "InsertEnter",
-		},
-		{
-			"hrsh7th/cmp-cmdline",
-			event = "InsertEnter",
-		},
-		{
-			"saadparwaiz1/cmp_luasnip",
-			event = "InsertEnter",
-		},
-		{
-			"L3MON4D3/LuaSnip",
-			event = "InsertEnter",
+			"hrsh7th/nvim-cmp",
 			dependencies = {
-				"rafamadriz/friendly-snippets",
+				{
+					"hrsh7th/cmp-nvim-lsp",
+					event = "InsertEnter",
+				},
+				{
+					"hrsh7th/cmp-emoji",
+					event = "InsertEnter",
+				},
+				{
+					"hrsh7th/cmp-buffer",
+					event = "InsertEnter",
+				},
+				{
+					"hrsh7th/cmp-path",
+					event = "InsertEnter",
+				},
+				{
+					"hrsh7th/cmp-cmdline",
+					event = "InsertEnter",
+				},
+				{
+					"saadparwaiz1/cmp_luasnip",
+					event = "InsertEnter",
+				},
+				{
+					"L3MON4D3/LuaSnip",
+					event = "InsertEnter",
+					dependencies = {
+						"rafamadriz/friendly-snippets",
+					},
+				},
+				{
+					"hrsh7th/cmp-nvim-lua",
+				},
+				{
+					"roobert/tailwindcss-colorizer-cmp.nvim",
+				},
 			},
-		},
-		{
-			"hrsh7th/cmp-nvim-lua",
-		},
-		{
-			"roobert/tailwindcss-colorizer-cmp.nvim",
+			event = "InsertEnter",
 		},
 	},
-	event = "InsertEnter",
+}
+
+M.servers = {
+	"lua_ls",
+	"cssls",
+	"html",
+	"tsserver",
+	"astro",
+	"pyright",
+	"bashls",
+	"jsonls",
+	"yamlls",
+	"marksman",
+	"tailwindcss",
+	"graphql",
+	"emmet_ls",
+	"rust_analyzer",
+	"eslint",
+	"taplo",
+	"prismals",
+	"jdtls",
+	"elixirls",
+	"tflint",
+	"dockerls",
+	"bashls",
+	"marksman",
 }
 
 function M.config()
+	local lsp = require("lsp-zero")
+
+	lsp.on_attach(function(client, bufnr)
+		local keymap_opts = { buffer = bufnr, remap = false }
+
+		vim.keymap.set("n", "gD", function()
+			vim.lsp.buf.declaration()
+		end, vim.tbl_deep_extend("force", keymap_opts, { desc = "Goto Declaration" }))
+
+		vim.keymap.set(
+			"n",
+			"gd",
+			"<cmd>Telescope lsp_definitions<CR>",
+			vim.tbl_deep_extend("force", keymap_opts, { desc = "Goto Definition" })
+		)
+
+		vim.keymap.set(
+			"n",
+			"gi",
+			"<cmd>Telescope lsp_implementations<CR>",
+			vim.tbl_deep_extend("force", keymap_opts, { desc = "Goto Implementation" })
+		)
+
+		vim.keymap.set(
+			"n",
+			"gt",
+			"<cmd>Telescope lsp_type_definitions<CR>",
+			vim.tbl_deep_extend("force", keymap_opts, { desc = "Goto Type Definition" })
+		)
+
+		vim.keymap.set(
+			"n",
+			"gr",
+			"<cmd>Telescope lsp_references<CR>",
+			vim.tbl_deep_extend("force", keymap_opts, { desc = "Goto References" })
+		)
+
+		vim.keymap.set("n", "gl", function()
+			vim.diagnostic.open_float()
+		end, vim.tbl_deep_extend("force", keymap_opts, { desc = "Open Diagnostics" }))
+
+		vim.keymap.set(
+			"n",
+			"gL",
+			"<cmd>Telescope diagnostics bufnr=0<CR>",
+			vim.tbl_deep_extend("force", keymap_opts, { desc = "List Diagnostics" })
+		)
+
+		vim.keymap.set("n", "gH", function()
+			vim.lsp.buf.signature_help()
+		end, vim.tbl_deep_extend("force", keymap_opts, { desc = "Signature Help" }))
+
+		vim.keymap.set("n", "<leader>gh", function()
+			local winid = require("ufo").peekFoldedLinesUnderCursor()
+			if not winid then
+				vim.lsp.buf.hover()
+			end
+		end, vim.tbl_deep_extend("force", keymap_opts, { desc = "Hover" }))
+		vim.keymap.set("n", "K", function()
+			local winid = require("ufo").peekFoldedLinesUnderCursor()
+			if not winid then
+				vim.lsp.buf.hover()
+			end
+		end, vim.tbl_deep_extend("force", keymap_opts, { desc = "Hover" }))
+	end)
+
+	local lspconfig = require("lspconfig")
+
+	require("mason").setup({})
+	require("mason-lspconfig").setup({
+		ensure_installed = M.servers,
+		handlers = {
+			lsp.default_setup,
+
+			lua_ls = function()
+				local lua_opts = require("wrath.plugins.lsp.settings.lua_ls")
+				lspconfig.lua_ls.setup(lua_opts)
+			end,
+
+			cssls = function()
+				local css_opts = require("wrath.plugins.lsp.settings.cssls")
+				lspconfig.cssls.setup(css_opts)
+			end,
+
+			jsonls = function()
+				local json_opts = require("wrath.plugins.lsp.settings.jsonls")
+				lspconfig.jsonls.setup(json_opts)
+			end,
+
+			yamlls = function()
+				local yaml_opts = require("wrath.plugins.lsp.settings.yamlls")
+				lspconfig.yamlls.setup(yaml_opts)
+			end,
+
+			jdtls = function()
+				local jdtls_opts = require("wrath.plugins.lsp.settings.jdtls")
+				lspconfig.jdtls.setup(jdtls_opts)
+			end,
+		},
+	})
+
+	local cmp_action = require("lsp-zero").cmp_action()
+
 	require("tailwindcss-colorizer-cmp").setup({
 		color_square_width = 2,
 	})
@@ -56,11 +202,6 @@ function M.config()
 	local luasnip = require("luasnip")
 	require("luasnip/loaders/from_vscode").lazy_load()
 	require("luasnip").filetype_extend("typescriptreact", { "html" })
-
-	local check_backspace = function()
-		local col = vim.fn.col(".") - 1
-		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-	end
 
 	local icons = require("wrath.utils.icons")
 	local types = require("cmp.types")
@@ -95,8 +236,8 @@ function M.config()
 					cmp.open_docs()
 				end
 			end,
-			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+			["<C-b>"] = cmp_action.luasnip_jump_backward(),
+			["<C-f>"] = cmp_action.luasnip_jump_forward(),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping({
 				i = cmp.mapping.abort(),
@@ -105,36 +246,8 @@ function M.config()
 			-- Accept currently selected item. If none selected, `select` first item.
 			-- Set `select` to `false` to only confirm explicitly selected items.
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.expandable() then
-					luasnip.expand()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				elseif check_backspace() then
-					-- fallback()
-					require("neotab").tabout()
-				else
-					require("neotab").tabout()
-					-- fallback()
-				end
-			end, {
-				"i",
-				"s",
-			}),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
-				else
-					fallback()
-				end
-			end, {
-				"i",
-				"s",
-			}),
+			["<Tab>"] = cmp_action.luasnip_supertab(),
+			["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 		}),
 		formatting = {
 			expandable_indicator = false,

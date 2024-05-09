@@ -46,7 +46,7 @@ function M.config()
 end
 
 function M.mark_file()
-	require("harpoon"):list():append()
+	require("harpoon"):list():add()
 	vim.notify("󰛢  marked file")
 end
 
