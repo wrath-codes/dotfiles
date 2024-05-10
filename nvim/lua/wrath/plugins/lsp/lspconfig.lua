@@ -2,46 +2,69 @@ local M = {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{
-			"folke/neodev.nvim",
-		},
+		"hrsh7th/cmp-nvim-lsp",
+		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ "folke/neodev.nvim", opts = {} },
 	},
+}
+
+M.servers = {
+	"lua_ls",
+	"cssls",
+	"html",
+	"tsserver",
+	"astro",
+	"pyright",
+	"bashls",
+	"jsonls",
+	"yamlls",
+	"marksman",
+	"tailwindcss",
+	"graphql",
+	"emmet_ls",
+	"rust_analyzer",
+	"eslint",
+	"taplo",
+	"prismals",
+	"elixirls",
+	"tflint",
+	"dockerls",
+	"bashls",
+	"lemminx",
+	"jdtls",
 }
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	-- keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.keymap.set("n", "<leader>gh", function()
-		local winid = require("ufo").peekFoldedLinesUnderCursor()
-		if not winid then
-			vim.lsp.buf.hover()
-		end
-	end)
+	keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+	keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.keymap.set("n", "K", function()
 		local winid = require("ufo").peekFoldedLinesUnderCursor()
 		if not winid then
 			vim.lsp.buf.hover()
 		end
 	end)
-	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+	keymap(bufnr, "n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	keymap(bufnr, "n", "gL", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+	keymap(bufnr, "n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
 	if client.supports_method("textDocument/inlayHint") then
-		vim.lsp.inlay_hint.enable(true)
+		vim.lsp.inlay_hint.enable(bufnr, true)
 	end
 end
 
 M.toggle_inlay_hints = function()
 	local bufnr = vim.api.nvim_get_current_buf()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr))
+	vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.common_capabilities()
@@ -69,19 +92,33 @@ end
 
 function M.config()
 	local wk = require("which-key")
+
 	wk.register({
 		["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		["<leader>lf"] = {
-			"<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
-			"Format",
+			function()
+				require("conform").format({
+					lsp_fallback = true,
+					async = false,
+					timeout_ms = 1000,
+				})
+			end,
+			"Format File/Range",
+		},
+		["<leader>ll"] = {
+			function()
+				require("lint").lint.try_lint()
+			end,
+			"Format File/Range",
 		},
 		["<leader>li"] = { "<cmd>LspInfo<cr>", "Info" },
 		["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
 		["<leader>lh"] = { "<cmd>lua require('wrath.plugins.lsp.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
 		["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-		["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		["<leader>lL"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 		["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		["<leader>lR"] = { ":LspRestart<cr>", "Restart LSP" },
 	})
 
 	wk.register({
@@ -93,24 +130,6 @@ function M.config()
 
 	local lspconfig = require("lspconfig")
 	local icons = require("wrath.utils.icons")
-
-	local servers = {
-		"lua_ls",
-		"cssls",
-		"html",
-		-- "tsserver",
-		"astro",
-		"pyright",
-		"bashls",
-		"lemminx",
-		"jsonls",
-		"yamlls",
-		"marksman",
-		"tailwindcss",
-		"eslint",
-		"taplo",
-		-- "rust_analyzer",
-	}
 
 	local default_diagnostic_config = {
 		signs = {
@@ -137,6 +156,7 @@ function M.config()
 	}
 
 	vim.diagnostic.config(default_diagnostic_config)
+
 	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
@@ -146,39 +166,68 @@ function M.config()
 		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
-	for _, server in pairs(servers) do
-		local opts = {
-			on_attach = M.on_attach,
-			capabilities = M.common_capabilities(),
-		}
+	local svelte_on_attach = function(client, bufnr)
+		lsp_keymaps(bufnr)
 
-		local require_ok, settings = pcall(require, "wrath.plugins.lsp.settings." .. server)
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			pattern = { "*.js", "*.ts" },
+			callback = function(ctx)
+				-- Here use ctx.match instead of ctx.file
+				client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+			end,
+		})
+
+		if client.supports_method("textDocument/inlayHint") then
+			vim.lsp.inlay_hint.enable(bufnr, true)
+		end
+	end
+
+	local graphql_filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" }
+
+	local emmet_filetypes =
+		{ "html", "css", "sass", "scss", "less", "javascript", "typescript", "javascriptreact", "typescriptreact" }
+
+	require("java").setup()
+	for _, server_name in pairs(M.servers) do
+		local opts = {}
+		if server_name == "svelte" then
+			opts = {
+				on_attach = svelte_on_attach,
+				capabilities = M.common_capabilities(),
+			}
+		else
+			opts = {
+				on_attach = M.on_attach,
+				capabilities = M.common_capabilities(),
+			}
+		end
+
+		local require_ok, settings = pcall(require, "wrath.plugins.lsp.settings." .. server_name)
 		if require_ok then
 			opts = vim.tbl_deep_extend("force", settings, opts)
 		end
 
-		if server == "lua_ls" then
+		if server_name == "emmet_ls" then
+			opts = vim.tbl_deep_extend("force", {
+				filetypes = emmet_filetypes,
+			}, opts)
+		end
+
+		if server_name == "graphql" then
+			opts = vim.tbl_deep_extend("force", {
+				filetypes = graphql_filetypes,
+			}, opts)
+		end
+
+		if server_name == "lua_ls" then
 			require("neodev").setup({})
 		end
 
-		if server == "jdtls" then
-			require("java").setup({
-				java_test = {
-					enable = Util.has("nvim-dap"),
-				},
-				java_debug_adapter = {
-					enable = Util.has("nvim-dap"),
-				},
-				jdk = {
-					auto_install = true,
-				},
-				notifications = {
-					dap = Util.has("nvim-dap"),
-				},
-			})
-		end
+		-- if server_name == "jdtls" then
+		-- 	require("java").setup()
+		-- end
 
-		lspconfig[server].setup(opts)
+		lspconfig[server_name].setup(opts)
 	end
 end
 

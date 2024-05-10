@@ -1,6 +1,9 @@
-function VSCodeNotify(cmd) require('vscode-neovim').call(cmd) end
+local Map = vim.keymap.set
 
-function VSCodeMap(key, cmd) Map('n', key, cmd) end
+function VSCodeNotify(cmd)
+	require("vscode-neovim").call(cmd)
+end
 
--- Map vscode command non-recursively
-function VSCodeMapNR(key, cmd) MapNR('n', key, cmd) end
+function VSCodeMap(key, cmd)
+	Map("n", key, cmd)
+end

@@ -7,6 +7,13 @@ local status, jdtls = pcall(require, "jdtls")
 if not status then
 	return
 end
+
+-- Determine OS
+local os_config = "linux"
+if vim.fn.has("mac") == 1 then
+	os_config = "mac"
+end
+
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
 local config = {
@@ -27,7 +34,7 @@ local config = {
 		"-jar",
 		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 		"-configuration",
-		home .. "/.local/share/nvim/mason/packages/jdtls/config_mac",
+		home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. os_config,
 		"-data",
 		workspace_dir,
 	},
@@ -49,14 +56,19 @@ local config = {
 					-- 	path = "/home/wrath/.sdkman/candidates/java/jdk1.8.0_131",
 					-- 	default = false,
 					-- },
+					-- -- Determine OS
+					-- local os_config = "linux"
+					-- if vim.fn.has("mac") == 1 then
+					-- 	os_config = "mac"
+					-- end
 					{
 						name = "JavaSE-21",
-						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.3-tem",
+						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.3-tem/",
 						default = true,
 					},
 					{
 						name = "JavaSE-1.8",
-						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/1.8.0_131",
+						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/1.8.0_131/",
 						default = true,
 					},
 				},
@@ -143,48 +155,26 @@ local config = {
 }
 require("jdtls").start_or_attach(config)
 
-vim.keymap.set("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
-vim.keymap.set("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
-vim.keymap.set(
-	"v",
-	"<leader>crv",
-	"<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
-	{ desc = "Extract Variable" }
-)
-vim.keymap.set("n", "<leader>crc", "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = "Extract Constant" })
-vim.keymap.set(
-	"v",
-	"<leader>crc",
-	"<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
-	{ desc = "Extract Constant" }
-)
-vim.keymap.set(
-	"v",
-	"<leader>crm",
-	"<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
-	{ desc = "Extract Method" }
-)
--- local wk = require("which-key")
-
--- wk.register({
--- 	["<leader>e"] = { name = "+extract" },
--- 	["<leader>ev"] = { require("jdtls").extract_variable_all, "Extract Variable" },
--- 	["<leader>ec"] = { require("jdtls").extract_constant, "Extract Constant" },
--- 	["gs"] = { require("jdtls").super_implementation, "Goto Super" },
--- 	["gS"] = { require("jdtls.tests").goto_subjects, "Goto Subjects" },
--- 	["<leader>eo"] = { require("jdtls").organize_imports, "Organize Imports" },
--- }, { mode = "n" })
--- wk.register({
--- 	["<leader>em"] = {
--- 		[[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
--- 		"Extract Method",
--- 	},
--- 	["<leader>ev"] = {
--- 		[[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
--- 		"Extract Variable",
--- 	},
--- 	["<leader>ec"] = {
--- 		[[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
--- 		"Extract Constant",
--- 	},
--- }, { mode = "v" })
+local wk = require("which-key")
+wk.register({
+	["<leader>e"] = { name = "+extract" },
+	["<leader>ev"] = { require("jdtls").extract_variable_all, "Extract Variable" },
+	["<leader>ec"] = { require("jdtls").extract_constant, "Extract Constant" },
+	["gs"] = { require("jdtls").super_implementation, "Goto Super" },
+	["gS"] = { require("jdtls.tests").goto_subjects, "Goto Subjects" },
+	["<leader>eo"] = { require("jdtls").organize_imports, "Organize Imports" },
+}, { mode = "n" })
+wk.register({
+	["<leader>em"] = {
+		[[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
+		"Extract Method",
+	},
+	["<leader>ev"] = {
+		[[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
+		"Extract Variable",
+	},
+	["<leader>ec"] = {
+		[[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
+		"Extract Constant",
+	},
+}, { mode = "v" })

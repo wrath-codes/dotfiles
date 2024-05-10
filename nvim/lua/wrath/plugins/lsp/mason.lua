@@ -2,8 +2,35 @@ local M = {
 	"williamboman/mason.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- lua functions that many plugins use
+		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
+}
+
+M.servers = {
+	"lua_ls",
+	"cssls",
+	"html",
+	"tsserver",
+	"astro",
+	"pyright",
+	"bashls",
+	"jsonls",
+	"yamlls",
+	"marksman",
+	"tailwindcss",
+	"graphql",
+	"emmet_ls",
+	"rust_analyzer",
+	"eslint",
+	"taplo",
+	"prismals",
+	"elixirls",
+	"tflint",
+	"dockerls",
+	"bashls",
+	"lemminx",
+	"jdtls",
 }
 
 M.tools = {
@@ -20,7 +47,6 @@ M.tools = {
 	"htmlbeautifier",
 	"beautysh",
 	"buf",
-	"rustfmt",
 	"yamlfix",
 	"taplo",
 	"shellcheck",
@@ -43,10 +69,12 @@ function M.config()
 		},
 	})
 
+	require("mason-lspconfig").setup({
+		ensure_installed = M.servers,
+	})
+
 	require("mason-tool-installer").setup({
-		ensure_installed = {
-			M.tools,
-		},
+		ensure_installed = M.tools,
 	})
 end
 
