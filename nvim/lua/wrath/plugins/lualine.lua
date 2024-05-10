@@ -6,6 +6,7 @@ local M = {
 }
 
 function M.config()
+	-- File Type Component
 	local filetype = {
 		"filetype",
 		colored = true, -- Displays filetype icon in color if set to true
@@ -33,26 +34,56 @@ function M.config()
 		end,
 	}
 
+	-- File Name Component
+	local filename = {
+		"filename",
+		file_status = true, -- Displays file status (readonly status, modified status)
+		newfile_status = true, -- Display new file status (new file means no write after created)
+		path = 3, -- 0: Just the filename
+		-- 1: Relative path
+		-- 2: Absolute path
+		-- 3: Absolute path, with tilde as the home directory
+		-- 4: Filename and parent dir, with tilde as the home directory
+
+		shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+		-- for other components. (terrible name, any suggestions?)
+		symbols = {
+			modified = "[+]", -- Text to show when the file is modified.
+			readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+			unnamed = "[No Name]", -- Text to show for unnamed buffers.
+			newfile = "[New]", -- Text to show for newly created file before first write
+		},
+	}
+
+	-- Harpoon Component
 	local harpoon = require("harpoon")
 
 	-- define visual settings for harpoon tabline
-  local harpoon_colors = {
-    active = {
-      text = "#cba6f7",
-      number = "#fab387",
-    },
-    inactive = {
-      text = "#797C91",
-      number = "#d5b9a8",
-    },
-    grey = "#797C91",
-    transparent = nil,
-  }
+	local harpoon_colors = {
+		active = {
+			text = "#cba6f7",
+			number = "#fab387",
+		},
+		inactive = {
+			text = "#797C91",
+			number = "#d5b9a8",
+		},
+		grey = "#797C91",
+		transparent = nil,
+	}
 
 	vim.api.nvim_set_hl(0, "HarpoonInactive", { fg = harpoon_colors.inactive.text, bg = harpoon_colors.transparent })
 	vim.api.nvim_set_hl(0, "HarpoonActive", { fg = harpoon_colors.active.text, bg = harpoon_colors.transparent })
-	vim.api.nvim_set_hl(0, "HarpoonNumberActive", { fg = harpoon_colors.active.number, bg = harpoon_colors.transparent })
-	vim.api.nvim_set_hl(0, "HarpoonNumberInactive", { fg = harpoon_colors.inactive.number, bg = harpoon_colors.transparent })
+	vim.api.nvim_set_hl(
+		0,
+		"HarpoonNumberActive",
+		{ fg = harpoon_colors.active.number, bg = harpoon_colors.transparent }
+	)
+	vim.api.nvim_set_hl(
+		0,
+		"HarpoonNumberInactive",
+		{ fg = harpoon_colors.inactive.number, bg = harpoon_colors.transparent }
+	)
 	vim.api.nvim_set_hl(0, "HarpoonEmpty", { fg = harpoon_colors.grey, bg = harpoon_colors.transparent })
 	vim.api.nvim_set_hl(0, "HarpoonNumberEmpty", { fg = harpoon_colors.grey, bg = harpoon_colors.transparent })
 	vim.api.nvim_set_hl(0, "TabLineFill", { fg = harpoon_colors.transparent, bg = harpoon_colors.transparent })
@@ -61,7 +92,7 @@ function M.config()
 		local contents = {}
 		local marks_length = harpoon:list():length()
 		local current_file_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
-    local letters = { "H", "T", "N", "S"}
+		local letters = { "H", "T", "N", "S" }
 		for index = 1, marks_length do
 			local harpoon_file_path = harpoon:list():get(index).value
 			local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ":t")
@@ -81,6 +112,7 @@ function M.config()
 		return table.concat(contents)
 	end
 
+	-- Theme
 	local colors = {
 		teal = "#94e2d5",
 		yellow = "#f9e2af",
@@ -136,6 +168,14 @@ function M.config()
 			ignore_focus = { "NvimTree" },
 			-- Define custom colors for regular and active indicators
 		},
+		tabline = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { filename },
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = {},
+		},
 		sections = {
 			lualine_a = { { "mode", icon = "" } },
 			lualine_b = { { "branch", icon = "" } },
@@ -145,7 +185,7 @@ function M.config()
 					harpoon_files,
 				},
 			},
-			lualine_x = {  filetype, "encoding" },
+			lualine_x = { filetype, "encoding" },
 			lualine_y = { "copilot" },
 			lualine_z = { "progress", "location" },
 		},

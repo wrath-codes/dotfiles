@@ -2,27 +2,27 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font_size = 12.0
-config.font = wezterm.font ("CaskaydiaCove Nerd Font Mono", { bold = false, italic = false })
+config.font = wezterm.font("CaskaydiaCove Nerd Font Mono", { bold = false, italic = false })
 config.font_rules = {
-  {
-    intensity = "Normal",
-    italic = false,
-    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = false, bold = false }),
-  },
-  {
-    intensity = "Bold",
-    italic = false,
-    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { bold = true, italic = false }),
-  },
-  {
-    italic = true,
-    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = false}),
-  },
-  {
-    intensity = "Bold",
-    italic = true,
-    font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = true}),
-  },
+	{
+		intensity = "Normal",
+		italic = false,
+		font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = false, bold = false }),
+	},
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font("CaskaydiaCove Nerd Font Mono", { bold = true, italic = false }),
+	},
+	{
+		italic = true,
+		font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = false }),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font("CaskaydiaCove Nerd Font Mono", { italic = true, bold = true }),
+	},
 }
 config.line_height = 1.0
 
@@ -33,14 +33,13 @@ config.front_end = "WebGpu"
 config.color_scheme = "Tokyo Night Moon"
 
 config.window_padding = {
-  left = 9,
-  right = 2,
-  top = 2,
-  bottom = 0,
+	left = 9,
+	right = 2,
+	top = 2,
+	bottom = 0,
 }
 
-
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.term = "xterm-256color"
 config.use_fancy_tab_bar = false

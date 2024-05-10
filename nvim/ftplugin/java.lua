@@ -39,15 +39,25 @@ local config = {
 			configuration = {
 				updateBuildConfiguration = "automatic",
 				runtimes = {
+					-- {
+					-- 	name = "JavaSE-21",
+					-- 	path = "/home/wrath/.sdkman/candidates/java/21.0.3-tem",
+					-- 	default = true,
+					-- },
+					-- {
+					-- 	name = "JavaSE-1.8",
+					-- 	path = "/home/wrath/.sdkman/candidates/java/jdk1.8.0_131",
+					-- 	default = false,
+					-- },
 					{
 						name = "JavaSE-21",
-						path = "/home/wrath/.sdkman/candidates/java/21.0.3-tem",
+						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.3-tem",
 						default = true,
 					},
 					{
 						name = "JavaSE-1.8",
-						path = "/home/wrath/.sdkman/candidates/java/jdk1.8.0_131",
-						default = false,
+						path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/1.8.0_131",
+						default = true,
 					},
 				},
 			},
@@ -66,9 +76,22 @@ local config = {
 					"org.junit.jupiter.api.Assumptions.*",
 					"org.junit.jupiter.api.DynamicContainer.*",
 					"org.junit.jupiter.api.DynamicTest.*",
+					"org.hamcrest.MatcherAssert.assertThat",
+					"org.hamcrest.Matchers.*",
+					"org.hamcrest.CoreMatchers.*",
+					"org.junit.jupiter.api.Assertions.*",
+					"java.util.Objects.requireNonNull",
+					"java.util.Objects.requireNonNullElse",
 					"org.mockito.Mockito.*",
 					"org.mockito.ArgumentMatchers.*",
 					"org.mockito.Answers.*",
+				},
+				filteredTypes = {
+					"com.sun.*",
+					"io.micrometer.shaded.*",
+					"java.awt.*",
+					"jdk.*",
+					"sun.*",
 				},
 				importOrder = {
 					"#",
