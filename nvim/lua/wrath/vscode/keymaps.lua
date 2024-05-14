@@ -6,8 +6,9 @@ VSCodeMap('<leader>ff', FindFile)               -- Find Project Files
 VSCodeMap('<leader>fr', FindRecent)             -- Find All Recent Projects
 VSCodeMap('<leader>fw', FindWord)               -- Find Word in Files
 VSCodeMap('<leader>fe', FindEmoji)              -- Find Emoji
-VSCodeMap('<leader>fgp', FindGitProject)        -- Find Git Projects
-VSCodeMap('<leader>fgr', RefreshGitProjectList) -- Refresh Git Projects
+VSCodeMap('<leader>fp', FindGitProject)        -- Find Git Projects
+VSCodeMap('<leader>fP', RefreshGitProjectList) -- Refresh Git Projects
+VSCodeMap('<leader>fg', LiveGrep) -- Live Grep
 
 -- File Util Commands
 VSCodeMap('<leader>anf', AdvancedNewFile)     -- Advanced New File

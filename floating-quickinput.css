@@ -16,11 +16,11 @@
 .quick-input-widget .monaco-inputbox {
     padding: 10px !important;
     border-radius: 5px !important;
-    font-size: 10px !important;
+    font-size: 13px !important;
 }
 
 .quick-input-widget .quick-input-action {
-    font-size: 10px !important;
+    font-size: 13px !important;
     display: flex;
     flex-direction: column-reverse !important;
 }

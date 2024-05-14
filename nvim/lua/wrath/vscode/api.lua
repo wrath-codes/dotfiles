@@ -35,6 +35,10 @@ function RefreshGitProjectList()
 	VSCodeNotify("projectManager.refreshGitProjects")
 end
 
+function LiveGrep()
+	VSCodeNotify("livegrep.search")
+end
+
 -- Quick Editing Commands
 function FindAndReplace()
 	VSCodeNotify("editor.action.startFindReplaceAction")
@@ -486,7 +490,7 @@ function GitCommitSearch()
 end
 
 function GitCommitMessage()
-	VSCodeNotify("extension.conventionalCommits")
+	VSCodeNotify("git-commit.commit")
 end
 
 function GitGraphShow()
@@ -610,6 +614,6 @@ function ServerAddLocal()
 end
 
 -- Which-key
-function WhichKey()
-	VSCodeNotify("whichkey.show")
-end
+-- function WhichKey()
+-- 	VSCodeNotify("whichkey.show")
+-- end
