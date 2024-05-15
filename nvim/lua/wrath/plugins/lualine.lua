@@ -171,7 +171,12 @@ function M.config()
 		tabline = {
 			lualine_a = {},
 			lualine_b = {},
-			lualine_c = { filename },
+			lualine_c = {
+				"%=",
+				{
+					harpoon_files,
+				},
+			},
 			lualine_x = {},
 			lualine_y = {},
 			lualine_z = {},
@@ -179,12 +184,7 @@ function M.config()
 		sections = {
 			lualine_a = { { "mode", icon = "" } },
 			lualine_b = { { "branch", icon = "" } },
-			lualine_c = {
-				"%=",
-				{
-					harpoon_files,
-				},
-			},
+			lualine_c = { filename },
 			lualine_x = { filetype, "encoding" },
 			lualine_y = { "copilot" },
 			lualine_z = { "progress", "location" },
