@@ -55,6 +55,12 @@ function M.config()
 		},
 	}
 
+	-- Datetime Component
+	local datetime = {
+		"datetime",
+		format = "%d/%m/%Y %H:%M:%S",
+	}
+
 	-- Harpoon Component
 	local harpoon = require("harpoon")
 
@@ -106,7 +112,7 @@ function M.config()
 		end
 
 		for index = marks_length + 1, 4 do
-			contents[index] = string.format("%%#HarpoonNumberEmpty# %s %%#HarpoonEmpty#%s ", "[+]", "[Empty]")
+			contents[index] = string.format("%%#HarpoonNumberEmpty#%s %%#HarpoonEmpty#%s ", "[+]", "[Empty]")
 		end
 
 		return table.concat(contents)
@@ -129,28 +135,28 @@ function M.config()
 		normal = {
 			a = { fg = colors.grey, bg = colors.teal },
 			b = { fg = colors.teal, bg = colors.grey },
-			c = { fg = colors.white, bg = colors.transparent },
+			c = { fg = colors.teal, bg = colors.transparent },
 		},
 
 		insert = {
 			a = { fg = colors.grey, bg = colors.green },
 			b = { fg = colors.green, bg = colors.grey },
-			c = { fg = colors.white, bg = colors.transparent },
+			c = { fg = colors.green, bg = colors.transparent },
 		},
 		visual = {
 			a = { fg = colors.grey, bg = colors.mauve },
 			b = { fg = colors.mauve, bg = colors.grey },
-			c = { fg = colors.white, bg = colors.transparent },
+			c = { fg = colors.mauve, bg = colors.transparent },
 		},
 		replace = {
 			a = { fg = colors.grey, bg = colors.peach },
 			b = { fg = colors.peach, bg = colors.grey },
-			c = { fg = colors.white, bg = colors.transparent },
+			c = { fg = colors.peach, bg = colors.transparent },
 		},
 		command = {
 			a = { fg = colors.grey, bg = colors.yellow },
 			b = { fg = colors.yellow, bg = colors.grey },
-			c = { fg = colors.white, bg = colors.transparent },
+			c = { fg = colors.yellow, bg = colors.transparent },
 		},
 
 		inactive = {
@@ -163,7 +169,7 @@ function M.config()
 	require("lualine").setup({
 		options = {
 			theme = bubbles_theme,
-			component_separators = { left = "", right = "" },
+			component_separators = "",
 			section_separators = { left = "", right = "" },
 			ignore_focus = { "NvimTree" },
 			-- Define custom colors for regular and active indicators
@@ -182,12 +188,15 @@ function M.config()
 			lualine_z = {},
 		},
 		sections = {
-			lualine_a = { { "mode", icon = "" } },
+			lualine_a = { { "mode", icon = "", separator = { left = "" }, right_padding = 2 } },
 			lualine_b = { { "branch", icon = "" } },
 			lualine_c = { filename },
-			lualine_x = { filetype, "encoding" },
-			lualine_y = { "copilot" },
-			lualine_z = { "progress", "location" },
+			lualine_x = { filetype, "encoding", "copilot" },
+			lualine_y = { datetime },
+			lualine_z = {
+				{ "progress", separator = { left = "" }, right_padding = 2 },
+				{ "location", separator = { right = "" }, left_padding = 2 },
+			},
 		},
 		extensions = { "quickfix", "man", "fugitive", "oil" },
 	})
