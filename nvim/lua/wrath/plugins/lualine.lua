@@ -11,7 +11,7 @@ function M.config()
 		"filetype",
 		colored = true, -- Displays filetype icon in color if set to true
 		icon_only = true, -- Display only an icon for filetype
-		icon = { align = "right" },
+		icon = { align = "left" },
 		function()
 			local filetype = vim.bo.filetype
 			local upper_case_filetypes = {
@@ -33,7 +33,6 @@ function M.config()
 			return filetype
 		end,
 	}
-
 	-- File Name Component
 	local filename = {
 		"filename",
@@ -63,6 +62,31 @@ function M.config()
 
 	-- Harpoon Component
 	local harpoon = require("harpoon")
+	-- local ok, devicons = pcall(require, "nvim-web-devicons")
+	-- local lualine_require = require("lualine_require")
+	-- local modules = lualine_require.lazy_require({
+	-- 	highlight = "lualine.highlight",
+	-- 	utils = "lualine.utils.utils",
+	-- })
+	--
+	-- local icon, icon_hl_group
+	--
+	-- if ok then
+	-- 	icon, icon_highlight_group = devicons.get_icon(vim.fn.expand("%:t"))
+	--
+	-- 	if icon == nil then
+	-- 		icon, icon_highlight_group = devicons.get_icon_by_filetype(vim.bo.filetype)
+	-- 	end
+	--
+	-- 	if icon == nil and icon_highlight_group == nil then
+	-- 		icon = ""
+	-- 		icon_highlight_group = "DevIconDefault"
+	-- 	end
+	--
+	-- 	if icon then
+	-- 		icon = icon .. " "
+	-- 	end
+	-- end
 
 	-- define visual settings for harpoon tabline
 	local harpoon_colors = {
@@ -112,7 +136,7 @@ function M.config()
 		end
 
 		for index = marks_length + 1, 4 do
-			contents[index] = string.format("%%#HarpoonNumberEmpty#%s %%#HarpoonEmpty#%s ", "[+]", "[Empty]")
+			contents[index] = string.format("%%#HarpoonNumberEmpty#%s%%#HarpoonEmpty#%s ", "[+]", "[Empty]")
 		end
 
 		return table.concat(contents)
@@ -190,8 +214,8 @@ function M.config()
 		sections = {
 			lualine_a = { { "mode", icon = "", separator = { left = "" }, right_padding = 2 } },
 			lualine_b = { { "branch", icon = "" } },
-			lualine_c = { filename },
-			lualine_x = { filetype, "encoding", "copilot" },
+			lualine_c = { filename, filetype },
+			lualine_x = { "encoding", "copilot" },
 			lualine_y = { datetime },
 			lualine_z = {
 				{ "progress", separator = { left = "" }, right_padding = 2 },
