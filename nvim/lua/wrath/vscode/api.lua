@@ -195,44 +195,84 @@ function ToggleStatusBar()
 end
 
 -- File Manipulation Commands
-function AdvancedNewFile()
-	VSCodeNotify("extension.advancedNewFile")
+function BunnyFileNew()
+	VSCodeNotify("filebunny.createFile")
 end
 
-function CopyFileName()
-	VSCodeNotify("fileutils.copyFileName")
+function BunnyDirectoryNew()
+	VSCodeNotify("filebunny.createFolder")
 end
 
-function DeleteFile()
-	VSCodeNotify("fileutils.removeFile")
+function BunnyPathCopyAbsolute()
+	VSCodeNotify("filebunny.copyAbsoluteFilePath")
 end
 
-function DuplicateFile()
-	VSCodeNotify("fileutils.duplicateFile")
+function BunnyPathCopyRelative()
+	VSCodeNotify("filebunny.copyRelativeFilePath")
 end
 
-function MoveFile()
-	VSCodeNotify("fileutils.moveFile")
+function BunnyNameCopyFile()
+	VSCodeNotify("filebunny.copyFileName")
 end
 
-function RenameFile()
-	VSCodeNotify("fileutils.renameFile")
+function BunnyActiveFileDelete()
+	VSCodeNotify("filebunny.deleteActiveFile")
 end
 
-function NewFileCurrent()
-	VSCodeNotify("fileutils.newFile")
+function BunnyFileDelete()
+	VSCodeNotify("filebunny.deleteFile")
 end
 
-function NewFileRoot()
-	VSCodeNotify("fileutils.newFileAtRoot")
+function BunnyDirectoryDelete()
+	VSCodeNotify("filebunny.deleteFolder")
 end
 
-function NewDirectoryCurrent()
-	VSCodeNotify("fileutils.newFolder")
+function BunnyActiveFileDuplicate()
+	VSCodeNotify("filebunny.duplicateActiveFile")
 end
 
-function NewDirectoryRoot()
-	VSCodeNotify("fileutils.newFolderAtRoot")
+function BunnyFileDuplicate()
+	VSCodeNotify("filebunny.duplicateFile")
+end
+
+function BunnyDirectoryDuplicate()
+	VSCodeNotify("filebunny.duplicateFolder")
+end
+
+function BunnyActiveFileMove()
+	VSCodeNotify("filebunny.moveActiveFile")
+end
+
+function BunnyFileMove()
+	VSCodeNotify("filebunny.moveFile")
+end
+
+function BunnyFileRename()
+	VSCodeNotify("filebunny.renameActiveFile")
+end
+
+function BunnyFileOpenSimple()
+	VSCodeNotify("filebunny.openFile")
+end
+
+function BunnyFileOpenAbove()
+	VSCodeNotify("filebunny.openFileAbove")
+end
+
+function BunnyFileOpenBelow()
+	VSCodeNotify("filebunny.openFileBelow")
+end
+
+function BunnyFileOpenLeft()
+	VSCodeNotify("filebunny.openFileToLeft")
+end
+
+function BunnyFileOpenRight()
+	VSCodeNotify("filebunny.openFileToRight")
+end
+
+function BunnyDirectoryOpen()
+	VSCodeNotify("filebunny.openFolder")
 end
 
 -- Theme Commands

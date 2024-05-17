@@ -10,17 +10,27 @@ VSCodeMap("<leader>fp", FindGitProject)        -- Find Git Projects
 VSCodeMap("<leader>fP", RefreshGitProjectList) -- Refresh Git Projects
 VSCodeMap("<leader>fg", LiveGrep)              -- Live Grep
 
--- File Util Commands
-VSCodeMap("<leader>anf", AdvancedNewFile)     -- Advanced New File
-VSCodeMap("<leader>fnf", NewFileCurrent)      -- New File Current
-VSCodeMap("<leader>fnd", NewDirectoryCurrent) -- New Directory Current
-VSCodeMap("<leader>fnF", NewFileRoot)         -- New File at Root
-VSCodeMap("<leader>fnD", NewDirectoryRoot)    -- New Directory at Root
-VSCodeMap("<leader>fcn", CopyFileName)        -- Copy File Name
-VSCodeMap("<leader>fdl", DeleteFile)          -- Delete File
-VSCodeMap("<leader>fdp", DuplicateFile)       -- Duplicate File
-VSCodeMap("<leader>frr", RenameFile)          -- Rename File
-VSCodeMap("<leader>fmv", MoveFile)            -- Move File
+-- File Bunny Commands
+VSCodeMap("<leader>bfn", BunnyFileNew)             -- New File
+VSCodeMap("<leader>bdn", BunnyDirectoryNew)        -- New Directory
+VSCodeMap("<leader>bca", BunnyPathCopyAbsolute)    -- Copy Absolute Path
+VSCodeMap("<leader>bcr", BunnyPathCopyRelative)    -- Copy Relative Path
+VSCodeMap("<leader>bcn", BunnyNameCopyFile)        -- Copy Name
+VSCodeMap("<leader>bad", BunnyActiveFileDelete)    -- Delete Active File
+VSCodeMap("<leader>bfd", BunnyFileDelete)          -- Delete File
+VSCodeMap("<leader>bdd", BunnyDirectoryDelete)     -- Delete Directory
+VSCodeMap("<leader>baD", BunnyActiveFileDuplicate) -- Duplicate Active File
+VSCodeMap("<leader>bfD", BunnyFileDuplicate)       -- Duplicate File
+VSCodeMap("<leader>bdD", BunnyDirectoryDuplicate)  -- Duplicate Directory
+VSCodeMap("<leader>bam", BunnyActiveFileMove)      -- Move Active File
+VSCodeMap("<leader>bfm", BunnyFileMove)            -- Move File
+VSCodeMap("<leader>bfr", BunnyFileRename)          -- Rename File
+VSCodeMap("<leader>bfos", BunnyFileOpenSimple)     -- Open File Simple
+VSCodeMap("<leader>bfoa", BunnyFileOpenAbove)      -- Open File Above
+VSCodeMap("<leader>bfob", BunnyFileOpenBelow)      -- Open File Below
+VSCodeMap("<leader>bfor", BunnyFileOpenRight)      -- Open File Right
+VSCodeMap("<leader>bfol", BunnyFileOpenLeft)       -- Open File Left
+VSCodeMap("<leader>bdo", BunnyDirectoryOpen)       -- Open Directory
 
 -- Quick Editing Commands
 VSCodeMap("<leader>fae", FindAndReplace) -- Find and Replace
