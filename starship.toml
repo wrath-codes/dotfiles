@@ -1,29 +1,9 @@
 
 format = """
-[╭────>](bold green) $username$hostname$linebreak
+[╭](bold green) $username$hostname$linebreak
 [│](bold green) $directory$git_branch$git_state$git_status$git_metrics$fill$docker_context$nodejs$bun$rust$python$cmd_duration $jobs $time $lilinebreak
-[╰─>](bold green) $character
+[╰─](bold green) $character
 """
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) '''
-# $username\
-# $hostname\
-# $line_break\
-# $directory\
-# $git_branch\
-# $git_state\
-# $git_status\
-# $git_metrics\
-# $fill\
-# $docker_context\
-# $nodejs\
-# $bun\
-# $rust\
-# $python\
-# $cmd_duration $jobs $time\
-# $line_break\
-# $character\
-# """
 
 [username]
 show_always = true
@@ -35,7 +15,7 @@ style_root = "red bold"
 ssh_only = false
 format = " [$hostname]($style)  "
 trim_at = "."
-style = "bold cyan"
+style = "bold purple"
 disabled = false
 
 [nodejs]
