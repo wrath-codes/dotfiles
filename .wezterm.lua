@@ -30,7 +30,7 @@ config.bold_brightens_ansi_colors = true
 config.freetype_load_target = "Light"
 config.front_end = "WebGpu"
 
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Catppuccin Frappé (Gogh)"
 
 config.window_padding = {
 	left = 9,
