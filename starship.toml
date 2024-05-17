@@ -1,8 +1,8 @@
 
 format = """
 [╭──────](bold green) $username$hostname$linebreak
-[│](bold green) $directory$git_branch$git_state$git_status$git_metrics$fill$docker_context$nodejs$bun$rust$python$cmd_duration $jobs $time $lilinebreak
-[╰─](bold green) $character
+[│](bold green)$directory$git_branch$git_state$git_status$git_metrics$fill$docker_context$nodejs$bun$rust$python$cmd_duration $jobs $time $lilinebreak
+[╰──](bold green) $character
 """
 
 [username]
