@@ -211,6 +211,7 @@ function M.config()
 			lualine_y = {},
 			lualine_z = {},
 		},
+
 		sections = {
 			lualine_a = { { "mode", icon = "", separator = { left = "" }, right_padding = 2 } },
 			lualine_b = { { "branch", icon = "" } },
