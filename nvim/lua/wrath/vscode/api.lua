@@ -72,18 +72,6 @@ function UnfoldAll()
 	VSCodeNotify("editor.unfoldAll")
 end
 
-function ShowHover()
-	VSCodeNotify("editor.action.showHover")
-end
-
-function GoToDefinition()
-	VSCodeNotify("editor.action.revealDefinition")
-end
-
-function GoToDeclaration()
-	VSCodeNotify("editor.action.revealDeclaration")
-end
-
 function OpenDefinitionToSide()
 	VSCodeNotify("editor.action.revealDefinitionAside")
 end
@@ -94,14 +82,6 @@ end
 
 function GoToImplementation()
 	VSCodeNotify("editor.action.goToImplementation")
-end
-
-function ReferenceSearch()
-	VSCodeNotify("editor.action.referenceSearch.trigger")
-end
-
-function GoToSymbol()
-	VSCodeNotify("workbench.action.goToSymbol")
 end
 
 -- Formatting Commands
