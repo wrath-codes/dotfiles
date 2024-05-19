@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.font_size = 12.0
+config.font_size = 15.0
 config.font = wezterm.font("CaskaydiaCove Nerd Font Mono", { bold = false, italic = false })
 config.font_rules = {
 	{
@@ -32,6 +32,7 @@ config.front_end = "WebGpu"
 
 config.color_scheme = "Catppuccin Frappé (Gogh)"
 
+config.window_decorations = "NONE"
 config.window_padding = {
 	left = 9,
 	right = 2,

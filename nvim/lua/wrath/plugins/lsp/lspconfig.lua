@@ -189,6 +189,8 @@ function M.config()
 	local emmet_filetypes =
 		{ "html", "css", "sass", "scss", "less", "javascript", "typescript", "javascriptreact", "typescriptreact" }
 
+	local ltex_ls_filetypes = { "tex", "bib", "xhtml" }
+
 	require("java").setup()
 	for _, server_name in pairs(M.servers) do
 		local opts = {}
@@ -207,6 +209,12 @@ function M.config()
 		local require_ok, settings = pcall(require, "wrath.plugins.lsp.settings." .. server_name)
 		if require_ok then
 			opts = vim.tbl_deep_extend("force", settings, opts)
+		end
+
+		if server_name == "ltex_ls" then
+			opts = vim.tbl_deep_extend("force", {
+				filetypes = ltex_ls_filetypes,
+			}, opts)
 		end
 
 		if server_name == "emmet_ls" then
