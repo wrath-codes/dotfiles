@@ -41,7 +41,6 @@ function M.config()
 			"astro",
 			"dockerfile",
 			"html",
-			"xhtml",
 			"htmldjango",
 			"http",
 			"go",

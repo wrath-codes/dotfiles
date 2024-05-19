@@ -32,7 +32,7 @@ config.front_end = "WebGpu"
 
 config.color_scheme = "Catppuccin Frappé (Gogh)"
 
-config.window_decorations = "NONE"
+config.window_decorations = "NONE|RESIZE"
 config.window_padding = {
 	left = 9,
 	right = 2,
