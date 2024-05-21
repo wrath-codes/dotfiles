@@ -4,7 +4,7 @@ local M = {
 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
 	priority = 1000, -- make sure to load this before all the other start plugins
 	opts = {
-		style = "storm",
+		style = "moon",
 		transparent = true,
 		styles = {
 			sidebars = "transparent",
@@ -14,7 +14,7 @@ local M = {
 }
 
 function M.config()
-	vim.cmd.colorscheme("tokyonight")
+	vim.cmd.colorscheme("tokyonight-moon")
 end
 
 return M
