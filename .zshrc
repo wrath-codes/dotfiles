@@ -98,7 +98,6 @@ alias cd="z"
 # ripgrep
 alias grep="rg"
 
-neofetch
-
+fastfetch
 
 export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
