@@ -138,6 +138,21 @@ nnoremap gof :openfmhere<cr>
 eclipseaction opentermhere com.tetrade.eclipse.plugins.easyshell.command.shellOpen
 nnoremap got :opentermhere<cr>
 
+eclipseaction quickSearch org.springsource.ide.eclipse.quicksearch.commands.quicksearchCommand
+nnoremap <space>fs :quickSearch<cr>
+
+eclipseaction closeCurrent org.eclipse.ui.file.close
+nnoremap <space>wc :closeCurrent<cr>
+
+eclipseaction closeAll org.eclipse.ui.file.closeAll
+nnoremap <space>wa :closeAll<cr>
+
+eclipseaction closeOthers org.eclipse.ui.file.closeOthers
+nnoremap <space>wo :closeOthers<cr>
+
+eclipseaction closeSaved org.eclipse.ui.file.closeAllSaved
+nnoremap <space>ws :closeSaved<cr>
+
 eclipseaction shiftLeft org.eclipse.ui.edit.text.shiftLeft
 eclipseaction shiftRight org.eclipse.ui.edit.text.shiftRight
 map < :shiftLeft<enter>
