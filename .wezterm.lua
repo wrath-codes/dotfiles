@@ -34,9 +34,9 @@ config.color_scheme = "Catppuccin Frappé (Gogh)"
 
 config.window_decorations = "NONE|RESIZE"
 config.window_padding = {
-	left = 9,
+	left = 5,
 	right = 2,
-	top = 2,
+	top = 5,
 	bottom = 0,
 }
 

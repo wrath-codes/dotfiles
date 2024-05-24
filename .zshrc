@@ -98,6 +98,9 @@ alias cd="z"
 # ripgrep
 alias grep="rg"
 
+# top
+alias top="bashtop"
+
 fastfetch
 
 export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
