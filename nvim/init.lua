@@ -55,6 +55,7 @@ else
 	spec("wrath.plugins.extras.hop")
 	spec("wrath.plugins.extras.incline")
 	spec("wrath.plugins.extras.lab")
+	spec("wrath.plugins.extras.markdown-preview")
 	spec("wrath.plugins.extras.modicator")
 	spec("wrath.plugins.extras.tabby")
 	spec("wrath.plugins.extras.oil")
