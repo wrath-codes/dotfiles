@@ -6,8 +6,8 @@ local M = {
 	ft = { "markdown" },
 }
 
-function M.init()
-	vim.g.mkdp_filetypes = { "markdown" }
+function M.build()
+	vim.fn["mkdp#util#install"]()
 end
 
 return M

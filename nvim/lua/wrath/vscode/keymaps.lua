@@ -9,6 +9,7 @@ VSCodeMap("<leader>fe", FindEmoji)             -- Find Emoji
 VSCodeMap("<leader>fp", FindGitProject)        -- Find Git Projects
 VSCodeMap("<leader>fP", RefreshGitProjectList) -- Refresh Git Projects
 VSCodeMap("<leader>fg", LiveGrep)              -- Live Grep
+VSCodeMap("<leader>fP", MardownPreview)        -- Markdown Preview
 
 -- File Bunny Commands
 VSCodeMap("<leader>bfn", BunnyFileNew)             -- New File
@@ -38,9 +39,9 @@ VSCodeMap("<leader>frn", Rename)         -- Rename
 VSCodeMap("<leader>frf", Refactor)       -- Refactor
 VSCodeMap("<leader>fax", AutoFix)        -- Auto Fix
 VSCodeMap("<leader>.", QuickFix)         -- Quick Fix
-VSCodeMap("<leader>fot", ToggleFold)     -- Toggle Fold
-VSCodeMap("<leader>foa", FoldAll)        -- Fold All
-VSCodeMap("<leader>fou", UnfoldAll)      -- Unfold All
+VSCodeMap("za", ToggleFold)              -- Toggle Fold
+VSCodeMap("zR", FoldAll)                 -- Fold All
+VSCodeMap("zM", UnfoldAll)               -- Unfold All
 VSCodeMap("gt", GoToTypeDefinition)      -- Go to Type Definition
 VSCodeMap("gs", OpenDefinitionToSide)    -- Open Definition to Side
 VSCodeMap("gi", GoToImplementation)      -- Go to Implementation

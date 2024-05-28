@@ -60,6 +60,10 @@ function QuickFix()
 	VSCodeNotify("editor.action.quickFix")
 end
 
+function MardownPreview()
+	VSCodeNotify("markdown.showPreview")
+end
+
 function ToggleFold()
 	VSCodeNotify("editor.toggleFold")
 end
