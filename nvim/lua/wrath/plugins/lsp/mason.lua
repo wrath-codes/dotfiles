@@ -25,7 +25,7 @@ M.servers = {
 	"eslint",
 	"taplo",
 	"prismals",
-	"elixirls",
+	"lexical",
 	"tflint",
 	"dockerls",
 	"bashls",

@@ -26,7 +26,7 @@ M.servers = {
 	"eslint",
 	"taplo",
 	"prismals",
-	"elixirls",
+	"lexical",
 	"tflint",
 	"dockerls",
 	"bashls",
@@ -191,6 +191,12 @@ function M.config()
 
 	local ltex_ls_filetypes = { "tex", "bib", "xhtml" }
 
+	local lexical_config = {
+		filetypes = { "elixir", "eelixir", "heex" },
+		cmd = { "/my/home/projects/_build/dev/package/lexical/bin/start_lexical.sh" },
+		settings = {},
+	}
+
 	require("java").setup()
 	for _, server_name in pairs(M.servers) do
 		local opts = {}
@@ -231,6 +237,22 @@ function M.config()
 
 		if server_name == "lua_ls" then
 			require("neodev").setup({})
+		end
+
+		if server_name == "lexical" then
+			if not lspconfig.configs.lexical then
+				lspconfig.configs.lexical = {
+					default_config = {
+						filetypes = lexical_config.filetypes,
+						cmd = lexical_config.cmd,
+						root_dir = function(fname)
+							return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+						end,
+						-- optional settings
+						settings = lexical_config.settings,
+					},
+				}
+			end
 		end
 
 		-- if server_name == "jdtls" then
