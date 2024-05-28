@@ -40,8 +40,8 @@ config.window_padding = {
 	bottom = 0,
 }
 
-config.window_background_opacity = 0.75
-config.macos_window_background_blur = 20
+config.window_background_opacity = 0.65
+config.macos_window_background_blur = 5
 config.term = "xterm-256color"
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
