@@ -122,7 +122,7 @@ function M.config()
 		local contents = {}
 		local marks_length = harpoon:list():length()
 		local current_file_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
-		local letters = { "H", "T", "N", "S" }
+		local letters = { "7", "8", "9", "0" }
 		for index = 1, marks_length do
 			local harpoon_file_path = harpoon:list():get(index).value
 			local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ":t")

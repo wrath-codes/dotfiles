@@ -70,6 +70,7 @@ else
 	spec("wrath.plugins.extras.spider")
 	spec("wrath.plugins.extras.vscode-multicursor")
 	spec("wrath.plugins.extras.mini-surround")
+	spec("wrath.plugins.extras.tmux-navigator")
 end
 
 -- Start Lazy
