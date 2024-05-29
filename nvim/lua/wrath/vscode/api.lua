@@ -429,6 +429,18 @@ function GitPull()
 	VSCodeNotify("gitlens.pullRepositories")
 end
 
+function GitFetch()
+	VSCodeNotify("gitlens.fetchRepositories")
+end
+
+function GitSyncRegular()
+	VSCodeNotify("git.sync")
+end
+
+function GitSyncRebase()
+	VSCodeNotify("git.syncRebase")
+end
+
 function GitPullFromBranch()
 	VSCodeNotify("git.pullFrom")
 end

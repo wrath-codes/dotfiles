@@ -108,6 +108,9 @@ VSCodeMap("<leader>gpb", GitPublish)            -- Git Publish
 VSCodeMap("<leader>gpl", GitPull)               -- Git Pull
 VSCodeMap("<leader>gpL", GitPullFromBranch)     -- Git Pull from Branch
 VSCodeMap("<leader>gps", GitPush)               -- Git Push
+VSCodeMap("<leader>gfc", GitFetch)              -- Git Fetch
+VSCodeMap("<leader>gsr", GitSyncRegular)        -- Git Sync
+VSCodeMap("<leader>gsR", GitSyncRebase)         -- Git Sync Rebase
 VSCodeMap("<leader>gpt", GitPushToBranch)       -- Git Push To Branch
 VSCodeMap("<leader>gpf", GitPushForce)          -- Git Push Force
 VSCodeMap("<leader>gsa", GitStageAll)           -- Git Add All
