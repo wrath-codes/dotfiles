@@ -9,7 +9,7 @@ VSCodeMap("<leader>fe", FindEmoji)             -- Find Emoji
 VSCodeMap("<leader>fp", FindGitProject)        -- Find Git Projects
 VSCodeMap("<leader>fP", RefreshGitProjectList) -- Refresh Git Projects
 VSCodeMap("<leader>fg", LiveGrep)              -- Live Grep
-VSCodeMap("<leader>fP", MardownPreview)        -- Markdown Preview
+VSCodeMap("<leader>fm", MardownPreview)        -- Markdown Preview
 
 -- File Bunny Commands
 VSCodeMap("<leader>bfn", BunnyFileNew)             -- New File
