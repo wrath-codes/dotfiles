@@ -76,6 +76,10 @@ function UnfoldAll()
 	VSCodeNotify("editor.unfoldAll")
 end
 
+function OpenLink()
+	VSCodeNotify("editor.action.openLink")
+end
+
 function OpenDefinitionToSide()
 	VSCodeNotify("editor.action.revealDefinitionAside")
 end
