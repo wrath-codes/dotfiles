@@ -410,10 +410,12 @@ end
 
 -- -- Git Commands
 function GitInit()
+	VSCodeAlert("Initializing a new Git repository...")
 	VSCodeNotify("git.init")
 end
 
 function GitIgnore()
+	VSCodeAlert("Adding .gitignore file...")
 	VSCodeNotify("git.ignore")
 end
 
@@ -426,6 +428,7 @@ function GitClone()
 end
 
 function GitPublish()
+	VSCodeAlert("Publishing changes to remote repositories...")
 	VSCodeNotify("git.publish")
 end
 
@@ -434,14 +437,17 @@ function GitPull()
 end
 
 function GitFetch()
+	VSCodeAlert("Fetching data from remote repositories...")
 	VSCodeNotify("gitlens.fetchRepositories")
 end
 
 function GitSyncRegular()
+	VSCodeAlert("Syncing changes with remote repositories...")
 	VSCodeNotify("git.sync")
 end
 
 function GitSyncRebase()
+	VSCodeAlert("Syncing/rebasing changes with remote repositories...")
 	VSCodeNotify("git.syncRebase")
 end
 
@@ -450,6 +456,7 @@ function GitPullFromBranch()
 end
 
 function GitPush()
+	VSCodeAlert("Pushing changes to remote repositories...")
 	VSCodeNotify("git.push")
 end
 
@@ -462,18 +469,22 @@ function GitPushForce()
 end
 
 function GitStageCurrentFile()
+	VSCodeAlert("Staging current file...")
 	VSCodeNotify("giteasy.doAddCurrentFile")
 end
 
 function GitStageAll()
+	VSCodeAlert("Staging all changes...")
 	VSCodeNotify("git.stageAll")
 end
 
 function GitUnstageAll()
+	VSCodeAlert("Unstaging all changes...")
 	VSCodeNotify("git.unstageAll")
 end
 
 function GitUnstageCurrentFile()
+	VSCodeAlert("Unstaging current file...")
 	VSCodeNotify("giteasy.doUnstageCurrentFile")
 end
 
