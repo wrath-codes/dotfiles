@@ -76,6 +76,26 @@ function UnfoldAll()
 	VSCodeNotify("editor.unfoldAll")
 end
 
+function InlayHintsOn()
+	VSCodeUpdateConfig("editor.inlayHints.enabled", "on")
+	VSCodeAlert("Inlay hints ENABLED.")
+end
+
+function InlayHintsOff()
+	VSCodeUpdateConfig("editor.inlayHints.enabled", "off")
+	VSCodeAlert("Inlay hints DISABLED.")
+end
+
+function ToggleInlayHints()
+	local inlayHints = VSCodeGetConfig("editor.inlayHints.enabled")
+	VSCodeAlert(inlayHints)
+	if inlayHints == "off" then
+		InlayHintsOn()
+	else
+		InlayHintsOff()
+	end
+end
+
 function OpenLink()
 	VSCodeNotify("editor.action.openLink")
 end
