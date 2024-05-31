@@ -88,7 +88,6 @@ end
 
 function ToggleInlayHints()
 	local inlayHints = VSCodeGetConfig("editor.inlayHints.enabled")
-	VSCodeAlert(inlayHints)
 	if inlayHints == "off" then
 		InlayHintsOn()
 	else
@@ -388,6 +387,46 @@ end
 
 function JavaMavenProjectNewArchtype()
 	VSCodeNotify("maven.archetype.generate")
+end
+
+function JavaNewMenu()
+	VSCodeNotify("java.view.package.new")
+end
+
+function JavaNewFile()
+	VSCodeNotify("java.view.package.newFile")
+end
+
+function JavaNewFolder()
+	VSCodeNotify("java.view.package.newFolder")
+end
+
+function JavaNewPackage()
+	VSCodeNotify("java.view.package.newPackage")
+end
+
+function JavaNewClass()
+	VSCodeNotify("java.view.package.newJavaClass")
+end
+
+function JavaNewInterface()
+	VSCodeNotify("java.view.package.newJavaInterface")
+end
+
+function JavaNewEnum()
+	VSCodeNotify("java.view.package.newJavaEnum")
+end
+
+function JavaNewAnnotation()
+	VSCodeNotify("java.view.package.newJavaAnnotation")
+end
+
+function JavaNewRecord()
+	VSCodeNotify("java.view.package.newJavaRecord")
+end
+
+function JavaNewAbstractClass()
+	VSCodeNotify("java.view.package.newJavaAbstractClass")
 end
 
 -- Settings Commands

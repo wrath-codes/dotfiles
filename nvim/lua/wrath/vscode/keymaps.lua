@@ -159,6 +159,18 @@ VSCodeMap("<leader>jmna", JavaMavenProjectNewArchtype) -- Java Maven Project New
 VSCodeMap("<leader>jmhr", JavaMavenHistory)            -- Java Maven History
 VSCodeMap("<leader>jmcm", JavaMavenCommands)           -- Java Execute Maven Command
 VSCodeMap("<leader>jmfv", JavaMavenFavorites)          -- Java Maven Favorites
+VSCodeMap("<leader>jnm", JavaNewMenu)                  -- Java New Menu
+VSCodeMap("<leader>jnf", JavaNewFile)                  -- Java New File
+VSCodeMap("<leader>jnF", JavaNewFolder)                -- Java New Folder
+VSCodeMap("<leader>jnp", JavaNewPackage)               -- Java New Package
+VSCodeMap("<leader>jnc", JavaNewClass)                 -- Java New Class
+VSCodeMap("<leader>jni", JavaNewInterface)             -- Java New Interface
+VSCodeMap("<leader>jne", JavaNewEnum)                  -- Java New Enum
+VSCodeMap("<leader>jni", JavaNewInterface)             -- Java New Interface
+VSCodeMap("<leader>jna", JavaNewAnnotation)            -- Java New Annotation
+VSCodeMap("<leader>jnC", JavaNewAbstractClass)         -- Java New Abstract Class
+VSCodeMap("<leader>jnr", JavaNewRecord)                -- Java New Record
+
 
 -- Harpoon Commands
 VSCodeMap("<leader>ha", HarpoonAdd)      -- Harpoon Add
