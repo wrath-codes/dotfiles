@@ -185,7 +185,7 @@
     "rest-client.decodeEscapedUnicodeCharacters": true,
     "catppuccin.workbenchMode": "minimal",
     "gruvboxMaterial.colorfulSyntax": true,
-    "projectManager.git.baseFolders": [],
+    "projectManager.git.baseFolders": [ ],
     "editor.tokenColorCustomizations": {
         "[Tokyo Night]": { // or "[Tokyo Night Storm]"
             "textMateRules": [
@@ -297,7 +297,7 @@
         "height": 36
     },
     "apc.listRow": {
-        "h  eight": 24
+        "height": 24
     },
     "apc.stylesheet": {
         ".title-label > h2": "display: none",
@@ -333,9 +333,9 @@
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "workbench.editor.labelFormat": "short",
     "java.compile.nullAnalysis.mode": "interactive",
-    "java.compile.nullAnalysis.nonnull": [],
-    "java.compile.nullAnalysis.nonnullbydefault": [],
-    "java.compile.nullAnalysis.nullable": [],
+    "java.compile.nullAnalysis.nonnull": [ ],
+    "java.compile.nullAnalysis.nonnullbydefault": [ ],
+    "java.compile.nullAnalysis.nullable": [ ],
     "workbench.activityBar.location": "hidden",
     "errorLens.gutterIconSet": "emoji"
 }

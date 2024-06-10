@@ -1,47 +1,80 @@
--- set leader key to space
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- General KeyMaps -------------------
--- use jk to exit insert mode
-Map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+-- Fix for <C-i>
+keymap("n", "<C-i>", "<C-i>", opts)
 
--- clear search highlights
-Map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
-
--- increment/decrement numbers
-Map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-Map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
-
--- VIM COMMANDS
--- Clear search with <esc>
-Map({ "i", "n" }, "<Esc>", "<Cmd>noh<CR><Esc>")
-
--- Ident/Deident
-Map("v", "<", "<gv")
-Map("v", ">", ">gv")
-
--- Move block
-Map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
-Map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
-
--- equivalent to ctrl + d in vscode
-Map({ 'n', 'v' }, 'gb', 'mciw*<Cmd>nohl<CR>', { remap = true })
--- Replace word under cursor across entire buffer
-Map('n', 'gB', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
-
--- spider motions
-Map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-Map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-Map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-Map({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
+keymap("n", "*", "*zz", opts)
+keymap("n", "#", "#zz", opts)
+keymap("n", "g*", "g*zz", opts)
+keymap("n", "g#", "g#zz", opts)
 
 -- Keep window centered when going up/down
-Map("n", "<C-d>", "<C-d>zz")
-Map("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
 
--- Paste without overwriting register
-Map("v", "p", '"_dP')
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+
+-- Move lines
+
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+keymap("x", "p", [["_dP]])
+
+vim.cmd([[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]])
+vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]])
+-- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
+
+keymap("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
+keymap("n", "<leader>pm", "<cmd>:popup mousemenu<CR>")
+
+-- tailwind bearable to work with
+keymap({ "n", "x" }, "j", "gj", opts)
+keymap({ "n", "x" }, "k", "gk", opts)
+keymap("n", "<leader>W", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
+
+vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
+
+keymap("n", "<leader>pv", vim.cmd.Ex, opts)
+
+-- use jk to exit insert mode
+keymap("i", "jk", "<ESC>", opts)
+
+-- clear search highlights
+keymap("n", "<leader>nh", ":nohl<CR>", opts)
+keymap({ "i", "n" }, "<Esc>", "<Cmd>noh<CR><Esc>", opts)
+
+-- increment/decrement numbers
+keymap("n", "<leader>+", "<C-a>", opts) -- increment
+keymap("n", "<leader>-", "<C-x>", opts) -- decrement
+
+-- Replace word under cursor across entire buffer
+keymap("n", "gB", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 -- Select entire file
-Map("n", "==", "gg<S-v>G")
+keymap("n", "==", "gg<S-v>G", opts)
+
+if not vim.g.vscode then
+	keymap("n", "<Tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+	keymap("n", "<S-Tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+
+	keymap("n", "<leader>mh", "<C-w>h", { desc = "Go to Left Window", remap = true })
+	keymap("n", "<leader>mj", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+	keymap("n", "<leader>mk", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+	keymap("n", "<leader>ml", "<C-w>l", { desc = "Go to Right Window", remap = true })
+
+	-- Resize window using <ctrl> arrow keys
+	keymap("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+	keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+	keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+	keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+end

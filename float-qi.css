@@ -1,0 +1,60 @@
+.quick-input-widget {
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0),
+    0 0 0 100vw rgba(0, 0, 0, 0.15) !important;
+  top: 40% !important;
+  width: 50% !important;
+  margin-left: 0 !important;
+  left: 25% !important;
+  overflow-x: auto !important;
+}
+
+.quick-input-widget .monaco-inputbox {
+  padding: 10px !important;
+  border-radius: 5px !important;
+  font-size: 14px !important;
+}
+
+.quick-input-widget .quick-input-action {
+  padding-top: 10px !important;
+  font-size: 14px !important;
+}
+
+.quick-input-widget .monaco-list-rows {
+  font-size: 13px !important;
+}
+
+.quick-input-widget .monaco-list-row {
+  padding: 5px !important;
+  height: auto !important;
+}
+
+.quick-input-widget .quick-input-list-entry {
+  position: relative;
+  padding: 0px 5px 0px 15px;
+}
+
+.quick-input-widget .quick-input-list-entry .codicon[class*="codicon-"] {
+  font-size: 15px;
+}
+
+.quick-input-widget
+  .quick-input-list
+  .quick-input-list-entry.quick-input-list-separator-border {
+  border-top-width: 0px !important;
+}
+
+.quick-input-widget
+  .quick-input-list
+  .quick-input-list-label-meta
+  .monaco-highlighted-label:before {
+  content: " ▸ ";
+}
+
+.quick-input-widget
+  .quick-input-list
+  .quick-input-list-entry
+  .monaco-action-bar.animated.quick-input-list-entry-action-bar {
+  height: unset;
+}
+

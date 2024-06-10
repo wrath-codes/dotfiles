@@ -1,38 +1,25 @@
 
 format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$git_metrics\
-$fill\
-$docker_context\
-$nodejs\
-$bun\
-$rust\
-$python\
-$cmd_duration $jobs $time\
-$line_break\
-$character\
+[╭──────](bold green) $username$hostname$fill$cmd_duration $jobs $time [──╮](bold green)$linebreak
+[│](bold green)$directory$git_branch$git_state$git_status$git_metrics$fill$docker_context$nodejs$bun$rust$python[╯](bold green)$lilinebreak
+[╰──](bold green) $character
 """
 
 [username]
 show_always = true
-format = "[󱄳](green) [$user]($style) [󰞁](bright-purple) "
+format = "[$user]($style) [󱄳](bright-green)"
 style_user = "bright-yellow bold "
 style_root = "red bold"
 
 [hostname]
 ssh_only = false
-format = "<[$hostname]($style)>"
-trim_at = "-"
-style = "bold dimmed purple"
-disabled = true
+format = " [$hostname]($style)  "
+trim_at = "."
+style = "bold purple"
+disabled = false
 
 [nodejs]
-format = "[ $version ](bold green) "
+format = "[ $version ](bold green) "
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
 
@@ -80,7 +67,6 @@ style = "yellow"
 
 [memory_usage]
 symbol = " "
-
 
 [docker_context]
 format = '[$symbol ](dimmed blue bold)'
