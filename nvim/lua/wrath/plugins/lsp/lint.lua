@@ -1,30 +1,30 @@
 local M = {
-  "mfussenegger/nvim-lint",
-  event = { "BufReadPre", "BufNewFile" },
+	"mfussenegger/nvim-lint",
+	event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()
-  local lint = require("lint")
+	local lint = require("lint")
 
-  lint.linters_by_ft = {
-    javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
-    svelte = { "eslint_d" },
-    python = { "pylint" },
-    kotlin = { "ktlint" },
-    terraform = { "tflint" },
-  }
+	lint.linters_by_ft = {
+		javascript = { "eslint_d" },
+		typescript = { "eslint_d" },
+		javascriptreact = { "eslint_d" },
+		typescriptreact = { "eslint_d" },
+		svelte = { "eslint_d" },
+		python = { "pylint" },
+		kotlin = { "ktlint" },
+		terraform = { "tflint" },
+	}
 
-  local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    group = lint_augroup,
-    callback = function()
-      lint.try_lint()
-    end,
-  })
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+		group = lint_augroup,
+		callback = function()
+			lint.try_lint()
+		end,
+	})
 end
 
 return M

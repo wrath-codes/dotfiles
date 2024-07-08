@@ -14,7 +14,6 @@ M.servers = {
 	"html",
 	"tsserver",
 	"astro",
-	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
@@ -32,13 +31,14 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
+	"pyright",
 }
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.keymap.set("n", "K", function()
 		local winid = require("ufo").peekFoldedLinesUnderCursor()
@@ -46,7 +46,7 @@ local function lsp_keymaps(bufnr)
 			vim.lsp.buf.hover()
 		end
 	end)
-	keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
@@ -59,14 +59,12 @@ M.on_attach = function(client, bufnr)
 
 	if client.supports_method("textDocument/inlayHint") then
 		vim.lsp.inlay_hint.enable(true)
-		-- vim.lsp.inlay_hint.enable(bufnr, true)
 	end
 end
 
 M.toggle_inlay_hints = function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-	-- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.common_capabilities()
@@ -99,17 +97,13 @@ function M.config()
 		["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		["<leader>lf"] = {
 			function()
-				require("conform").format({
-					lsp_fallback = true,
-					async = false,
-					timeout_ms = 1000,
-				})
+				require("conform").format()
 			end,
 			"Format File/Range",
 		},
 		["<leader>ll"] = {
 			function()
-				require("lint").lint.try_lint()
+				require("lint").try_lint()
 			end,
 			"Format File/Range",
 		},
@@ -135,7 +129,7 @@ function M.config()
 
 	local default_diagnostic_config = {
 		signs = {
-			active = true,
+			-- active = true,
 			values = {
 				{ name = "DiagnosticSignError", text = icons.diagnostics.Error },
 				{ name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
@@ -159,10 +153,6 @@ function M.config()
 
 	vim.diagnostic.config(default_diagnostic_config)
 
-	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-	end
-
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 	vim.lsp.handlers["textDocument/signatureHelp"] =
 		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
@@ -180,7 +170,7 @@ function M.config()
 		})
 
 		if client.supports_method("textDocument/inlayHint") then
-			vim.lsp.inlay_hint.enable(bufnr, true)
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 		end
 	end
 
@@ -198,6 +188,7 @@ function M.config()
 	}
 
 	require("java").setup()
+
 	for _, server_name in pairs(M.servers) do
 		local opts = {}
 		if server_name == "svelte" then
@@ -239,6 +230,16 @@ function M.config()
 			require("neodev").setup({})
 		end
 
+		-- if server_name == "ruff_lsp" then
+		-- 	opts = vim.tbl_deep_extend("force", {
+		-- 		init_options = {
+		-- 			settings = {
+		-- 				args = {},
+		-- 			},
+		-- 		},
+		-- 	}, opts)
+		-- end
+
 		if server_name == "lexical" then
 			if not lspconfig.configs.lexical then
 				lspconfig.configs.lexical = {
@@ -254,10 +255,6 @@ function M.config()
 				}
 			end
 		end
-
-		-- if server_name == "jdtls" then
-		-- 	require("java").setup()
-		-- end
 
 		lspconfig[server_name].setup(opts)
 	end

@@ -13,7 +13,6 @@ M.servers = {
 	"html",
 	"tsserver",
 	"astro",
-	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
@@ -31,6 +30,7 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
+	"pyright",
 }
 
 M.tools = {
@@ -39,6 +39,7 @@ M.tools = {
 	"isort", -- python formatter
 	"black", -- python formatter
 	"pylint", -- python linter
+	"ruff", -- python linter & formatter
 	"eslint_d", -- eslint
 	"standardrb",
 	"prettierd",
