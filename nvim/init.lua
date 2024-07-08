@@ -24,7 +24,6 @@ else
 	spec("wrath.plugins.lsp.mason")
 	spec("wrath.plugins.lsp.lspconfig")
 	spec("wrath.plugins.nvim-java")
-	-- spec("wrath.plugins.nvim-jdtls")
 	spec("wrath.plugins.lsp.conform")
 	spec("wrath.plugins.lsp.lint")
 	spec("wrath.plugins.cmp")
@@ -70,7 +69,7 @@ else
 	spec("wrath.plugins.extras.spider")
 	spec("wrath.plugins.extras.vscode-multicursor")
 	spec("wrath.plugins.extras.mini-surround")
-	spec("wrath.plugins.extras.tmux-navigator")
+	-- spec("wrath.plugins.extras.tmux-navigator")
 end
 
 -- Start Lazy
