@@ -216,6 +216,14 @@ VSCodeMap("<leader>mlf", MarkdownLinkToFile)            -- Markdown Link to File
 VSCodeMap("<leader>mli,", MarkdownLinkToImage)          -- Markdown Link to Image
 VSCodeMap("<leader>mL", MarkdownLintFile)               -- Markdown Lint File
 
+-- Remote Commands
+VSCodeMap("<leader>rmt", RemoteFocusTunnels)       -- Focus Tunnels
+VSCodeMap("<leader>rmc", RemoteFocusDevContainers) -- Focus Dev Containers
+VSCodeMap("<leader>rmr", RemoteFocusRemoteRepos)   -- Focus Remote Repositories
+VSCodeMap("<leader>rmR", RemoteExplorerRefresh)    -- Refresh Remote Explorer
+
+-- SQLTools
+VSCodeMap("<leader>sqt", SQLToolsConnections) -- SQLTools Connect
 
 
 -- -- Which Key Commands
