@@ -15,6 +15,7 @@ if vim.g.vscode then
 	spec("wrath.plugins.extras.hop")
 else
 	-- Plugins
+	spec("wrath.plugins.which-key")
 	spec("wrath.plugins.alpha")
 	spec("wrath.plugins.colorscheme")
 	spec("wrath.plugins.transparent")
@@ -41,7 +42,6 @@ else
 	spec("wrath.plugins.comment")
 	spec("wrath.plugins.nvimtree")
 	spec("wrath.plugins.telescope")
-	spec("wrath.plugins.which-key")
 	spec("wrath.plugins.illuminate")
 	spec("wrath.plugins.neotest")
 	spec("wrath.plugins.toggleterm")
@@ -67,8 +67,8 @@ else
 	spec("wrath.plugins.extras.dressing")
 	spec("wrath.plugins.extras.noice")
 	spec("wrath.plugins.extras.spider")
-	spec("wrath.plugins.extras.vscode-multicursor")
 	spec("wrath.plugins.extras.mini-surround")
+	spec("wrath.plugins.extras.venv-selector")
 	-- spec("wrath.plugins.extras.tmux-navigator")
 end
 

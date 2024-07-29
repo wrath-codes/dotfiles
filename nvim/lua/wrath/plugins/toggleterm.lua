@@ -6,12 +6,19 @@ local M = {
 function M.config()
 	local wk = require("which-key")
 
-	wk.register({
-		["<leader>Tt"] = {
-			name = "Terminal",
-			h = { "<leader>Tth", "Horizontal Terminal" },
-			v = { "<leader>Ttv", "Vertical Terminal" },
-			f = { "<leader>Ttf", "Float Terminal" },
+	wk.add({
+		{ "<leader>Tt", group = "Terminal" },
+		{
+			"<leader>Tth",
+			desc = "Horizontal Terminal",
+		},
+		{
+			"<leader>Ttv",
+			desc = "Vertical Terminal",
+		},
+		{
+			"<leader>Ttf",
+			desc = "Float Terminal",
 		},
 	})
 

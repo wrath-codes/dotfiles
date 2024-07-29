@@ -91,10 +91,10 @@ function M.config()
 	})
 
 	local wk = require("which-key")
-
-	wk.register({
-		["<leader>TT"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
+	wk.add({
+		{ "<leader>TT", "<cmd>TransparentToggle<CR>", desc = "Toggle Transparency" },
 	})
+
 	vim.cmd("highlight Pmenu guibg=NONE")
 	vim.api.nvim_set_hl(0, "NoiceMini", { bg = "none" })
 end

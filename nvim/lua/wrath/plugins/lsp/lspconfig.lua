@@ -93,36 +93,37 @@ end
 function M.config()
 	local wk = require("which-key")
 
-	wk.register({
-		["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		["<leader>lf"] = {
+	local mappings = {
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+		{
+			"<leader>lf",
 			function()
 				require("conform").format()
 			end,
-			"Format File/Range",
+			desc = "Format File/Range",
 		},
-		["<leader>ll"] = {
+		{
+			"<leader>ll",
 			function()
 				require("lint").try_lint()
 			end,
-			"Format File/Range",
+			desc = "Lint",
 		},
-		["<leader>li"] = { "<cmd>LspInfo<cr>", "Info" },
-		["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-		["<leader>lh"] = { "<cmd>lua require('wrath.plugins.lsp.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
-		["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-		["<leader>lL"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-		["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		["<leader>lR"] = { ":LspRestart<cr>", "Restart LSP" },
-	})
+		{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+		{ "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
+		{ "<leader>lh", "<cmd>lua require('wrath.plugins.lsp.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
+		{ "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+		{ "<leader>lL", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+		{ "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
+		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+		{ "<leader>lR", ":LspRestart<cr>", desc = "Restart LSP" },
+	}
 
-	wk.register({
-		["<leader>la"] = {
-			name = "LSP",
-			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
-		},
-	})
+	local mapping = {
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+	}
+	wk.add(mappings, { mode = "n" })
+	wk.add(mapping, { mode = "v" })
 
 	local lspconfig = require("lspconfig")
 	local icons = require("wrath.utils.icons")

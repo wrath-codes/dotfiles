@@ -6,9 +6,9 @@ local M = {
 function M.config()
 
   local wk = require "which-key"
-  wk.register {
-    ["<leader>pv"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-  }
+  wk.add({
+    { "<leader>pv", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
+  })
 
   local function my_on_attach(bufnr)
     local api = require "nvim-tree.api"

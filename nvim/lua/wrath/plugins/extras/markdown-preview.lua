@@ -10,8 +10,8 @@ local M = {
 
 function M.config()
 	local wk = require("which-key")
-	wk.register({
-		["<leader>Tp"] = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Mardown Preview" },
+	wk.add({
+		{ "<leader>Tp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Mardown Preview" },
 	})
 end
 

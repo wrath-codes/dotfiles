@@ -9,10 +9,21 @@ function M.config()
 
 	harpoon:setup({})
 
-	vim.keymap.set("n", "<leader>ha", M.mark_file)
-	vim.keymap.set("n", "<leader>he", function()
-		harpoon.ui:toggle_quick_menu(harpoon:list())
-	end)
+	local wk = require("which-key")
+
+	wk.add({
+		{ "<leader>ha", M.mark_file, desc = "Mark file" },
+		{
+			"<leader>he",
+			"<cmd>lua require('harpoon.ui').toggle_quick_menu(require('harpoon').list())<CR>",
+			desc = "Harpoon Edit",
+		},
+	})
+
+	-- vim.keymap.set("n", "<leader>ha", M.mark_file)
+	-- vim.keymap.set("n", "<leader>he", function()
+	-- 	harpoon.ui:toggle_quick_menu(harpoon:list())
+	-- end)
 
 	vim.keymap.set("n", "7", function()
 		harpoon:list():select(1)

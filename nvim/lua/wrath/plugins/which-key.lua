@@ -1,87 +1,85 @@
 local M = {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
+	"folke/which-key.nvim",
+	event = "VeryLazy",
 }
 
 function M.config()
-  local mappings = {
-    q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
-    b = { name = "Buffers" },
-    d = { name = "Debug" },
-    f = { name = "Find" },
-    g = { name = "Git" },
-    l = { name = "LSP" },
-    L = { name = "Lazy" },
-    t = { name = "Test" },
-    T = { name = "Toggle" },
-    s = { name = "Treesitter" },
-    c = { name = "Lab" },
-    w = {
-      name = "Window",
-      s = {
-        name = "Split",
-        v = { "<C-w>v", "Vertical" },
-        h = { "<C-w>s", "Horizontal" },
-        e = { "<C-w>=", "Equal" },
-        c = { "<cmd>close<CR>", "Close" },
-      },
-      t = {
-        name = "Tab",
-        c = { "<cmd>tabclose<CR>", "Close" },
-        n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-        N = { "<cmd>tabnew %<cr>", "New Tab" },
-        o = { "<cmd>tabonly<cr>", "Only" },
-        h = { "<cmd>-tabmove<cr>", "Move Left" },
-        l = { "<cmd>+tabmove<cr>", "Move Right" },
-      },
-    }
-  }
+	local mappings = {
+		{ "<leader>q", "<cmd>confirm q<CR>", "Quit" },
+		{ "<leader>nh", "<cmd>nohlsearch<CR>", "NOHL" },
+		{ "<leader>;", "<cmd>tabnew | terminal<CR>", "Term" },
+		{ "<leader>b", group = "Buffers" },
+		{ "<leader>d", group = "Debug" },
+		{ "<leader>f", group = "Find" },
+		{ "<leader>g", group = "Git" },
+		{ "<leader>h", group = "Harpoon" },
+		{ "<leader>l", group = "LSP" },
+		{ "<leader>L", group = "Lazy" },
+		{ "<leader>m", group = "Move" },
+		{ "<leader>p", group = "Pop" },
+		{ "<leader>t", group = "Test" },
+		{ "<leader>T", group = "Toggle" },
+		{ "<leader>s", group = "Treesitter" },
+		{ "<leader>c", group = "Lab" },
+		{ "<leader>w", group = "Window" },
+		{ "<leader>ws", group = "Split" },
+		{ "<leader>wsv", "<C-w>v", "Vertical" },
+		{ "<leader>wsh", "<C-w>s", "Horizontal" },
+		{ "<leader>wse", "<C-w>=", "Equal" },
+		{ "<leader>wsc", "<cmd>close<CR>", "Close" },
+		{ "<leader>wt", group = "Tab" },
+		{ "<leader>wtc", "<cmd>tabclose<CR>", "Close" },
+		{ "<leader>wtn", "<cmd>$tabnew<cr>", "New Empty Tab" },
+		{ "<leader>wtN", "<cmd>tabnew %<cr>", "New Tab" },
+		{ "<leader>wto", "<cmd>tabonly<cr>", "Only" },
+		{ "<leader>wth", "<cmd>-tabmove<cr>", "Move Left" },
+		{ "<leader>wtl", "<cmd>+tabmove<cr>", "Move Right" },
+	}
 
-  local which_key = require("which-key")
-  which_key.setup({
-    plugins = {
-      marks = true,
-      registers = true,
-      spelling = {
-        enabled = true,
-        suggestions = 20,
-      },
-      presets = {
-        operators = false,
-        motions = false,
-        text_objects = false,
-        windows = false,
-        nav = false,
-        z = false,
-        g = false,
-      },
-    },
-    window = {
-      border = "rounded",
-      position = "bottom",
-      padding = { 2, 2, 2, 2 },
-    },
-    ignore_missing = true,
-    show_help = false,
-    show_keys = false,
-    disable = {
-      buftypes = {},
-      filetypes = { "TelescopePrompt" },
-    },
-  })
+	local which_key = require("which-key")
+	which_key.setup({
+		plugins = {
+			marks = true,
+			registers = true,
+			spelling = {
+				enabled = true,
+				suggestions = 20,
+			},
+			presets = {
+				operators = false,
+				motions = false,
+				text_objects = false,
+				windows = false,
+				nav = false,
+				z = false,
+				g = false,
+			},
+		},
+		window = {
+			border = "rounded",
+			position = "bottom",
+			padding = { 2, 2, 2, 2 },
+		},
+		ignore_missing = true,
+		show_help = false,
+		show_keys = false,
+		disable = {
+			buftypes = {},
+			filetypes = { "TelescopePrompt" },
+		},
+	})
 
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-  }
+	local opts = {
+		mode = "n", -- NORMAL mode
+		prefix = "<leader>",
+	}
 
-  which_key.register(mappings, opts)
-  which_key.register({
-    ["<Tab>"] = { "<cmd>tabn<CR>", "Go to next tab" },
-    ["<S-Tab>"] = { "<cmd>tabp<CR>", "Go to previous tab" },
+	which_key.add(mappings, opts)
+  which_key.add({
+    {"<Tab>", "<cmd>tabn<CR>", desc = "Go to next tab"},
+    {"<S-Tab>", "<cmd>tabp<CR>", desc = "Go to previous tab"},
   }, opts)
 end
+  
 
 return M
