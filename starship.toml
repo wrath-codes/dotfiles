@@ -31,7 +31,7 @@ symbol = " "
 
 [directory]
 style = "bright-blue"
-read_only = " "
+read_only = " "
 truncation_length = 2
 truncate_to_repo = false
 
@@ -66,12 +66,17 @@ format = "[$duration]($style)"
 style = "yellow"
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [docker_context]
 format = '[$symbol ](dimmed blue bold)'
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 symbol = " "
+
+[kubernetes]
+format = '[$symbol ](dimmed red bold) [$namespace/$context](bright-red)'
+disabled = false
+symbol = "󱃾 "
 
 [rust]
 format = "[$symbol$version ]($style)"
@@ -91,4 +96,4 @@ style = "bold yellow"
 [time]
 disabled = false
 style = "bold purple "
-format = "[$time]($style)"
+format = "[ ](bold yellow)[$time]($style)"
