@@ -26,15 +26,3 @@ require("lazy").setup({
 		notify = false,
 	},
 })
-
--- local wk = require("which-key")
--- wk.register({
--- 	["<leader>Li"] = { "<cmd>Lazy install<cr>", "Install" },
--- 	["<leader>Ls"] = { "<cmd>Lazy sync<cr>", "Sync" },
--- 	["<leader>LS"] = { "<cmd>Lazy clear<cr>", "Status" },
--- 	["<leader>Lx"] = { "<cmd>Lazy clean<cr>", "Clean" },
--- 	["<leader>Lu"] = { "<cmd>Lazy update<cr>", "Update" },
--- 	["<leader>Lp"] = { "<cmd>Lazy profile<cr>", "Profile" },
--- 	["<leader>Ll"] = { "<cmd>Lazy log<cr>", "Log" },
--- 	["<leader>Ld"] = { "<cmd>Lazy debug<cr>", "Debug" },
--- })

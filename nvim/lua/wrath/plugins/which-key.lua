@@ -5,9 +5,9 @@ local M = {
 
 function M.config()
 	local mappings = {
-		{ "<leader>q", "<cmd>confirm q<CR>", "Quit" },
-		{ "<leader>nh", "<cmd>nohlsearch<CR>", "NOHL" },
-		{ "<leader>;", "<cmd>tabnew | terminal<CR>", "Term" },
+		{ "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+		{ "<leader>nh", "<cmd>nohlsearch<CR>", desc = "NOHL" },
+		{ "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Term" },
 		{ "<leader>b", group = "Buffers" },
 		{ "<leader>d", group = "Debug" },
 		{ "<leader>f", group = "Find" },
@@ -23,17 +23,25 @@ function M.config()
 		{ "<leader>c", group = "Lab" },
 		{ "<leader>w", group = "Window" },
 		{ "<leader>ws", group = "Split" },
-		{ "<leader>wsv", "<C-w>v", "Vertical" },
-		{ "<leader>wsh", "<C-w>s", "Horizontal" },
-		{ "<leader>wse", "<C-w>=", "Equal" },
-		{ "<leader>wsc", "<cmd>close<CR>", "Close" },
+		{ "<leader>wsv", "<C-w>v", desc = "Vertical" },
+		{ "<leader>wsh", "<C-w>s", desc = "Horizontal" },
+		{ "<leader>wse", "<C-w>=", desc = "Equal" },
+		{ "<leader>wsc", "<cmd>close<CR>", desc = "Close" },
 		{ "<leader>wt", group = "Tab" },
-		{ "<leader>wtc", "<cmd>tabclose<CR>", "Close" },
-		{ "<leader>wtn", "<cmd>$tabnew<cr>", "New Empty Tab" },
-		{ "<leader>wtN", "<cmd>tabnew %<cr>", "New Tab" },
-		{ "<leader>wto", "<cmd>tabonly<cr>", "Only" },
-		{ "<leader>wth", "<cmd>-tabmove<cr>", "Move Left" },
-		{ "<leader>wtl", "<cmd>+tabmove<cr>", "Move Right" },
+		{ "<leader>wtc", "<cmd>tabclose<CR>", desc = "Close" },
+		{ "<leader>wtn", "<cmd>$tabnew<cr>", desc = "New Empty Tab" },
+		{ "<leader>wtN", "<cmd>tabnew %<cr>", desc = "New Tab" },
+		{ "<leader>wto", "<cmd>tabonly<cr>", desc = "Only" },
+		{ "<leader>wth", "<cmd>-tabmove<cr>", desc = "Move Left" },
+		{ "<leader>wtl", "<cmd>+tabmove<cr>", desc = "Move Right" },
+    {"<leader>Li", "<cmd>Lazy install<cr>", desc = "Install"},
+    {"<leader>Ls", "<cmd>Lazy sync<cr>", desc = "Sync"},
+    {"<leader>LS", "<cmd>Lazy clear<cr>", desc = "Status"},
+    {"<leader>Lx", "<cmd>Lazy clean<cr>", desc = "Clean"},
+    {"<leader>Lu", "<cmd>Lazy update<cr>", desc = "Update"},
+    {"<leader>Lp", "<cmd>Lazy profile<cr>", desc = "Profile"},
+    {"<leader>Ll", "<cmd>Lazy log<cr>", desc = "Log"},
+    {"<leader>Ld", "<cmd>Lazy debug<cr>", desc = "Debug"},
 	}
 
 	local which_key = require("which-key")
@@ -75,11 +83,10 @@ function M.config()
 	}
 
 	which_key.add(mappings, opts)
-  which_key.add({
-    {"<Tab>", "<cmd>tabn<CR>", desc = "Go to next tab"},
-    {"<S-Tab>", "<cmd>tabp<CR>", desc = "Go to previous tab"},
-  }, opts)
+	which_key.add({
+		{ "<Tab>", "<cmd>tabn<CR>", desc = "Go to next tab" },
+		{ "<S-Tab>", "<cmd>tabp<CR>", desc = "Go to previous tab" },
+	}, opts)
 end
-  
 
 return M
