@@ -20,7 +20,14 @@ function M.config()
 
 	which_key.add(mappings)
 
-	require("venv-selector").setup({})
+	require("venv-selector").setup({
+
+		search = {
+			my_venvs = {
+				command = "fd python$ ~/Code",
+			},
+		},
+	})
 end
 
 return M
