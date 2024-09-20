@@ -34,18 +34,19 @@ function M.config()
 		{ "<leader>wto", "<cmd>tabonly<cr>", desc = "Only" },
 		{ "<leader>wth", "<cmd>-tabmove<cr>", desc = "Move Left" },
 		{ "<leader>wtl", "<cmd>+tabmove<cr>", desc = "Move Right" },
-    {"<leader>Li", "<cmd>Lazy install<cr>", desc = "Install"},
-    {"<leader>Ls", "<cmd>Lazy sync<cr>", desc = "Sync"},
-    {"<leader>LS", "<cmd>Lazy clear<cr>", desc = "Status"},
-    {"<leader>Lx", "<cmd>Lazy clean<cr>", desc = "Clean"},
-    {"<leader>Lu", "<cmd>Lazy update<cr>", desc = "Update"},
-    {"<leader>Lp", "<cmd>Lazy profile<cr>", desc = "Profile"},
-    {"<leader>Ll", "<cmd>Lazy log<cr>", desc = "Log"},
-    {"<leader>Ld", "<cmd>Lazy debug<cr>", desc = "Debug"},
+		{ "<leader>Li", "<cmd>Lazy install<cr>", desc = "Install" },
+		{ "<leader>Ls", "<cmd>Lazy sync<cr>", desc = "Sync" },
+		{ "<leader>LS", "<cmd>Lazy clear<cr>", desc = "Status" },
+		{ "<leader>Lx", "<cmd>Lazy clean<cr>", desc = "Clean" },
+		{ "<leader>Lu", "<cmd>Lazy update<cr>", desc = "Update" },
+		{ "<leader>Lp", "<cmd>Lazy profile<cr>", desc = "Profile" },
+		{ "<leader>Ll", "<cmd>Lazy log<cr>", desc = "Log" },
+		{ "<leader>Ld", "<cmd>Lazy debug<cr>", desc = "Debug" },
 	}
 
 	local which_key = require("which-key")
 	which_key.setup({
+		preset = "modern",
 		plugins = {
 			marks = true,
 			registers = true,
@@ -63,12 +64,11 @@ function M.config()
 				g = false,
 			},
 		},
-		window = {
+		win = {
 			border = "rounded",
-			position = "bottom",
 			padding = { 2, 2, 2, 2 },
+			title = true,
 		},
-		ignore_missing = true,
 		show_help = false,
 		show_keys = false,
 		disable = {

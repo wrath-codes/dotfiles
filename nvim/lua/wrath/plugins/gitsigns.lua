@@ -7,16 +7,25 @@ M.config = function()
 	local icons = require("wrath.utils.icons")
 
 	local wk = require("which-key")
-	mappings = {
-		{ "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk" },
-		{ "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk" },
-		{ "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
-		{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
-		{ "<leader>gb", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
-		{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
-		{ "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
-		{ "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
-		{ "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
+	local mappings = {
+		{ "<leader>gh", "<cmd>Gitsigns<cr>", desc = "Gitsigns" },
+		{
+			"<leader>ghj",
+			"<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+			desc = "Next Hunk",
+		},
+		{
+			"<leader>ghk",
+			"<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+			desc = "Prev Hunk",
+		},
+		{ "<leader>ghp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
+		{ "<leader>ghr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+		{ "<leader>ghb", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame" },
+		{ "<leader>ghR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+		{ "<leader>ghs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+		{ "<leader>ghu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+		{ "<leader>ghd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
 	}
 	wk.add(mappings, { mode = "n" })
 

@@ -11,7 +11,7 @@ M.servers = {
 	"lua_ls",
 	"cssls",
 	"html",
-	"tsserver",
+	"ts_ls",
 	"astro",
 	"bashls",
 	"jsonls",
@@ -30,7 +30,9 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
-	"pyright",
+	-- "pyright",
+	"ruff_lsp",
+	"pylyzer",
 }
 
 M.tools = {
@@ -39,6 +41,7 @@ M.tools = {
 	"isort", -- python formatter
 	"black", -- python formatter
 	"pylint", -- python linter
+	"flake8", -- python linter
 	"ruff", -- python linter & formatter
 	"eslint_d", -- eslint
 	"standardrb",
@@ -55,8 +58,8 @@ M.tools = {
 
 function M.config()
 	local wk = require("which-key")
-	wk.register({
-		["<leader>lI"] = { "<cmd>Mason<cr>", desc = "Mason Info" },
+	wk.add({
+		{ "<leader>lI", "<cmd>Mason<cr>", desc = "Mason Info" },
 	})
 
 	require("mason").setup({

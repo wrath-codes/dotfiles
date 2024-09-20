@@ -29,7 +29,7 @@ function M.config()
 		{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
 		{ "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
 		{ "<leader>le", "<cmd>Telescope quickfix<cr>", desc = "Telescope Quickfix" },
-	}, { mode = "n"})
+	}, { mode = "n" })
 
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "TelescopeResults",

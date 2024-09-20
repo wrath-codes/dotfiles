@@ -17,15 +17,15 @@ function M.config()
 		sources = {
 			formatting.stylua,
 			formatting.prettier,
-			formatting.black,
-			-- formatting.ruff,
+			-- formatting.black,
+			formatting.ruff,
 			-- formatting.prettier.with {
 			--   extra_filetypes = { "toml" },
 			--   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 			-- },
 			-- formatting.eslint,
-			-- diagnostics.ruff,
-			diagnostics.flake8,
+			diagnostics.pylyzer,
+			-- diagnostics.flake8,
 			null_ls.builtins.completion.spell,
 		},
 	})
