@@ -24,8 +24,9 @@ function M.config()
 			--   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 			-- },
 			-- formatting.eslint,
-			diagnostics.pylyzer,
+			-- diagnostics.pylyzer,
 			-- diagnostics.flake8,
+			diagnostics.ruff,
 			null_ls.builtins.completion.spell,
 		},
 	})

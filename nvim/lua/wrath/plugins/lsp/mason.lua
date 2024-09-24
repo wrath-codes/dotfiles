@@ -31,8 +31,9 @@ M.servers = {
 	"lemminx",
 	"jdtls",
 	-- "pyright",
+	"basedpyright",
 	"ruff_lsp",
-	"pylyzer",
+	-- "pylyzer",
 }
 
 M.tools = {

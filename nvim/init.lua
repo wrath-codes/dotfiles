@@ -27,7 +27,6 @@ else
 	spec("wrath.plugins.nvim-java")
 	spec("wrath.plugins.lsp.conform")
 	spec("wrath.plugins.lsp.lint")
-	spec("wrath.plugins.lsp.inlay-hints")
 	spec("wrath.plugins.cmp")
 	spec("wrath.plugins.dap")
 	spec("wrath.plugins.schemastore")

@@ -32,7 +32,8 @@ M.servers = {
 	"lemminx",
 	"jdtls",
 	-- "pyright",
-	"pylyzer",
+	-- "pylyzer",
+	"basedpyright",
 	"ruff_lsp",
 }
 
@@ -251,16 +252,16 @@ function M.config()
 			require("neodev").setup({})
 		end
 
-		if server_name == "pylyzer" then
-			opts = vim.tbl_deep_extend("force", {
-				default_config = {
-					filetypes = pylyzer_config.filetypes,
-					cmd = pylyzer_config.cmd,
-					root_dir = pylyzer_config.root_dir,
-					settings = pylyzer_config.settings,
-				},
-			}, opts)
-		end
+		-- if server_name == "pylyzer" then
+		-- 	opts = vim.tbl_deep_extend("force", {
+		-- 		default_config = {
+		-- 			filetypes = pylyzer_config.filetypes,
+		-- 			cmd = pylyzer_config.cmd,
+		-- 			root_dir = pylyzer_config.root_dir,
+		-- 			settings = pylyzer_config.settings,
+		-- 		},
+		-- 	}, opts)
+		-- end
 
 		if server_name == "ruff_lsp" then
 			opts = vim.tbl_deep_extend("force", {
