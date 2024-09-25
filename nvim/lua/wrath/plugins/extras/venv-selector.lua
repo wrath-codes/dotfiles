@@ -19,9 +19,9 @@ function M.config()
 	local which_key = require("which-key")
 
 	which_key.add(mappings)
-
-	require("venv-selector").setup({
-
+	local venv_selector = require("venv-selector")
+	venv_selector.setup({
+		poetry_path = "~/.cache/pypoetry/virtualenvs",
 		search = {
 			my_venvs = {
 				command = "fd python$ ~/Code",

@@ -30,10 +30,8 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
-	-- "pyright",
-	"basedpyright",
 	"ruff_lsp",
-	-- "pylyzer",
+	"pylance",
 }
 
 M.tools = {
@@ -64,6 +62,10 @@ function M.config()
 	})
 
 	require("mason").setup({
+		registries = {
+			"github:mason-org/mason-registry",
+			"lua:wrath.plugins.lsp.registry",
+		},
 		ui = {
 			border = "rounded",
 			icons = {

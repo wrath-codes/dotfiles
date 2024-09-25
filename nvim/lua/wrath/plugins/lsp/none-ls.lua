@@ -26,7 +26,7 @@ function M.config()
 			-- formatting.eslint,
 			-- diagnostics.pylyzer,
 			-- diagnostics.flake8,
-			diagnostics.ruff,
+			diagnostics.pylance,
 			null_ls.builtins.completion.spell,
 		},
 	})

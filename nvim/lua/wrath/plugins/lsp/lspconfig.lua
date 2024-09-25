@@ -12,7 +12,7 @@ M.servers = {
 	"lua_ls",
 	"cssls",
 	"html",
-	"tl_ls",
+	"ts_ls",
 	"astro",
 	"bashls",
 	"jsonls",
@@ -31,9 +31,7 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
-	-- "pyright",
-	-- "pylyzer",
-	"basedpyright",
+	"pylance",
 	"ruff_lsp",
 }
 
@@ -191,24 +189,6 @@ function M.config()
 		settings = {},
 	}
 
-	local pylyzer_config = {
-		filetypes = { "python" },
-		cmd = { "pylyzer", "--server" },
-		root_dir = function(fname)
-			local root_files = {
-				"pyproject.toml",
-				"setup.py",
-				"setup.cfg",
-				"requirements.txt",
-				"Pipfile",
-			}
-			return lspconfig.util.root_pattern(unpack(root_files))(fname)
-				or lspconfig.util.find_git_ancestor(fname)
-				or lspconfig.util.path.dirname(fname)
-		end,
-		settings = {},
-	}
-
 	require("java").setup()
 
 	for _, server_name in pairs(M.servers) do
@@ -252,22 +232,42 @@ function M.config()
 			require("neodev").setup({})
 		end
 
-		-- if server_name == "pylyzer" then
-		-- 	opts = vim.tbl_deep_extend("force", {
-		-- 		default_config = {
-		-- 			filetypes = pylyzer_config.filetypes,
-		-- 			cmd = pylyzer_config.cmd,
-		-- 			root_dir = pylyzer_config.root_dir,
-		-- 			settings = pylyzer_config.settings,
-		-- 		},
-		-- 	}, opts)
-		-- end
-
 		if server_name == "ruff_lsp" then
 			opts = vim.tbl_deep_extend("force", {
 				init_options = {
 					settings = {
 						args = {},
+					},
+				},
+			}, opts)
+		end
+
+		if server_name == "pylance" then
+			opts = vim.tbl_deep_extend("force", {
+				settings = {
+					python = {
+						pythonPath = vim.fn.exepath("python"),
+						analysis = {
+							inlayHints = {
+								variableTypes = true,
+								functionReturnTypes = true,
+								callArgumentNames = true,
+								pytestParameters = true,
+							},
+							typeCheckingMode = "basic",
+							diagnosticMode = "openFilesOnly",
+							autoImportCompletions = true,
+							diagnosticSeverityOverrides = {
+								reportOptionalSubscript = "none",
+								reportOptionalMemberAccess = "none",
+								reportOptionalCall = "none",
+								reportOptionalIterable = "none",
+								reportOptionalContextManager = "none",
+								reportOptionalOperand = "none",
+								reportCallIssue = "none",
+								reportArgumentType = "none",
+							},
+						},
 					},
 				},
 			}, opts)
