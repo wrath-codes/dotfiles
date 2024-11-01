@@ -90,16 +90,36 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # fd
-# alias find="fd"
+alias find="fd"
+
+# sd
+alias sed="sd"
+
+# duf
+alias df="duf"
 
 # bat
-# alias cat="bat"
+alias cat="bat"
 
 # ripgrep
 alias grep="rg"
 
 # top
 alias top="bashtop"
+
+# tldr
+alias man="tldr --theme base16"
+
+# tre
+alias tree="tre"
+
+# gping
+alias ping="gping"
+
+# thefuck terminal helper
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
 
 
 export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
@@ -110,3 +130,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 fastfetch
+export PATH="$PATH:/Users/wrath/.modular/bin"
+eval "$(magic completion --shell zsh)"
+
+. "$HOME/.cargo/env"
