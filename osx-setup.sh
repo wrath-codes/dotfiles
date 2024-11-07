@@ -11,6 +11,7 @@ brew install --cask raycast
 brew install --cask wezterm 
 brew install --cask font-caskaydia-cove-nerd-font
 brew install --cask nikitabobko/tap/aerospace
+brew install gh
 
 # Tools
 brew install fd
