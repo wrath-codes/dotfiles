@@ -116,6 +116,9 @@ alias tree="tre"
 # gping
 alias ping="gping"
 
+# brew fix
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
 # thefuck terminal helper
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
@@ -128,9 +131,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-fastfetch
 export PATH="$PATH:/Users/wrath/.modular/bin"
 eval "$(magic completion --shell zsh)"
 
 . "$HOME/.cargo/env"
+
+fastfetch
