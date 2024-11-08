@@ -135,5 +135,8 @@ export PATH="$PATH:/Users/wrath/.modular/bin"
 eval "$(magic completion --shell zsh)"
 
 . "$HOME/.cargo/env"
+if command -v ngrok &>/dev/null; then
+    eval "$(ngrok completion)"
+  fi
 
 fastfetch
