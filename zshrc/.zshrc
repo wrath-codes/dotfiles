@@ -114,7 +114,7 @@ alias man="tldr --theme base16"
 alias tree="tre"
 
 # gping
-alias ping="gping"
+# alias ping="gping"
 
 # brew fix
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
