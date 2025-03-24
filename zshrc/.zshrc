@@ -35,6 +35,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+
 if type brew &>/dev/null; then
   autoload -Uz compinit
   # Use `-u` to silence `zsh compinit: insecure directories`
@@ -118,6 +119,7 @@ alias tree="tre"
 
 # brew fix
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
 
 # thefuck terminal helper
 eval $(thefuck --alias)
