@@ -5,6 +5,8 @@ format = """
 [╰──](bold green) $character
 """
 
+command_timeout = 999999
+
 [username]
 show_always = true
 format = "[$user]($style) [󱄳](bright-green)"
@@ -87,6 +89,7 @@ style = "bold red"
 format = "[$symbol $version ]($style)[($virtualenv )](yellow)"
 symbol = "󱔎"
 style = "bold green"
+python_binary = 'python3'
 
 [bun]
 format = "[$symbol $version ]($style)"

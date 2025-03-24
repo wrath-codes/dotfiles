@@ -131,6 +131,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+<<<<<<< HEAD:zshrc/.zshrc
 export PATH="$PATH:/Users/wrath/.modular/bin"
 eval "$(magic completion --shell zsh)"
 
@@ -138,5 +139,18 @@ eval "$(magic completion --shell zsh)"
 if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
   fi
+=======
+# export ODBC SQL Server
+export PATH="$PATH:/opt/mssql-tools18/bin"
+>>>>>>> 2302b43 (feat:):.zshrc
 
 fastfetch
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+
+. "$HOME/.cargo/env"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
