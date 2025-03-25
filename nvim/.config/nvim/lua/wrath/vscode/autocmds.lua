@@ -30,6 +30,6 @@ vim.api.nvim_create_autocmd("ModeChanged", {
         end
 
         -- Use VSCodeNotify to call our extension command
-        vscode.action("nvim_ui_plus.setMode ", mode_name)
+        vscode.action("nvim_ui_plus.setMode ", { mode = mode_name })
     end,
 })
