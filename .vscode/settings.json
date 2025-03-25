@@ -1,5 +1,8 @@
 {
     "Lua.diagnostics.globals": [
         "vim"
+    ],
+    "cSpell.words": [
+        "autocmd"
     ]
 }
