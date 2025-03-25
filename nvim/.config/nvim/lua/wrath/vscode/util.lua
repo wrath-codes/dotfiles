@@ -6,7 +6,7 @@ function VSCodeMap(key, cmd)
 end
 
 function VSCodeNotify(cmd)
-	vscode.call(cmd)
+	vscode.action(cmd)
 end
 
 function VSCodeAlert(message)

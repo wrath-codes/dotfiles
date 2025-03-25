@@ -9,6 +9,7 @@ if vim.g.vscode then
 	require("wrath.vscode.util")
 	require("wrath.vscode.api")
 	require("wrath.vscode.keymaps")
+	require("wrath.vscode.autocmds")
 	spec("wrath.plugins.extras.vscode-multicursor")
 	spec("wrath.plugins.extras.mini-surround")
 	spec("wrath.plugins.extras.spider")
