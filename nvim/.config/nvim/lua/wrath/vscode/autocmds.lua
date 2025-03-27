@@ -38,6 +38,6 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 })
 
 -- Notify on initial load
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-    callback = notify_vscode_mode,
-})
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--     callback = notify_vscode_mode,
+-- })
