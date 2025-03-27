@@ -146,6 +146,13 @@ return {
     Debug = "",
     Trace = "✎",
   },
+  social = {
+    GitHub = "",
+    GitLab = "",
+    BitBucket = "",
+    GitTea = "",
+    Twitter = "",
+  },
   misc = {
     Robot = "󰚩",
     Squirrel = "",
