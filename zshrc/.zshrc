@@ -1,4 +1,4 @@
-export TERM="xterm-256color"
+
 export COLORTERM=truecolor
 
 # starship intialization
@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
   asdf
-  brew
+  # brew
 	git
 	gh
 	docker
@@ -36,21 +36,21 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 
-if type brew &>/dev/null; then
-  autoload -Uz compinit
-  # Use `-u` to silence `zsh compinit: insecure directories`
-  # See: https://stackoverflow.com/a/19601821/4378637
-  compinit -u
-fi
+# if type brew &>/dev/null; then
+#   autoload -Uz compinit
+#   # Use `-u` to silence `zsh compinit: insecure directories`
+#   # See: https://stackoverflow.com/a/19601821/4378637
+#   compinit -u
+# fi
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:$HOME/.poetry/bin
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="/home/wrath/.local/share/pnpm"
@@ -61,13 +61,13 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$PATH:/path/to/elixir/bin"
 
 # added by Webi for pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 
 # Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Java
 # alias java-8="sudo export JAVA_HOME=`/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home`"
@@ -94,13 +94,13 @@ alias cd="z"
 alias find="fd"
 
 # sd
-alias sed="sd"
+# alias sed="sd"
 
 # duf
 alias df="duf"
 
 # bat
-alias cat="bat"
+# alias cat="bat"
 
 # ripgrep
 alias grep="rg"
@@ -118,35 +118,36 @@ alias tree="tre"
 # alias ping="gping"
 
 # brew fix
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 
 # thefuck terminal helper
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# eval $(thefuck --alias FUCK)
 
 
-export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
+# export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-<<<<<<< HEAD:zshrc/.zshrc
-export PATH="$PATH:/Users/wrath/.modular/bin"
-eval "$(magic completion --shell zsh)"
+# mojo
+# export PATH="$PATH:/Users/wrath/.modular/bin"
+# eval "$(magic completion --shell zsh)"
+
+# nim
+export PATH=/home/wrath/.nimble/bin:$PATH
 
 . "$HOME/.cargo/env"
 if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
   fi
-=======
+
 # export ODBC SQL Server
 export PATH="$PATH:/opt/mssql-tools18/bin"
->>>>>>> 2302b43 (feat:):.zshrc
 
-fastfetch
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
@@ -154,5 +155,12 @@ zstyle ':completion:*' menu select
 
 
 . "$HOME/.cargo/env"
+
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
+
+fastfetch
+export PATH="/home/wrath/bin:$PATH"

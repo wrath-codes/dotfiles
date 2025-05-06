@@ -1,11 +1,21 @@
 
 format = """
-[╭──────](bold green) $username$hostname$fill$cmd_duration $jobs $time [──╮](bold green)$linebreak
+[╭──────](bold green) $os $username$hostname$fill$cmd_duration $jobs $time [──╮](bold green)$linebreak
 [│](bold green)$directory$git_branch$git_state$git_status$git_metrics$fill$docker_context$nodejs$bun$rust$python[╯](bold green)$lilinebreak
 [╰──](bold green) $character
 """
 
 command_timeout = 999999
+
+[os]
+format = "[$symbol]($style)"
+style = "cyan"
+disabled = false
+
+[os.symbols]
+Macos = ""
+Ubuntu = "󰕈"
+Windows = "󰨡"
 
 [username]
 show_always = true
@@ -89,7 +99,17 @@ style = "bold red"
 format = "[$symbol $version ]($style)[($virtualenv )](yellow)"
 symbol = "󱔎"
 style = "bold green"
-python_binary = 'python3'
+python_binary = ['python3']
+detect_files = [
+  "uv.lock",
+  "requirements.txt",
+  ".python-version",
+  "pyproject.toml",
+  "Pipfile",
+  "tox.ini",
+  "setup.py",
+  "__init__.py",
+]
 
 [bun]
 format = "[$symbol $version ]($style)"
