@@ -25,23 +25,26 @@ plugins=(
 	web-search
 	)
 
+
+export PATH="/home/wrath/bin:$PATH"
+
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   # Despite homebrew docs, running compinit after loading oh-my-zsh
   # seems to work, without the need to rebuild zcompdump
-  #autoload -Uz compinit
-  #compinit
+  autoload -Uz compinit
+  compinit
 fi
 
 source $ZSH/oh-my-zsh.sh
 
 
-# if type brew &>/dev/null; then
-#   autoload -Uz compinit
-#   # Use `-u` to silence `zsh compinit: insecure directories`
-#   # See: https://stackoverflow.com/a/19601821/4378637
-#   compinit -u
-# fi
+if type brew &>/dev/null; then
+  autoload -Uz compinit
+  # Use `-u` to silence `zsh compinit: insecure directories`
+  # See: https://stackoverflow.com/a/19601821/4378637
+  compinit -u
+fi
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
@@ -61,9 +64,9 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$PATH:/path/to/elixir/bin"
 
 # added by Webi for pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 
 # Generated for envman. Do not edit.
@@ -118,13 +121,13 @@ alias tree="tre"
 # alias ping="gping"
 
 # brew fix
-# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 
 # thefuck terminal helper
-# eval $(thefuck --alias)
+eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
-# eval $(thefuck --alias FUCK)
+eval $(thefuck --alias FUCK)
 
 
 # export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"
@@ -163,4 +166,3 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 
 fastfetch
-export PATH="/home/wrath/bin:$PATH"
