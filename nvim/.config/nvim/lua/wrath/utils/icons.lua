@@ -3,6 +3,7 @@ return {
     Array = " ",
     Boolean = " ",
     Class = " ",
+    Clipboard = "󱉨",
     Color = " ",
     Constant = " ",
     Constructor = " ",
@@ -161,5 +162,55 @@ return {
     Smiley = "",
     Package = "",
     CircuitBoard = "",
+    Apple = "",
+    Empire = "",
+    Rebel = "",
+    Cpu = "",
+    Nuke = "󰚤",
   },
+  vpn = {
+    on = "󰌘",
+    off = "󱘖"
+  },
+  media = {
+    Play = "",
+    Pause = "",
+    PlayPause = "󰐎",
+    Stop = "",
+    Rewind = "",
+    FastForward = "",
+    Next = "",
+    Previous = "",
+    Repeat = "",
+    Shuffle = "",
+    RepeatOne = "",
+  },
+  switch = {
+    on = "󰨚",
+    off = "󰨙",
+  },
+  battery = {
+    _100 = "󰁹",
+    _75 = "󰂂",
+    _50 = "󰁿",
+    _25 = "󰁻",
+    _0 = "󰁺",
+    Charging = "󰂄",
+  },
+  volume = {
+    Up = "󰝝",
+    Down = "󰝞",
+    _100 = "",
+    _66 = "",
+    _33 = "",
+    _10 = "",
+    _0 = ""
+  },
+  wifi = {
+    upload = "󱚺",
+    download = "󱚶",
+    connected = "󰖩",
+    disconnected = "󰖪",
+    router = "󰑩"
+  }
 }

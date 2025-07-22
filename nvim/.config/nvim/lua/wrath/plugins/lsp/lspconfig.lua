@@ -31,8 +31,7 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
-	"pylance",
-	"ruff_lsp",
+	"ruff",
 }
 
 local function lsp_keymaps(bufnr)
@@ -232,42 +231,11 @@ function M.config()
 			require("neodev").setup({})
 		end
 
-		if server_name == "ruff_lsp" then
+		if server_name == "ruff" then
 			opts = vim.tbl_deep_extend("force", {
 				init_options = {
 					settings = {
 						args = {},
-					},
-				},
-			}, opts)
-		end
-
-		if server_name == "pylance" then
-			opts = vim.tbl_deep_extend("force", {
-				settings = {
-					python = {
-						pythonPath = vim.fn.exepath("python"),
-						analysis = {
-							inlayHints = {
-								variableTypes = true,
-								functionReturnTypes = true,
-								callArgumentNames = true,
-								pytestParameters = true,
-							},
-							typeCheckingMode = "basic",
-							diagnosticMode = "openFilesOnly",
-							autoImportCompletions = true,
-							diagnosticSeverityOverrides = {
-								reportOptionalSubscript = "none",
-								reportOptionalMemberAccess = "none",
-								reportOptionalCall = "none",
-								reportOptionalIterable = "none",
-								reportOptionalContextManager = "none",
-								reportOptionalOperand = "none",
-								reportCallIssue = "none",
-								reportArgumentType = "none",
-							},
-						},
 					},
 				},
 			}, opts)

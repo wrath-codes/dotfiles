@@ -15,6 +15,7 @@ function M.config()
 		python = { "ruff" },
 		kotlin = { "ktlint" },
 		terraform = { "tflint" },
+		markdown = { "markdownlint-cli2" },
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

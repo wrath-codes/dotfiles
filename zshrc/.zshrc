@@ -9,9 +9,21 @@ export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
   asdf
-  # brew
+  uv
+  fzf
+  eza
+  rust
+  macos
+  thefuck
+  aliases
+  alias-finder
+  gitignore
+  brew
 	git
-	gh
+  encode64
+  vscode
+  history
+  gh
 	docker
 	npm
 	pep8
@@ -20,6 +32,7 @@ plugins=(
 	python
 	poetry
 	sudo
+  zoxide
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	web-search
@@ -35,6 +48,11 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# thefuck terminal helper
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,8 +76,7 @@ export PATH=$PATH:$HOME/.poetry/bin
 # pnpm
 export PNPM_HOME="/home/wrath/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-#
+
 # elixir
 export PATH="$PATH:/path/to/elixir/bin"
 
@@ -123,11 +140,22 @@ alias tree="tre"
 # brew fix
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-
-# thefuck terminal helper
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# Kai's Aliases
+alias ll="ls -al"
+alias config="v $HOME/.config/zsh/zshrc"
+alias cb="pbcopy"
+# alias split="split_tab"
+function lazygit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+# alias y="yazi"
+alias cd="z"
+alias gg="git log --oneline --graph --color --all --decorate"
+alias gms="git merge --squash"
+alias glog="git log --name-status"
+alias skbr="sketchybar --reload"
 
 
 # export PATH="/opt/homebrew/opt/tomcat@8/bin:$PATH"

@@ -30,17 +30,12 @@ M.servers = {
 	"bashls",
 	"lemminx",
 	"jdtls",
-	"ruff_lsp",
-	"pylance",
+	"ruff",
 }
 
 M.tools = {
 	"prettier", -- prettier formatter
 	"stylua", -- lua formatter
-	"isort", -- python formatter
-	"black", -- python formatter
-	"pylint", -- python linter
-	"flake8", -- python linter
 	"ruff", -- python linter & formatter
 	"eslint_d", -- eslint
 	"standardrb",
@@ -53,6 +48,8 @@ M.tools = {
 	"yamlfix",
 	"taplo",
 	"shellcheck",
+	"markdownlint-cli2",
+	"markdown-toc",
 }
 
 function M.config()
@@ -64,8 +61,8 @@ function M.config()
 	require("mason").setup({
 		registries = {
 			"github:mason-org/mason-registry",
-			"lua:wrath.plugins.lsp.registry",
 		},
+
 		ui = {
 			border = "rounded",
 			icons = {
