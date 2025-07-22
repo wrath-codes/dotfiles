@@ -36,10 +36,3 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 	pattern = "*",
 	callback = notify_vscode_mode,
 })
-
-
--- Oil-specific autocmds
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*" },
-	callback = OilOpen
-})
