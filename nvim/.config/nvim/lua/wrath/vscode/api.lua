@@ -811,3 +811,7 @@ end
 function OilCd()
 	VSCodeNotify("oil-code.cd")
 end
+
+function OilClose()
+	VSCodeNotify("oil-code.close")
+end
