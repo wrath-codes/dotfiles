@@ -10,10 +10,12 @@ if vim.g.vscode then
 	require("wrath.vscode.api")
 	require("wrath.vscode.keymaps")
 	require("wrath.vscode.autocmds")
+	require("wrath.vscode.whichkey")
 	spec("wrath.plugins.extras.vscode-multicursor")
 	spec("wrath.plugins.extras.mini-surround")
 	spec("wrath.plugins.extras.spider")
 	spec("wrath.plugins.extras.hop")
+	spec("wrath.plugins.which-key")
 else
 	-- Plugins
 	spec("wrath.plugins.which-key")
