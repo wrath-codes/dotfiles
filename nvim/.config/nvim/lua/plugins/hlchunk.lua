@@ -4,7 +4,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
   },
-  
+
   -- Add hlchunk instead
   {
     "shellRaining/hlchunk.nvim",
@@ -13,6 +13,8 @@ return {
       chunk = {
         enable = true,
         notify = false,
+        duration = 100,
+        delay = 50,
         use_treesitter = true,
         chars = {
           horizontal_line = "─",
@@ -22,24 +24,19 @@ return {
           right_arrow = "─",
         },
         style = {
-          { fg = "#806d9c" },
+          "#8839ef", -- Mauve
+          "#d20f39", -- Red
         },
       },
-      indent = {
-        enable = true,
-        chars = {
-          "│",
-        },
-        style = {
-          { fg = "#2f334d" },
-        },
-      },
-      line_num = {
-        enable = false,
-      },
-      blank = {
-        enable = false,
-      },
+    },
+  },
+  indent = {
+    enable = false,
+    line_num = {
+      enable = true,
+    },
+    blank = {
+      enable = false,
     },
   },
 }

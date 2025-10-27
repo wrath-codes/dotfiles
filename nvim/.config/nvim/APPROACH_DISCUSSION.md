@@ -7,9 +7,11 @@ We have **three possible approaches** to migrating your config to LazyVim. Let's
 ---
 
 ## Approach 1: "Big Bang" Migration
+
 ### Port everything at once
 
 **What this means:**
+
 - Enable all language extras immediately
 - Set up Oil, Harpoon, Lualine customizations right away
 - Port all keymaps and VSCode integration in one go
@@ -34,9 +36,11 @@ We have **three possible approaches** to migrating your config to LazyVim. Let's
 ---
 
 ## Approach 2: "Phased Rollout"
+
 ### Implement one phase at a time, test, iterate
 
 **What this means:**
+
 1. **Week 1**: Phase 1 only (Languages + Core)
    - Enable all language extras
    - Use LazyVim defaults for everything else
@@ -73,14 +77,16 @@ We have **three possible approaches** to migrating your config to LazyVim. Let's
 ---
 
 ## Approach 3: "Minimal + Iterate" (RECOMMENDED)
+
 ### Start with essentials, add as you hit friction
 
 **What this means:**
 
-### Day 1 Setup (2-3 hours):
+### Day 1 Setup (2-3 hours)
+
 ```
 ✅ Phase 1: All language support
-✅ Oil with `-` keybinding  
+✅ Oil with `-` keybinding
 ✅ Catppuccin Mocha theme
 ✅ Core keymaps (select all, clear highlights, etc.)
 ✅ Oil + Snacks explorer keybindings
@@ -88,7 +94,8 @@ We have **three possible approaches** to migrating your config to LazyVim. Let's
 
 Use this for **2-3 days** and note what's missing.
 
-### First Iteration (Based on what you miss):
+### First Iteration (Based on what you miss)
+
 ```
 Probably add:
 - Harpoon (if you keep reaching for marks)
@@ -96,14 +103,16 @@ Probably add:
 - Custom keymaps for navigation
 ```
 
-### Second Iteration:
+### Second Iteration
+
 ```
 - Lualine customization (harpoon tabline, time)
 - VSCode integration
 - Any missing keymaps
 ```
 
-### Final Polish:
+### Final Polish
+
 ```
 - Modicator if you miss it
 - Motion plugin (Flash vs Hop)
@@ -132,21 +141,25 @@ Probably add:
 ## Specific Concerns to Address
 
 ### Concern 1: "I need my tools to work"
+
 **Reality:** You're a Python/Rust dev. With Phase 1 languages + Oil, you can work.  
 **Missing:** Harpoon, custom lualine  
 **Impact:** Medium - you can mark files differently for a few days
 
 ### Concern 2: "My muscle memory for keymaps"
+
 **Reality:** Some keymaps will break immediately (`-` for Oil, `[`/`]` navigation)  
 **Solution:** Fix these on Day 1 (included in Approach 3)  
 **Impact:** Low - address the critical ones immediately
 
 ### Concern 3: "VSCode integration is critical"
+
 **Reality:** LazyVim has vscode extra, your VSCode keybindings.json already works  
 **Missing:** Your custom VSCode API wrappers (22 modules)  
 **Impact:** Medium-High - but we can add this in first iteration if needed
 
 ### Concern 4: "What about harpoon tabline?"
+
 **Reality:** This is a UI preference, not a workflow blocker  
 **Solution:** Use LazyVim's bufferline/tabline for a few days first  
 **Impact:** Low - aesthetic preference, not critical path
@@ -186,6 +199,7 @@ Probably add:
 **Total Time: ~90 minutes**
 
 **After Day 1, you can:**
+
 - ✅ Code in Python/Rust with full LSP
 - ✅ Navigate files with Oil
 - ✅ Use most of your muscle memory
@@ -196,11 +210,13 @@ Probably add:
 ### **Days 2-3 - Use & Observe**
 
 **Just code normally.** Note down:
+
 - What keybindings you reach for that don't work
 - What LazyVim default you don't like
 - What features you actually miss (vs think you'll miss)
 
 **My prediction of what you'll miss:**
+
 1. Harpoon marks (you probably use them a lot)
 2. Your git workflow (LazyGit vs Neogit)
 3. Maybe window management
@@ -213,6 +229,7 @@ Probably add:
 Based on what you actually missed, add:
 
 **Likely additions:**
+
 - Harpoon with 8 marks (1-4, 7-0)
 - Git tool (probably try LazyGit first)
 - Modicator if you missed it
@@ -224,11 +241,13 @@ Based on what you actually missed, add:
 ### **Week 2 - Second Iteration**
 
 **Add UI customizations:**
+
 - Lualine with harpoon tabline
 - Time component
 - Navic for breadcrumbs (maybe)
 
 **Add VSCode integration:**
+
 - Port critical VSCode keymaps
 - Test parity between Neovim/VSCode
 
@@ -246,26 +265,31 @@ Based on what you actually missed, add:
 ## Questions for You
 
 ### 1. Timeline - What's acceptable?
+
 - [ ] **Option A**: Need everything working perfectly TODAY (→ Approach 1, not recommended)
 - [ ] **Option B**: Can work with minimal setup for a few days (→ Approach 3, recommended)
 - [ ] **Option C**: Willing to migrate over several weeks (→ Approach 2)
 
 ### 2. Risk Tolerance
+
 - [ ] **High risk**: Port everything, fix breakage later
 - [ ] **Medium risk**: Add essentials, iterate quickly
 - [ ] **Low risk**: One change at a time, test thoroughly
 
 ### 3. Discovery vs Familiarity
+
 - [ ] **Discovery**: Want to learn LazyVim's way, question old habits
 - [ ] **Familiarity**: Want config to feel exactly like before ASAP
 - [ ] **Balance**: Some of both (willing to try new things)
 
 ### 4. VSCode Integration Priority
+
 - [ ] **Critical**: Need all 22 VSCode modules on Day 1
 - [ ] **Important**: Need some VSCode keymaps soon, but can add incrementally
 - [ ] **Optional**: Can work in Neovim-only mode for a while
 
 ### 5. Harpoon Priority
+
 - [ ] **Critical**: Can't work without harpoon marks
 - [ ] **Important**: Really useful, want it soon
 - [ ] **Optional**: Can try LazyVim's buffer navigation first
@@ -279,26 +303,30 @@ Based on our conversation, I think you should:
 ### **Go with Approach 3, but accelerated:**
 
 **Day 1 (Today - 2 hours):**
+
 1. All languages
-2. Oil + Snacks explorer  
+2. Oil + Snacks explorer
 3. Catppuccin Mocha
 4. Critical keymaps
 5. Navigation remaps
 6. **Also add: Harpoon** (since you clearly use it heavily)
 
 **Days 2-4 (Try LazyVim's defaults):**
+
 - Use LazyGit (give it a real try)
 - Use LazyVim's lualine default (no harpoon tabline yet)
 - See how Flash works for motion
 - Note what you actually miss
 
 **Week 2 (Customize based on reality):**
+
 - Add lualine customization if you miss it
 - Add Neogit if LazyGit doesn't work
 - Port VSCode integration
 - Add modicator if you miss mode colors
 
 **Why this works for you:**
+
 - ✅ You can code on Day 1
 - ✅ You have harpoon (your power tool)
 - ✅ But you're forced to try LazyVim's defaults for other things
@@ -315,11 +343,13 @@ Based on our conversation, I think you should:
 ❓ **Or do you want to rebuild your old config on top of LazyVim?**
 
 **If the answer is "rebuild old config":**
+
 - → Go with Approach 1 or 2
 - → Port everything systematically
 - → End up with familiar config
 
 **If the answer is "learn LazyVim's way":**
+
 - → Go with Approach 3
 - → Question every old habit
 - → End up with (possibly) better config
@@ -331,6 +361,7 @@ Based on our conversation, I think you should:
 ## What do you think?
 
 Let's discuss:
+
 1. Which approach resonates with you?
 2. What's your timeline/urgency?
 3. What are your non-negotiables for Day 1?

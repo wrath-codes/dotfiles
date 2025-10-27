@@ -10,9 +10,6 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
   asdf
   uv
-  fzf
-  eza
-  rust
   macos
   thefuck
   aliases
@@ -194,3 +191,6 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 
 fastfetch
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/mc mc

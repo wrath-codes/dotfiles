@@ -12,8 +12,8 @@ return {
         -- Accept with Enter
         ["<CR>"] = { "accept", "fallback" },
 
-        -- Show/hide
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        -- Show/hide (C-y for show, C-e for hide)
+        ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide" },
 
         -- Scroll documentation

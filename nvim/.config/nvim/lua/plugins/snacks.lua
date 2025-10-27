@@ -2,18 +2,16 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      indent = { enabled = false },
       dashboard = {
         preset = {
           header = [[
- █     █░ ██▀███   ▄▄▄      ▄▄▄█████▓ ██░ ██ 
-▓█░ █ ░█░▓██ ▒ ██▒▒████▄    ▓  ██▒ ▓▒▓██░ ██▒
-▒█░ █ ░█ ▓██ ░▄█ ▒▒██  ▀█▄  ▒ ▓██░ ▒░▒██▀▀██░
-░█░ █ ░█ ▒██▀▀█▄  ░██▄▄▄▄██ ░ ▓██▓ ░ ░▓█ ░██ 
-░██▒██▓ ░██▓ ▒██▒ ▓█   ▓██▒  ▒██▒ ░ ░▓█▒░██▓ 
-░ ▓░▒ ▒  ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░  ▒ ░░    ▒ ░░▒░▒
-  ▒ ░ ░    ░▒ ░ ▒░  ▒   ▒▒ ░    ░     ▒ ░▒░ ░
-  ░   ░    ░░   ░   ░   ▒     ░       ░  ░░ ░
-  ░       ░           ░  ░          ░  ░  ░  
+██╗    ██╗██████╗  █████╗ ████████╗██╗  ██╗
+██║    ██║██╔══██╗██╔══██╗╚══██╔══╝██║  ██║
+██║ █╗ ██║██████╔╝███████║   ██║   ███████║
+██║███╗██║██╔══██╗██╔══██║   ██║   ██╔══██║
+╚███╔███╔╝██║  ██║██║  ██║   ██║   ██║  ██║
+ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
 ]],
         },
       },
@@ -23,9 +21,14 @@ return {
       { "<leader>.", false },
       { "<leader>S", false },
 
-      -- Snacks explorer keybinding (manual open, not auto)
+      -- Disable default <leader>e (we'll remap it)
+      { "<leader>E", false },
+      { "<leader>fe", false },
+      { "<leader>fE", false },
+
+      -- Snacks explorer keybindings
       {
-        "<leader>pv",
+        "<leader>e",
         function()
           require("snacks").explorer()
         end,
