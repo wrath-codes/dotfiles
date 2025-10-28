@@ -18,11 +18,11 @@ return {
           PmenuSel = { bg = colors.surface0, fg = colors.text },
           PmenuSbar = { bg = colors.none },
           PmenuThumb = { bg = colors.surface0 },
-          
+
           -- Make LSP floating windows transparent
           NormalFloat = { bg = colors.none },
           FloatBorder = { bg = colors.none, fg = colors.overlay0 },
-          
+
           -- Make which-key transparent
           WhichKeyFloat = { bg = colors.none },
         }
