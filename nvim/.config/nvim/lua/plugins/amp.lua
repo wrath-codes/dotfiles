@@ -32,6 +32,7 @@ return {
       { "<leader>atl", "<cmd>AmpThreadsList<cr>", desc = "Amp Threads List" },
       { "<leader>ali", "<cmd>AmpLogin<cr>", desc = "Amp Login" },
       { "<leader>alo", "<cmd>AmpLogout<cr>", desc = "Amp Logout" },
+      { "<leader>au", "<cmd>AmpUpdate<cr>", desc = "Amp Update" },
     },
   },
 }

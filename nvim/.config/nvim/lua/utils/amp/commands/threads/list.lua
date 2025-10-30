@@ -235,23 +235,56 @@ function M.setup()
             vim.fn.setreg("+", raw)
             vim.notify("Copied raw thread markdown to clipboard", vim.log.levels.INFO)
           end,
+          rename_thread = function(picker, item)
+            vim.ui.input({ prompt = "New thread name: " }, function(new_name)
+              if new_name and new_name ~= "" then
+                cli.run_command("threads rename " .. vim.fn.shellescape(item.thread_id) .. " " .. vim.fn.shellescape(new_name), function(lines)
+                  vim.notify("Thread renamed to '" .. new_name .. "'", vim.log.levels.INFO)
+                  -- Refresh the thread list
+                  vim.schedule(function()
+                    vim.cmd("AmpThreadsList")
+                  end)
+                end)
+              end
+            end)
+          end,
+          share_thread = function(picker, item)
+            vim.ui.select({ "private", "public", "workspace", "group" }, {
+              prompt = "Select thread visibility:",
+            }, function(choice)
+              if choice then
+                cli.run_command("threads share " .. vim.fn.shellescape(item.thread_id) .. " --visibility " .. choice, function(lines)
+                  vim.notify("Thread visibility set to " .. choice, vim.log.levels.INFO)
+                  -- Refresh the thread list
+                  vim.schedule(function()
+                    vim.cmd("AmpThreadsList")
+                  end)
+                end)
+              end
+            end)
+          end,
           save_md = function(picker, item)
             local raw = M.threads_cache[item.thread_id] and M.threads_cache[item.thread_id].raw
             if not raw then
               vim.notify("Thread content not available", vim.log.levels.ERROR)
               return
             end
+            local dir = vim.fn.expand("~/amp/saved_threads/")
+            vim.fn.mkdir(dir, "p")
             local filename = sanitize_filename(item.title)
-            vim.fn.writefile(vim.split(raw, "\n"), filename)
-            vim.notify("Saved thread to '" .. filename .. "'", vim.log.levels.INFO)
-            vim.cmd.edit(filename)
+            local filepath = dir .. filename
+            vim.fn.writefile(vim.split(raw, "\n"), filepath)
+            vim.notify("Saved thread to '" .. filepath .. "'", vim.log.levels.INFO)
+            vim.cmd.edit(filepath)
           end,
         },
         win = {
           input = {
             keys = {
-              ["<C-S-r>"] = { "copy_raw", mode = { "i", "n" } },
+              ["<C-S-c>"] = { "copy_raw", mode = { "i", "n" } },
+              ["<C-S-r>"] = { "rename_thread", mode = { "i", "n" } },
               ["<C-S-s>"] = { "save_md", mode = { "i", "n" } },
+              ["<C-S-v>"] = { "share_thread", mode = { "i", "n" } },
               ["?"] = "toggle_help_input",
             },
           },
@@ -279,8 +312,10 @@ function M.setup()
               title = " Key Hints ",
             })
             local hints = {
-              " <C-S-r>  copy raw markdown to clipboard",
+              " <C-S-c>  copy raw markdown to clipboard",
+              " <C-S-r>  rename thread",
               " <C-S-s>  save thread to .md file",
+              " <C-S-v>  share thread visibility",
               " <CR>     copy thread ID to clipboard",
               " ?        toggle help",
             }
@@ -297,12 +332,16 @@ function M.setup()
             local ns = vim.api.nvim_create_namespace("amp_hints")
             vim.hl.range(buf, ns, "SnacksPickerLabel", {0, 0}, {0, 10})
             vim.hl.range(buf, ns, "Comment", {0, 10}, {0, 55})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {0, 55}, {0, 65})
-            vim.hl.range(buf, ns, "Comment", {0, 65}, {0, -1})
+            vim.hl.range(buf, ns, "SnacksPickerLabel", {0, 55}, {0, 67})
+            vim.hl.range(buf, ns, "Comment", {0, 67}, {0, -1})
             vim.hl.range(buf, ns, "SnacksPickerLabel", {1, 0}, {1, 9})
             vim.hl.range(buf, ns, "Comment", {1, 9}, {1, 55})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {1, 55}, {1, 64})
-            vim.hl.range(buf, ns, "Comment", {1, 64}, {1, -1})
+            vim.hl.range(buf, ns, "SnacksPickerLabel", {1, 55}, {1, 67})
+            vim.hl.range(buf, ns, "Comment", {1, 67}, {1, -1})
+            vim.hl.range(buf, ns, "SnacksPickerLabel", {2, 0}, {2, 9})
+            vim.hl.range(buf, ns, "Comment", {2, 9}, {2, 55})
+            vim.hl.range(buf, ns, "SnacksPickerLabel", {2, 55}, {2, 64})
+            vim.hl.range(buf, ns, "Comment", {2, 64}, {2, -1})
           end
         end,
         on_close = function(picker)
