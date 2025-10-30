@@ -6,6 +6,15 @@ return {
         save_on_toggle = true,
       },
     },
+    config = function(_, opts)
+      require("harpoon").setup(opts)
+
+      -- Register which-key group
+      local wk = require("which-key")
+      wk.add({
+        { "<leader>h", group = "Harpoon" },
+      })
+    end,
     keys = function()
       local keys = {
         -- Add mark with notification
@@ -25,6 +34,23 @@ return {
             harpoon.ui:toggle_quick_menu(harpoon:list())
           end,
           desc = "Harpoon Edit List",
+        },
+        -- Remove current file from harpoon
+        {
+          "<leader>hd",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+            for _, item in ipairs(list.items) do
+              if item.value == current_file then
+                list:remove(item)
+                vim.notify("󰛢 removed from harpoon", vim.log.levels.INFO)
+                break
+              end
+            end
+          end,
+          desc = "Harpoon Remove Current",
         },
         -- Previous/Next in harpoon list
         {

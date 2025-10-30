@@ -49,9 +49,15 @@ return {
     },
     config = function(_, opts)
       require("obsidian").setup(opts)
-      
+
       -- Setup custom Obsidian commands
       require("utils.obsidian.commands").setup()
+
+      -- Register which-key group
+      local wk = require("which-key")
+      wk.add({
+        { "<leader>o", group = "Obsidian" },
+      })
     end,
     keys = {
       -- All Obsidian commands under <leader>o*
