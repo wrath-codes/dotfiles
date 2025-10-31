@@ -175,59 +175,59 @@ function M.setup()
       -- Parse the table output
       -- Skip header (line 1) and separator (line 2)
       local items = {}
-       local longest_title = 0
+      local longest_title = 0
 
       for i = 3, #lines do
-      local line = lines[i]
-      if line and line ~= "" then
-      -- Find the last " T-" to extract thread_id
-      local last_space_t = line:find(" T%-")
-      if last_space_t then
-      local title = line:sub(1, last_space_t - 1):gsub("%s+$", "") -- trim trailing spaces
-      local thread_id = line:sub(last_space_t + 1)
-      if title == "" then
-        title = "Untitled"
-      end
-      longest_title = math.max(longest_title, #title)
-      table.insert(items, {
-      idx = #items + 1,
-      score = #items + 1,
-      text = title,
-      thread_id = thread_id,
-      title = title,
-      description = thread_id,
-      })
-      end
-      end
-       end
-
-       if #items == 0 then
-         vim.notify("No threads found", vim.log.levels.WARN)
-         return
+        local line = lines[i]
+        if line and line ~= "" then
+          -- Find the last " T-" to extract thread_id
+          local last_space_t = line:find(" T%-")
+          if last_space_t then
+            local title = line:sub(1, last_space_t - 1):gsub("%s+$", "") -- trim trailing spaces
+            local thread_id = line:sub(last_space_t + 1)
+            if title == "" then
+              title = "Untitled"
+            end
+            longest_title = math.max(longest_title, #title)
+            table.insert(items, {
+              idx = #items + 1,
+              score = #items + 1,
+              text = title,
+              thread_id = thread_id,
+              title = title,
+              description = thread_id,
+            })
+          end
+        end
       end
 
-       longest_title = math.min(longest_title + 4, 40) -- Limit max width
+      if #items == 0 then
+        vim.notify("No threads found", vim.log.levels.WARN)
+        return
+      end
 
-       -- Show picker with dynamic preview
-       local layout_config = {
-         layout = {
-         box = "horizontal",
-       width = 0.8,
-       min_width = 120,
-       height = 0.8,
-       {
-         box = "vertical",
-       border = true,
-       title = "{title}",
-       { win = "input", height = 1, border = "bottom" },
-       { win = "list", border = "none" },
-      },
-       { win = "preview", width = 0.5, border = "rounded" },
-      },
+      longest_title = math.min(longest_title + 4, 40) -- Limit max width
+
+      -- Show picker with dynamic preview
+      local layout_config = {
+        layout = {
+          box = "horizontal",
+          width = 0.8,
+          min_width = 120,
+          height = 0.8,
+          {
+            box = "vertical",
+            border = true,
+            title = "{title}",
+            { win = "input", height = 1, border = "bottom" },
+            { win = "list", border = "none" },
+          },
+          { win = "preview", width = 0.5, border = "rounded" },
+        },
       }
-       require("snacks").picker({
-         items = items,
-         title = " Threads",
+      require("snacks").picker({
+        items = items,
+        title = " Threads",
         layout = layout_config,
         actions = {
           copy_raw = function(picker, item)
@@ -238,13 +238,16 @@ function M.setup()
           rename_thread = function(picker, item)
             vim.ui.input({ prompt = "New thread name: " }, function(new_name)
               if new_name and new_name ~= "" then
-                cli.run_command("threads rename " .. vim.fn.shellescape(item.thread_id) .. " " .. vim.fn.shellescape(new_name), function(lines)
-                  vim.notify("Thread renamed to '" .. new_name .. "'", vim.log.levels.INFO)
-                  -- Refresh the thread list
-                  vim.schedule(function()
-                    vim.cmd("AmpThreadsList")
-                  end)
-                end)
+                cli.run_command(
+                  "threads rename " .. vim.fn.shellescape(item.thread_id) .. " " .. vim.fn.shellescape(new_name),
+                  function(lines)
+                    vim.notify("Thread renamed to '" .. new_name .. "'", vim.log.levels.INFO)
+                    -- Refresh the thread list
+                    vim.schedule(function()
+                      vim.cmd("AmpThreadsList")
+                    end)
+                  end
+                )
               end
             end)
           end,
@@ -253,13 +256,16 @@ function M.setup()
               prompt = "Select thread visibility:",
             }, function(choice)
               if choice then
-                cli.run_command("threads share " .. vim.fn.shellescape(item.thread_id) .. " --visibility " .. choice, function(lines)
-                  vim.notify("Thread visibility set to " .. choice, vim.log.levels.INFO)
-                  -- Refresh the thread list
-                  vim.schedule(function()
-                    vim.cmd("AmpThreadsList")
-                  end)
-                end)
+                cli.run_command(
+                  "threads share " .. vim.fn.shellescape(item.thread_id) .. " --visibility " .. choice,
+                  function(lines)
+                    vim.notify("Thread visibility set to " .. choice, vim.log.levels.INFO)
+                    -- Refresh the thread list
+                    vim.schedule(function()
+                      vim.cmd("AmpThreadsList")
+                    end)
+                  end
+                )
               end
             end)
           end,
@@ -330,18 +336,18 @@ function M.setup()
             vim.api.nvim_buf_set_lines(buf, 0, -1, false, hint_lines)
             -- Highlight keymaps and descriptions
             local ns = vim.api.nvim_create_namespace("amp_hints")
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {0, 0}, {0, 10})
-            vim.hl.range(buf, ns, "Comment", {0, 10}, {0, 55})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {0, 55}, {0, 67})
-            vim.hl.range(buf, ns, "Comment", {0, 67}, {0, -1})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {1, 0}, {1, 9})
-            vim.hl.range(buf, ns, "Comment", {1, 9}, {1, 55})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {1, 55}, {1, 67})
-            vim.hl.range(buf, ns, "Comment", {1, 67}, {1, -1})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {2, 0}, {2, 9})
-            vim.hl.range(buf, ns, "Comment", {2, 9}, {2, 55})
-            vim.hl.range(buf, ns, "SnacksPickerLabel", {2, 55}, {2, 64})
-            vim.hl.range(buf, ns, "Comment", {2, 64}, {2, -1})
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 0, 0 }, { 0, 10 })
+            vim.hl.range(buf, ns, "Comment", { 0, 10 }, { 0, 55 })
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 0, 55 }, { 0, 67 })
+            vim.hl.range(buf, ns, "Comment", { 0, 67 }, { 0, -1 })
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 1, 0 }, { 1, 9 })
+            vim.hl.range(buf, ns, "Comment", { 1, 9 }, { 1, 55 })
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 1, 55 }, { 1, 67 })
+            vim.hl.range(buf, ns, "Comment", { 1, 67 }, { 1, -1 })
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 2, 0 }, { 2, 9 })
+            vim.hl.range(buf, ns, "Comment", { 2, 9 }, { 2, 55 })
+            vim.hl.range(buf, ns, "SnacksPickerLabel", { 2, 55 }, { 2, 64 })
+            vim.hl.range(buf, ns, "Comment", { 2, 64 }, { 2, -1 })
           end
         end,
         on_close = function(picker)
@@ -407,3 +413,4 @@ function M.setup()
 end
 
 return M
+

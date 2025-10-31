@@ -107,7 +107,77 @@ function M.setup()
       input:unmount()
     end, { noremap = true })
   end, { range = true })
+
+  -- Search all notes
+  vim.api.nvim_create_user_command("ObsidianSearchAll", function()
+    require("snacks").picker.grep({
+      cwd = vim.fn.expand("~/obsd/second-brain"),
+      title = " Obsidian Search All ",
+    })
+  end, {
+    desc = "Search all Obsidian notes",
+  })
+
+  -- Search snippets
+  vim.api.nvim_create_user_command("ObsidianSearchSnippets", function()
+    local snippets_dir = vim.fn.expand("~/obsd/second-brain/snippets")
+    local items = {}
+
+    -- Scan for .md files
+    local files = vim.fn.glob(snippets_dir .. "/*.md", false, true)
+    for _, file in ipairs(files) do
+      local content = vim.fn.readfile(file)
+      local title = ""
+      local code_blocks = {}
+
+      for i, line in ipairs(content) do
+        if line:match("^# ") and title == "" then
+          title = line:gsub("^# ", "")
+        elseif line:match("^```") then
+          local lang = line:gsub("^```", "")
+          local code_start = i + 1
+          local code_end = code_start
+          while code_end <= #content and not content[code_end]:match("^```") do
+            code_end = code_end + 1
+          end
+          if code_end <= #content then
+            local code = table.concat(content, "\n", code_start, code_end - 1)
+            table.insert(code_blocks, { lang = lang, code = code })
+          end
+        end
+      end
+
+      for _, block in ipairs(code_blocks) do
+        table.insert(items, {
+          text = title .. " (" .. block.lang .. ")",
+          file = file,
+          code = block.code,
+          lang = block.lang,
+          title = title,
+        })
+      end
+    end
+
+    require("snacks").picker({
+      items = items,
+      title = " Obsidian Snippets ",
+      format = function(item)
+        return { { item.text } }
+      end,
+      preview = function(ctx)
+        ctx.preview:set_lines(vim.split(ctx.item.code, "\n"))
+        ctx.preview:highlight({ ft = ctx.item.lang })
+      end,
+      confirm = function(picker, item)
+        picker:close()
+        -- Paste the code
+        vim.api.nvim_put(vim.split(item.code, "\n"), "c", true, true)
+        vim.notify("Snippet pasted: " .. item.title, vim.log.levels.INFO)
+      end,
+    })
+  end, {
+    desc = "Search Obsidian snippets",
+  })
 end
 
 return M
-

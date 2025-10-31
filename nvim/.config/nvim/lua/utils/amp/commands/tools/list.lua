@@ -55,18 +55,19 @@ function M.setup()
       local tool_names = {}
 
       for i, line in ipairs(lines) do
-        -- Parse format: "tool_name    built-in Description text"
-        local tool_name, description = line:match("^(%S+)%s+built%-in%s+(.+)$")
-        if tool_name and description then
-          longest_name = math.max(longest_name, #tool_name)
-          table.insert(tool_names, tool_name)
-          table.insert(items, {
-            idx = i,
-            score = i,
-            text = tool_name .. " " .. description,
-            tool_name = tool_name,
-            description = description,
-          })
+      -- Parse format: "tool_name    type Description text"
+      local tool_name, tool_type, description = line:match("^(%S+)%s+(%S+)%s+(.+)$")
+      if tool_name and description then
+      longest_name = math.max(longest_name, #tool_name)
+      table.insert(tool_names, tool_name)
+      table.insert(items, {
+      idx = i,
+      score = i,
+      text = tool_name .. " " .. description,
+      tool_name = tool_name,
+      tool_type = tool_type,
+        description = description,
+        })
         end
       end
 
@@ -117,10 +118,10 @@ function M.setup()
           ctx.preview:highlight({ ft = "markdown" })
         end,
         format = function(item)
-          local ret = {}
-          ret[#ret + 1] = { string.format("%-" .. longest_name .. "s", item.tool_name), "SnacksPickerLabel" }
-          ret[#ret + 1] = { item.description, "SnacksPickerComment" }
-          return ret
+        local ret = {}
+        ret[#ret + 1] = { string.format("%-40s %-10s", item.tool_name, item.tool_type), "SnacksPickerLabel" }
+        ret[#ret + 1] = { item.description, "SnacksPickerComment" }
+        return ret
         end,
         confirm = function(picker, item)
           picker:close()

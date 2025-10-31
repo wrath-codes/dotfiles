@@ -53,17 +53,19 @@ return {
       -- Setup custom Obsidian commands
       require("utils.obsidian.commands").setup()
 
-      -- Register which-key group
+      -- Register which-key groups
       local wk = require("which-key")
       wk.add({
         { "<leader>o", group = "Obsidian" },
+        { "<leader>os", group = "Search" },
       })
     end,
     keys = {
       -- All Obsidian commands under <leader>o*
       -- Global commands (work from anywhere)
-      { "<leader>o", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian Quick Switch" },
-      { "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Obsidian Search" },
+      { "<leader>oo", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian Quick Switch" },
+      { "<leader>osa", "<cmd>ObsidianSearchAll<cr>", desc = "Search All" },
+      { "<leader>oss", "<cmd>ObsidianSearchSnippets<cr>", desc = "Search Snippets" },
 
       -- Markdown-only commands
       { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "Obsidian New Note", ft = "markdown" },

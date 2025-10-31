@@ -25,19 +25,7 @@ return {
         ["<C-p>"] = { "snippet_backward", "fallback" },
       }
 
-      -- Add Obsidian snippets source
-      opts.sources = opts.sources or {}
-      opts.sources.default = opts.sources.default or { "lsp", "path", "snippets", "buffer" }
-      table.insert(opts.sources.default, "obsidian_snippets")
 
-      opts.sources.providers = opts.sources.providers or {}
-      opts.sources.providers.obsidian_snippets = {
-        name = "Obsidian Snippets",
-        module = "utils.blink.obsidian-snippets",
-        enabled = true,
-        score_offset = 75,
-        min_keyword_length = 2,
-      }
     end,
   },
 }

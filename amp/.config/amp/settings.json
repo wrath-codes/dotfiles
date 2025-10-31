@@ -1,0 +1,12 @@
+{
+  "amp.notifications.enabled": true,
+  "amp.notifications.system.enabled": true,
+  "amp.mcpServers": {},
+  "amp.tools.disable": [],
+  "amp.permissions": [],
+  "amp.guardedFiles.allowlist": [],
+  "amp.dangerouslyAllowAll": false,
+  "amp.git.commit.coauthor.enabled": true,
+  "amp.git.commit.ampThread.enabled": true,
+  "amp.updates.mode": "auto"
+}
