@@ -52,7 +52,6 @@ function M.setup()
           end
         end,
         edit_prompt = function(picker, item)
-          picker:close()
           M.edit_prompt_inline(item)
         end,
         change_category = function(picker, item)

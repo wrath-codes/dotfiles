@@ -24,8 +24,6 @@ return {
         ["<C-n>"] = { "snippet_forward", "fallback" },
         ["<C-p>"] = { "snippet_backward", "fallback" },
       }
-
-
     end,
   },
 }

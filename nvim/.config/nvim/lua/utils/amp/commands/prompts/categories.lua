@@ -76,8 +76,7 @@ function M.setup()
           end
         end,
         add_category = function(picker, item)
-          picker:close()
-          vim.ui.input({ prompt = "New category name:" }, function(new_name)
+          vim.ui.input({ prompt = "New category name: " }, function(new_name)
             if new_name and new_name ~= "" then
               if require("utils.amp.utils.prompts").add_category({ name = new_name }) then
                 vim.notify("Category '" .. new_name .. "' added", vim.log.levels.INFO)
@@ -89,8 +88,7 @@ function M.setup()
           end)
         end,
         edit_category = function(picker, item)
-          picker:close()
-          vim.ui.input({ prompt = "New name for '" .. item.name .. "':" }, function(new_name)
+          vim.ui.input({ prompt = "New name for '" .. item.name .. "': ", default = item.name }, function(new_name)
             if new_name and new_name ~= "" and new_name ~= item.name then
               -- Update all prompts in this category
               local data = require("utils.amp.utils.prompts").load_data()

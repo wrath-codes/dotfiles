@@ -9,8 +9,8 @@ function M.setup()
 
   -- Setup account commands
   require("utils.amp.commands.account.login").setup()
-require("utils.amp.commands.account.logout").setup()
-require("utils.amp.commands.account.update").setup()
+  require("utils.amp.commands.account.logout").setup()
+  require("utils.amp.commands.account.update").setup()
 
   -- Setup tools and threads list commands
   require("utils.amp.commands.tools.list").setup()
@@ -33,3 +33,4 @@ require("utils.amp.commands.account.update").setup()
 end
 
 return M
+

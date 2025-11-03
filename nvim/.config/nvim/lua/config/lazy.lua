@@ -49,6 +49,9 @@ require("lazy").setup({
     -- Completion Engine
     { import = "lazyvim.plugins.extras.coding.blink" },
 
+    -- AI Extras
+    { import = "lazyvim.plugins.extras.ai.supermaven" },
+
     -- Editor Extras
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
 

@@ -51,7 +51,6 @@ function M.setup()
           end
         end,
         edit = function(picker, item)
-          picker:close()
           M.edit_prompt(item.prompt_data)
         end,
       },
@@ -152,182 +151,47 @@ end
 --- Edit an existing prompt
 ---@param existing table The existing prompt data
 function M.edit_prompt(existing)
-  local prompts_utils = require("utils.amp.utils.prompts")
-  local Input = require("nui.input")
-  local event = require("nui.utils.autocmd").event
+  vim.ui.input({ prompt = "Title: ", default = existing.title }, function(title)
+    if not title or title == "" then
+      vim.notify("No title provided", vim.log.levels.WARN)
+      return
+    end
 
-  local form_data = { id = existing.id }
+    vim.ui.input({ prompt = "Category: ", default = existing.category }, function(category)
+      vim.ui.input({ prompt = "Description: ", default = existing.description }, function(description)
+        vim.ui.input({ prompt = "Prompt text: ", default = existing.prompt }, function(prompt_text)
+          if not prompt_text or prompt_text == "" then
+            vim.notify("No prompt provided", vim.log.levels.WARN)
+            return
+          end
 
-  -- First input: title
-  local title_input = Input({
-    position = "50%",
-    size = {
-      width = 40,
-    },
-    border = {
-      style = "rounded",
-      text = {
-        top = " Edit Prompt Title ",
-        top_align = "center",
-      },
-    },
-    win_options = {
-      winhighlight = "Normal:Normal,FloatBorder:Normal",
-    },
-  }, {
-    prompt = "Title: ",
-    default_value = existing.title,
-    on_close = function()
-      vim.notify("Edit cancelled", vim.log.levels.INFO)
-    end,
-    on_submit = function(title)
-      if not title or title == "" then
-        vim.notify("No title provided", vim.log.levels.WARN)
-        return
-      end
-      form_data.title = title
+          local form_data = {
+            id = existing.id,
+            title = title,
+            category = category or "General",
+            description = description or "",
+            prompt = prompt_text,
+          }
 
-      -- Second input: category
-      local category_input = Input({
-        position = "50%",
-        size = {
-          width = 40,
-        },
-        border = {
-          style = "rounded",
-          text = {
-            top = " Edit Category ",
-            top_align = "center",
-          },
-        },
-        win_options = {
-          winhighlight = "Normal:Normal,FloatBorder:Normal",
-        },
-      }, {
-        prompt = "Category: ",
-        default_value = existing.category,
-        on_close = function()
-          vim.notify("Edit cancelled", vim.log.levels.INFO)
-        end,
-        on_submit = function(category)
-          form_data.category = category or "General"
-
-          -- Third input: description
-          local desc_input = Input({
-            position = "50%",
-            size = {
-              width = 60,
-            },
-            border = {
-              style = "rounded",
-              text = {
-                top = " Edit Description ",
-                top_align = "center",
-              },
-            },
-            win_options = {
-              winhighlight = "Normal:Normal,FloatBorder:Normal",
-            },
-          }, {
-            prompt = "Description: ",
-            default_value = existing.description,
-            on_close = function()
-              vim.notify("Edit cancelled", vim.log.levels.INFO)
-            end,
-            on_submit = function(description)
-              form_data.description = description or ""
-
-              -- Fourth input: prompt text
-              local prompt_input = Input({
-                position = "50%",
-                size = {
-                  width = 80,
-                },
-                border = {
-                  style = "rounded",
-                  text = {
-                    top = " Edit Prompt Text ",
-                    top_align = "center",
-                  },
-                },
-                win_options = {
-                  winhighlight = "Normal:Normal,FloatBorder:Normal",
-                },
-              }, {
-                prompt = "> ",
-                default_value = existing.prompt,
-                on_close = function()
-                  vim.notify("Edit cancelled", vim.log.levels.INFO)
-                end,
-                on_submit = function(prompt_text)
-                  if not prompt_text or prompt_text == "" then
-                    vim.notify("No prompt provided", vim.log.levels.WARN)
-                    return
-                  end
-                  form_data.prompt = prompt_text
-
-                  -- Update the prompt
-                  local data = prompts_utils.load_data()
-                  for i, p in ipairs(data.prompts) do
-                    if p.id == existing.id then
-                      data.prompts[i] = form_data
-                      if prompts_utils.save_data(data) then
-                        vim.notify("Prompt '" .. form_data.title .. "' updated", vim.log.levels.INFO)
-                      end
-                      return
-                    end
-                  end
-                end,
-              })
-
-              prompt_input:mount()
-              prompt_input:map("n", "<Esc>", function()
-                prompt_input:unmount()
-              end)
-              prompt_input:map("n", "q", function()
-                prompt_input:unmount()
-              end)
-              prompt_input:on(event.BufLeave, function()
-                prompt_input:unmount()
-              end)
-            end,
-          })
-
-          desc_input:mount()
-          desc_input:map("n", "<Esc>", function()
-            desc_input:unmount()
-          end)
-          desc_input:map("n", "q", function()
-            desc_input:unmount()
-          end)
-          desc_input:on(event.BufLeave, function()
-            desc_input:unmount()
-          end)
-        end,
-      })
-
-      category_input:mount()
-      category_input:map("n", "<Esc>", function()
-        category_input:unmount()
+          -- Update the prompt
+          local data = require("utils.amp.utils.prompts").load_data()
+          for i, p in ipairs(data.prompts) do
+            if p.id == existing.id then
+              data.prompts[i] = form_data
+              if require("utils.amp.utils.prompts").save_data(data) then
+                vim.notify("Prompt '" .. form_data.title .. "' updated", vim.log.levels.INFO)
+                -- Refresh the list
+                vim.schedule(function()
+                  vim.cmd("AmpDashXManage")
+                end)
+              end
+              return
+            end
+          end
+          vim.notify("Failed to update prompt", vim.log.levels.ERROR)
+        end)
       end)
-      category_input:map("n", "q", function()
-        category_input:unmount()
-      end)
-      category_input:on(event.BufLeave, function()
-        category_input:unmount()
-      end)
-    end,
-  })
-
-  title_input:mount()
-  title_input:map("n", "<Esc>", function()
-    title_input:unmount()
-  end)
-  title_input:map("n", "q", function()
-    title_input:unmount()
-  end)
-  title_input:on(event.BufLeave, function()
-    title_input:unmount()
+    end)
   end)
 end
 
