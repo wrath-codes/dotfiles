@@ -1,0 +1,234 @@
+*amp-extras.txt*  Enhanced utilities for amp.nvim
+
+==============================================================================
+Table of Contents                                  *amp-extras-contents*
+
+1. Introduction ......................... |amp-extras-introduction|
+2. Requirements ......................... |amp-extras-requirements|
+3. Installation ......................... |amp-extras-installation|
+4. Configuration ........................ |amp-extras-config|
+5. Commands ............................. |amp-extras-commands|
+6. Mappings ............................. |amp-extras-mappings|
+7. Functions ............................ |amp-extras-functions|
+8. License .............................. |amp-extras-license|
+
+==============================================================================
+1. Introduction                                    *amp-extras-introduction*
+
+amp-extras.nvim is a comprehensive plugin that consolidates 35 Amp commands
+with unified abstractions, providing:
+
+- Dash X prompt management
+- MCP server management  
+- Permission management
+- Session management
+- Send commands for buffers/selections
+- Account management
+
+==============================================================================
+2. Requirements                                    *amp-extras-requirements*
+
+Required:
+- Neovim >= 0.9.0
+- amp.nvim plugin
+- snacks.nvim OR telescope.nvim
+- Amp CLI installed and in PATH
+
+Optional:
+- nui.nvim (recommended for enhanced input dialogs)
+- which-key.nvim (for keymap hints)
+
+==============================================================================
+3. Installation                                    *amp-extras-installation*
+
+Using lazy.nvim with snacks: >lua
+
+    {
+      "amp-extras",
+      dir = "~/.config/nvim/amp-extras",
+      dependencies = {
+        "sourcegraph/amp.nvim",
+        "folke/snacks.nvim",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = {
+        picker = "snacks",
+        data_dir = vim.fn.expand("~/.config/amp-extras"),
+      },
+      config = function(_, opts)
+        require("amp-extras").setup(opts)
+      end,
+    }
+<
+
+==============================================================================
+4. Configuration                                   *amp-extras-config*
+
+Default configuration: >lua
+
+    require("amp-extras").setup({
+      picker = "snacks",
+      data_dir = vim.fn.expand("~/.config/amp-extras"),
+      keymaps = {
+        enabled = true,
+      },
+    })
+<
+
+Options:~
+    {picker}        "snacks" or "telescope" - Picker backend to use
+    {data_dir}      string - Directory for storing prompts data
+    {keymaps}       table - Keymap configuration
+
+==============================================================================
+5. Commands                                        *amp-extras-commands*
+
+DASH X (PROMPTS)~
+                                                   *:AmpDashX*
+:AmpDashX                List and execute saved prompts
+
+                                                   *:AmpDashXAdd*
+:AmpDashXAdd             Add a new prompt
+
+                                                   *:AmpDashXManage*
+:AmpDashXManage          Manage existing prompts
+
+                                                   *:AmpDashXCategories*
+:AmpDashXCategories      Manage prompt categories
+
+                                                   *:AmpSessionExecute*
+:AmpSessionExecute       Quick execute (save to Uncategorized)
+
+SEND COMMANDS~
+                                                   *:AmpSend*
+:AmpSend [msg]           Send a message to Amp
+
+                                                   *:AmpSendBuffer*
+:AmpSendBuffer           Send current buffer to Amp
+
+                                                   *:AmpPromptSelection*
+:AmpPromptSelection      Send visual selection to Amp
+
+                                                   *:AmpPromptRef*
+:AmpPromptRef            Send file reference with line numbers
+
+                                                   *:AmpPromptFileRef*
+:AmpPromptFileRef        Send file reference
+
+SESSION MANAGEMENT~
+                                                   *:AmpSessionOpen*
+:AmpSessionOpen          Open new Amp interactive session
+
+                                                   *:AmpSessionWithMessage*
+:AmpSessionWithMessage   Open session with initial message
+
+MCP COMMANDS~
+                                                   *:AmpMcpAddCommand*
+:AmpMcpAddCommand        Add MCP server with command
+
+                                                   *:AmpMcpAddInteractive*
+:AmpMcpAddInteractive    Add MCP server (interactive)
+
+                                                   *:AmpMcpRemove*
+:AmpMcpRemove            Remove MCP server
+
+                                                   *:AmpMcpOauth*
+:AmpMcpOauth             MCP OAuth management
+
+                                                   *:AmpMcpDoctorAll*
+:AmpMcpDoctorAll         Check all MCP server status
+
+                                                   *:AmpMcpDoctorSingle*
+:AmpMcpDoctorSingle      Check single MCP server status
+
+                                                   *:AmpMcpList*
+:AmpMcpList              List MCP servers
+
+PERMISSIONS~
+                                                   *:AmpPermissionsEdit*
+:AmpPermissionsEdit      Edit Amp permissions
+
+                                                   *:AmpPermissionsList*
+:AmpPermissionsList      List Amp permissions
+
+                                                   *:AmpPermissionsTest*
+:AmpPermissionsTest      Test Amp permissions
+
+                                                   *:AmpPermissionsAdd*
+:AmpPermissionsAdd       Add permission rule
+
+ACCOUNT MANAGEMENT~
+                                                   *:AmpLogin*
+:AmpLogin                Log in to Amp
+
+                                                   *:AmpLogout*
+:AmpLogout               Log out from Amp
+
+                                                   *:AmpUpdate*
+:AmpUpdate               Update Amp CLI
+
+==============================================================================
+6. Mappings                                        *amp-extras-mappings*
+
+All commands are available as <Plug> mappings for custom keybindings.
+
+DASH X MAPPINGS~
+    <Plug>(AmpDashX)              List and execute saved prompts
+    <Plug>(AmpDashXAdd)           Add a new prompt
+    <Plug>(AmpDashXManage)        Manage existing prompts
+    <Plug>(AmpDashXCategories)    Manage prompt categories
+
+SEND MAPPINGS~
+    <Plug>(AmpSend)               Send a message to Amp
+    <Plug>(AmpSendBuffer)         Send current buffer to Amp
+    <Plug>(AmpPromptSelection)    Send visual selection to Amp
+    <Plug>(AmpPromptRef)          Send file reference with line numbers
+    <Plug>(AmpPromptFileRef)      Send file reference
+
+SESSION MAPPINGS~
+    <Plug>(AmpSessionOpen)        Open new Amp interactive session
+    <Plug>(AmpSessionWithMessage) Open session with initial message
+    <Plug>(AmpSessionExecute)     Quick execute
+
+MCP MAPPINGS~
+    <Plug>(AmpMcpAddCommand)      Add MCP server with command
+    <Plug>(AmpMcpAddInteractive)  Add MCP server (interactive)
+    <Plug>(AmpMcpRemove)          Remove MCP server
+    <Plug>(AmpMcpOauth)           MCP OAuth management
+    <Plug>(AmpMcpDoctorAll)       Check all MCP server status
+    <Plug>(AmpMcpDoctorSingle)    Check single MCP server status
+    <Plug>(AmpMcpList)            List MCP servers
+
+PERMISSIONS MAPPINGS~
+    <Plug>(AmpPermissionsEdit)    Edit Amp permissions
+    <Plug>(AmpPermissionsList)    List Amp permissions
+    <Plug>(AmpPermissionsTest)    Test Amp permissions
+    <Plug>(AmpPermissionsAdd)     Add permission rule
+
+ACCOUNT MAPPINGS~
+    <Plug>(AmpLogin)              Log in to Amp
+    <Plug>(AmpLogout)             Log out from Amp
+    <Plug>(AmpUpdate)             Update Amp CLI
+
+==============================================================================
+7. Functions                                       *amp-extras-functions*
+
+                                                   *amp-extras.setup()*
+require("amp-extras").setup({config})
+    Setup the plugin with optional configuration.
+
+                                                   *amp-extras.is_initialized()*
+require("amp-extras").is_initialized()
+    Check if plugin is initialized. Returns boolean.
+
+                                                   *amp-extras.get_config()*
+require("amp-extras").get_config()
+    Get current configuration. Returns table.
+
+==============================================================================
+8. License                                         *amp-extras-license*
+
+MIT License
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

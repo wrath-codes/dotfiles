@@ -7,27 +7,37 @@ return {
       auto_start = true,
       log_level = "info",
     },
+  },
+  {
+    "amp-extras",
+    dir = vim.fn.stdpath("config") .. "/amp-extras",
+    dependencies = {
+      "sourcegraph/amp.nvim",
+      "folke/snacks.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      picker = "snacks",
+      data_dir = vim.fn.expand("~/.config/amp-extras"),
+    },
     config = function(_, opts)
-      require("amp").setup(opts)
-
-      -- Setup custom Amp commands
-      require("utils.amp.commands").setup()
+      require("amp-extras").setup(opts)
 
       -- Register which-key groups
       local wk = require("which-key")
       wk.add({
         { "<leader>a", group = "Amp", mode = { "n", "v" } },
-        { "<leader>aa", group = "Amp Agent" },
-        { "<leader>ad", group = "Amp Dash X" },
+        { "<leader>aa", group = "Agent" },
+        { "<leader>ad", group = "Dash X" },
         { "<leader>adc", group = "Categories" },
-        { "<leader>as", group = "Amp Send", mode = { "n", "v" } },
+        { "<leader>as", group = "Send", mode = { "n", "v" } },
         { "<leader>at", group = "Threads/Tools" },
-        { "<leader>al", group = "Amp Login" },
-        { "<leader>am", group = "Amp MCP" },
+        { "<leader>al", group = "Login" },
+        { "<leader>am", group = "MCP" },
         { "<leader>ama", group = "Add" },
         { "<leader>amd", group = "Doctor" },
-        { "<leader>ax", group = "Amp Session" },
-        { "<leader>ap", group = "Amp Permissions" },
+        { "<leader>ax", group = "Session" },
+        { "<leader>ap", group = "Permissions" },
       })
     end,
     keys = {
