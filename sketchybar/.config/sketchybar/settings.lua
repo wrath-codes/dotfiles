@@ -15,7 +15,7 @@ return {
 		},
 	},
 	bar = {
-		height = 36,
+		height = 24,
 		padding = {
 			x = 4,
 			y = 0,
@@ -23,7 +23,7 @@ return {
 		background = colors.transparent,
 	},
 	items = {
-		height = 26,
+		height = 20,
 		gap = 4,
 		padding = {
 			right = 18,
@@ -35,7 +35,7 @@ return {
 			return colors.rainbow[workspace + 1]
 		end,
 		highlight_color = function(workspace)
-			return colors.yellow
+			return colors.magenta
 		end,
 		colors = {
 			background = colors.bg1,
@@ -43,7 +43,7 @@ return {
 		corner_radius = 4,
 	},
 
-	icons = "sketchybar-app-font:Regular:16.0", -- alternatively available: NerdFont
+	icons = "sketchybar-app-font:Regular:10.0", -- alternatively available: NerdFont
 
 	font = {
 		text = "CaskaydiaCove Nerd Font Mono", -- Used for text

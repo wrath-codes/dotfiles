@@ -70,12 +70,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = [{ monitor."DELL P2319H" = 40 }, 10]
-outer.right = 10
+inner.horizontal = 6
+inner.vertical = 6
+outer.left = 4
+outer.bottom = 4
+outer.top = [{ monitor."DELL P2319H" = 32 }, 10]
+outer.right = 4
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -229,9 +229,21 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace 3'
 
+[[on-window-detected]] # Chrome
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]] # Zen
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace 3'
+
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 4'
+
+[[on-window-detected]] # Beekeeper Ultimate Studio
+if.app-id = 'com.beekeeper.studio'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.docker.docker'
@@ -245,6 +257,18 @@ run = 'move-node-to-workspace 6'
 if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace 6'
 
+[[on-window-detected]] # Discord
+if.app-id = 'com.discordapp.Discord'
+run = 'move-node-to-workspace 7'
+
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 9'
+
+[[on-window-detected]] # NeoHtop
+if.app-id = 'com.egi.neohtop'
+run = 'move-node-to-workspace 10'
+
+[[on-window-detected]] # Apple Notes
+if.app-id = 'com.apple.Notes'
+run = 'move-node-to-workspace 10'

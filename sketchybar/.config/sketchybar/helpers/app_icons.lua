@@ -215,4 +215,3 @@ return {
 	["Ghostty"] = ":ghostty:",
 	["default"] = ":default:",
 }
-

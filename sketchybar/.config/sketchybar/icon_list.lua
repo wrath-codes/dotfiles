@@ -167,6 +167,7 @@ return {
 		Rebel = "",
 		Cpu = "",
 		Nuke = "󰚤",
+		Bee = "󰾡",
 	},
 	vpn = {
 		On = "󰌘",
