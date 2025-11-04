@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Custom command to start PRD creation process
+
+if [ -z "$1" ]; then
+  echo "Usage: /prd <feature description>"
+  echo ""
+  echo "Example: /prd user authentication system"
+  exit 1
+fi
+
+# Get the feature description from arguments
+FEATURE_DESC="$*"
+
+# Output the prompt with the PRD template reference
+cat << EOF
+I want to create a new feature: ${FEATURE_DESC}
+
+Please follow the PRD creation process from @/Users/wrath/dotfiles/amp/.config/amp/prd/create_prd.md
+
+Start by asking me clarifying questions to gather all the necessary details before creating the PRD.
+EOF

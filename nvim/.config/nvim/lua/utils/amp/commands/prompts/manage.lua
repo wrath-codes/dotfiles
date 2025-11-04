@@ -53,12 +53,39 @@ function M.setup()
         edit = function(picker, item)
           M.edit_prompt(item.prompt_data)
         end,
+        add_prompt = function(picker, item)
+          picker:close()
+          vim.cmd("AmpDashXAdd")
+        end,
+        copy_command = function(picker, item)
+          local command = 'amp -x "' .. item.prompt_data.prompt:gsub('"', '\\"') .. '"'
+          vim.fn.setreg("+", command)
+          vim.notify("Copied command to clipboard", vim.log.levels.INFO)
+        end,
+        send_prompt = function(picker, item)
+          picker:close()
+          local cmd = "amp -x " .. vim.fn.shellescape(item.prompt_data.prompt) .. "; echo '\nPress any key to close...'; read -n 1"
+          require("snacks").terminal(cmd, {
+            win = {
+              style = "float",
+              width = 0.5,
+              height = 0.5,
+              border = "rounded",
+              title = " Amp Output ",
+              title_pos = "center",
+            },
+            interactive = true,
+          })
+        end,
       },
       win = {
         input = {
           keys = {
             ["<C-S-d>"] = { "delete", mode = { "i", "n" } },
             ["<C-S-e>"] = { "edit", mode = { "i", "n" } },
+            ["<C-S-a>"] = { "add_prompt", mode = { "i", "n" } },
+            ["<C-S-x>"] = { "send_prompt", mode = { "i", "n" } },
+            ["<C-S-c>"] = { "copy_command", mode = { "i", "n" } },
           },
         },
         list = {
@@ -89,6 +116,9 @@ function M.setup()
           "---",
           "*Press `<C-S-d>` to delete*",
           "*Press `<C-S-e>` to edit*",
+          "*Press `<C-S-a>` to add new prompt*",
+          "*Press `<C-S-x>` to execute with `amp -x`*",
+          "*Press `<C-S-c>` to copy amp command*",
         }
 
         ctx.preview:reset()
@@ -105,7 +135,7 @@ function M.setup()
           picker.hints_win = vim.api.nvim_open_win(buf, false, {
             relative = "editor",
             width = width,
-            height = 2,
+            height = 4,
             row = row,
             col = col_start,
             border = "rounded",
@@ -115,6 +145,9 @@ function M.setup()
           local hints = {
             " <C-S-d>   delete prompt",
             " <C-S-e>   edit prompt",
+            " <C-S-a>   add new prompt",
+            " <C-S-x>   execute prompt in terminal",
+            " <C-S-c>   copy amp command",
             " ?         toggle help",
           }
           local hint_lines = {}
@@ -128,12 +161,24 @@ function M.setup()
           vim.api.nvim_buf_set_lines(buf, 0, -1, false, hint_lines)
           -- Highlight keymaps and descriptions
           local ns = vim.api.nvim_create_namespace("amp_hints")
+          -- Line 0: delete + edit
           vim.hl.range(buf, ns, "SnacksPickerLabel", { 0, 0 }, { 0, 10 })
           vim.hl.range(buf, ns, "Comment", { 0, 10 }, { 0, 55 })
-          vim.hl.range(buf, ns, "SnacksPickerLabel", { 0, 55 }, { 0, 67 })
-          vim.hl.range(buf, ns, "Comment", { 0, 67 }, { 0, -1 })
-          vim.hl.range(buf, ns, "SnacksPickerLabel", { 1, 0 }, { 1, 4 })
-          vim.hl.range(buf, ns, "Comment", { 1, 4 }, { 1, -1 })
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 0, 55 }, { 0, 64 })
+          vim.hl.range(buf, ns, "Comment", { 0, 64 }, { 0, -1 })
+          -- Line 1: add new + execute
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 1, 0 }, { 1, 10 })
+          vim.hl.range(buf, ns, "Comment", { 1, 10 }, { 1, 55 })
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 1, 55 }, { 1, 64 })
+          vim.hl.range(buf, ns, "Comment", { 1, 64 }, { 1, -1 })
+          -- Line 2: copy command + toggle help
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 2, 0 }, { 2, 10 })
+          vim.hl.range(buf, ns, "Comment", { 2, 10 }, { 2, 55 })
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 2, 55 }, { 2, 60 })
+          vim.hl.range(buf, ns, "Comment", { 2, 60 }, { 2, -1 })
+          -- Line 3: toggle help (single item)
+          vim.hl.range(buf, ns, "SnacksPickerLabel", { 3, 0 }, { 3, 4 })
+          vim.hl.range(buf, ns, "Comment", { 3, 4 }, { 3, -1 })
         end
       end,
       on_close = function(picker)
@@ -180,9 +225,14 @@ function M.edit_prompt(existing)
               data.prompts[i] = form_data
               if require("utils.amp.utils.prompts").save_data(data) then
                 vim.notify("Prompt '" .. form_data.title .. "' updated", vim.log.levels.INFO)
-                -- Refresh the list
+                -- Refresh the appropriate list
                 vim.schedule(function()
-                  vim.cmd("AmpDashXManage")
+                  -- Try to refresh whichever command is most likely open
+                  -- This will work for both AmpDashXManage and AmpDashXCategories
+                  local success = pcall(vim.cmd, "AmpDashXManage")
+                  if not success then
+                    pcall(vim.cmd, "AmpDashXCategories")
+                  end
                 end)
               end
               return

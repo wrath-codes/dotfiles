@@ -6,6 +6,7 @@ function M.setup()
   require("utils.amp.commands.send.buffer").setup()
   require("utils.amp.commands.send.selection").setup()
   require("utils.amp.commands.send.ref").setup()
+  require("utils.amp.commands.send.file_ref").setup()
 
   -- Setup account commands
   require("utils.amp.commands.account.login").setup()
@@ -30,6 +31,17 @@ function M.setup()
   require("utils.amp.commands.prompts.add").setup()
   require("utils.amp.commands.prompts.manage").setup()
   require("utils.amp.commands.prompts.categories").setup()
+
+  -- Setup session commands
+  require("utils.amp.commands.session.open").setup()
+  require("utils.amp.commands.session.with_message").setup()
+  require("utils.amp.commands.session.execute").setup()
+
+  -- Setup permissions commands
+  require("utils.amp.commands.permissions.edit").setup()
+  require("utils.amp.commands.permissions.list").setup()
+  require("utils.amp.commands.permissions.test").setup()
+  require("utils.amp.commands.permissions.add").setup()
 end
 
 return M

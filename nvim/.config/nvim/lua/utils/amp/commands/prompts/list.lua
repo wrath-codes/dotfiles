@@ -177,6 +177,8 @@ end
 --- Edit prompt inline (open buffer for editing)
 ---@param item table The prompt item
 function M.edit_prompt_inline(item)
+  local prompts_utils = require("utils.amp.utils.prompts")
+  
   -- Create a temporary buffer for editing
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_name(buf, "Amp Prompt Edit")
@@ -228,6 +230,7 @@ end
 --- Change category of a prompt
 ---@param item table The prompt item
 function M.change_category(item)
+  local prompts_utils = require("utils.amp.utils.prompts")
   local current_category = item.category
   local categories = prompts_utils.get_category_names()
 

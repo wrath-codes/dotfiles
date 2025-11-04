@@ -26,6 +26,8 @@ return {
         { "<leader>am", group = "Amp MCP" },
         { "<leader>ama", group = "Add" },
         { "<leader>amd", group = "Doctor" },
+        { "<leader>ax", group = "Amp Session" },
+        { "<leader>ap", group = "Amp Permissions" },
       })
     end,
     keys = {
@@ -34,6 +36,7 @@ return {
       { "<leader>asb", "<cmd>AmpSendBuffer<cr>", desc = "Buffer" },
       { "<leader>ash", "<cmd>AmpPromptSelection<cr>", desc = "Highlighted", mode = "v" },
       { "<leader>asl", "<cmd>AmpPromptRef<cr>", desc = "Line Ref", mode = { "n", "v" } },
+      { "<leader>asf", "<cmd>AmpPromptFileRef<cr>", desc = "File Ref" },
       { "<leader>ath", "<cmd>AmpThreadsList<cr>", desc = "Threads" },
       { "<leader>ato", "<cmd>AmpToolsList<cr>", desc = "Tools" },
       { "<leader>ali", "<cmd>AmpLogin<cr>", desc = "Amp Login" },
@@ -51,6 +54,15 @@ return {
       { "<leader>ada", "<cmd>AmpDashXAdd<cr>", desc = "Add Prompt" },
       { "<leader>adm", "<cmd>AmpDashXManage<cr>", desc = "Manage Prompts" },
       { "<leader>adc", "<cmd>AmpDashXCategories<cr>", desc = "Manage Categories" },
+      { "<leader>adx", "<cmd>AmpSessionExecute<cr>", desc = "Quick Execute" },
+      -- Session commands
+      { "<leader>axb", "<cmd>AmpSessionOpen<cr>", desc = "Blank Session" },
+      { "<leader>axm", "<cmd>AmpSessionWithMessage<cr>", desc = "Session with Message" },
+      -- Permissions commands
+      { "<leader>ape", "<cmd>AmpPermissionsEdit<cr>", desc = "Edit Permissions" },
+      { "<leader>apl", "<cmd>AmpPermissionsList<cr>", desc = "List Permissions" },
+      { "<leader>apt", "<cmd>AmpPermissionsTest<cr>", desc = "Test Permissions" },
+      { "<leader>apa", "<cmd>AmpPermissionsAdd<cr>", desc = "Add Permission" },
     },
   },
 }

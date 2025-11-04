@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Custom command to start task generation from a PRD in context
+# Usage: Use this after generating a PRD in the same conversation
+
+cat << EOF
+Now that we have the PRD, let's generate tasks for it.
+
+Please follow the task generation process from @/Users/wrath/dotfiles/amp/.config/amp/prd/generate-tasks.md
+
+Start by analyzing the PRD from our conversation, assess the current state of the codebase, then generate the parent tasks and wait for my confirmation before proceeding to sub-tasks.
+EOF
