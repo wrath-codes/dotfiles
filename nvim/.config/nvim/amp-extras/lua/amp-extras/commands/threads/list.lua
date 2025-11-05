@@ -61,6 +61,9 @@ function M.setup()
 
       local hints = {
         " <C-S-c>  copy raw markdown to clipboard",
+        " <C-S-v>  change thread visibility",
+        " <Tab>    select thread",
+        " <S-Tab>  deselect thread",
         " <C-S-s>  save thread to .md file",
         " <CR>     copy thread ID to clipboard",
         " ?        toggle help",
@@ -88,6 +91,40 @@ function M.setup()
                 vim.notify("Copied raw thread markdown", vim.log.levels.INFO)
               end)
             end
+          end,
+          ["<C-S-v>"] = function(p, item)
+            local selected = p:selected()
+            local threads = #selected > 0 and selected or (item and { item } or {})
+            
+            if #threads == 0 then
+              vim.notify("No threads selected", vim.log.levels.WARN)
+              return
+            end
+            
+            vim.ui.select({ "private", "public", "workspace", "group" }, {
+              prompt = "Select thread visibility (" .. #threads .. " thread(s)):",
+            }, function(choice)
+              if choice then
+                local completed = 0
+                local total = #threads
+                
+                for _, thread in ipairs(threads) do
+                  cli.run_command(
+                    "threads share " .. vim.fn.shellescape(thread.thread_id) .. " --visibility " .. choice,
+                    function(lines)
+                      completed = completed + 1
+                      if completed == total then
+                        utils.notify_success("Thread visibility set to " .. choice .. " for " .. total .. " thread(s)")
+                        p:close()
+                        vim.schedule(function()
+                          vim.cmd("AmpThreadsList")
+                        end)
+                      end
+                    end
+                  )
+                end
+              end
+            end)
           end,
           ["<C-S-s>"] = function(p, item)
             if not item then

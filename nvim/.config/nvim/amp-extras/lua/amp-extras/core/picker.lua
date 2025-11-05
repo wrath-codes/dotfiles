@@ -27,12 +27,12 @@ local M = {}
 ---@return table layout Layout configuration
 function M.create_layout(opts)
   opts = opts or {}
-  
+
   local width = opts.width or 0.8
   local height = opts.height or 0.8
   local min_width = opts.min_width or 120
   local preview_width = opts.preview_width or 0.5
-  
+
   return {
     layout = {
       box = "horizontal",
@@ -59,14 +59,14 @@ function M.show_hints(picker, hints)
   if picker.hints_win and vim.api.nvim_win_is_valid(picker.hints_win) then
     return picker.hints_win
   end
-  
+
   local buf = vim.api.nvim_create_buf(false, true)
   local col_start = math.floor(0.1 * vim.o.columns)
   local width = math.floor(0.8 * vim.o.columns)
   local row = math.floor(0.9 * vim.o.lines)
-  
+
   local num_lines = math.ceil(#hints / 2)
-  
+
   picker.hints_win = vim.api.nvim_open_win(buf, false, {
     relative = "editor",
     width = width,
@@ -77,7 +77,7 @@ function M.show_hints(picker, hints)
     style = "minimal",
     title = " Key Hints ",
   })
-  
+
   local hint_lines = {}
   for i = 1, #hints, 2 do
     local line = hints[i]
@@ -86,27 +86,27 @@ function M.show_hints(picker, hints)
     end
     table.insert(hint_lines, line)
   end
-  
+
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, hint_lines)
-  
+
   local ns = vim.api.nvim_create_namespace("amp_hints")
   for line_idx = 0, #hint_lines - 1 do
     local base_hint_idx = line_idx * 2 + 1
-    
+
     vim.hl.range(buf, ns, "SnacksPickerLabel", { line_idx, 0 }, { line_idx, 9 })
     vim.hl.range(buf, ns, "Comment", { line_idx, 9 }, { line_idx, 55 })
-    
+
     if hints[base_hint_idx + 1] then
       local second_key_end = 64
       if hints[base_hint_idx + 1]:match("^%s*<[^>]+>") then
         second_key_end = 55 + #hints[base_hint_idx + 1]:match("^%s*(<[^>]+>)")
       end
-      
+
       vim.hl.range(buf, ns, "SnacksPickerLabel", { line_idx, 55 }, { line_idx, second_key_end })
       vim.hl.range(buf, ns, "Comment", { line_idx, second_key_end }, { line_idx, -1 })
     end
   end
-  
+
   return picker.hints_win
 end
 
@@ -126,11 +126,11 @@ end
 function M.format_actions(actions, modes)
   modes = modes or { "i", "n" }
   local formatted = {}
-  
+
   for key, action in pairs(actions) do
     formatted[key] = { action, mode = modes }
   end
-  
+
   return formatted
 end
 
@@ -139,7 +139,7 @@ end
 ---@return boolean success
 function M.show(opts)
   local config = require("amp-extras.config").get()
-  
+
   if config.picker == "snacks" then
     return M.show_snacks(opts)
   elseif config.picker == "telescope" then
@@ -159,7 +159,7 @@ function M.show_snacks(opts)
     vim.notify("amp-extras: snacks.nvim not found", vim.log.levels.ERROR)
     return false
   end
-  
+
   local picker_opts = {
     items = opts.items,
     title = opts.title,
@@ -170,19 +170,19 @@ function M.show_snacks(opts)
     on_show = opts.on_show,
     on_close = opts.on_close,
   }
-  
+
   if opts.actions then
     local named_actions = {}
     local key_mappings = {}
     local action_counter = 1
-    
+
     for key, action_fn in pairs(opts.actions) do
       local action_name = "custom_action_" .. action_counter
       named_actions[action_name] = action_fn
       key_mappings[key] = { action_name, mode = { "i", "n" } }
       action_counter = action_counter + 1
     end
-    
+
     picker_opts.actions = named_actions
     picker_opts.win = {
       input = {
@@ -195,7 +195,7 @@ function M.show_snacks(opts)
       },
     }
   end
-  
+
   snacks.picker(picker_opts)
   return true
 end
@@ -209,7 +209,7 @@ function M.show_telescope(opts)
     vim.notify("amp-extras: telescope.nvim not found", vim.log.levels.ERROR)
     return false
   end
-  
+
   vim.notify("amp-extras: Telescope backend not yet implemented", vim.log.levels.WARN)
   return false
 end

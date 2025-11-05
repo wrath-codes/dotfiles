@@ -21,7 +21,7 @@ end
 ---@return table data The loaded data {prompts = {...}, categories = {...}}
 function M.load_data()
   local storage_path = get_storage_path()
-  
+
   if vim.fn.filereadable(storage_path) == 1 then
     local content = table.concat(vim.fn.readfile(storage_path), "\n")
     local ok, parsed = pcall(vim.json.decode, content)
@@ -33,7 +33,7 @@ function M.load_data()
       return { prompts = defaults.prompts, categories = defaults.categories }
     end
   end
-  
+
   local defaults = require("amp-extras.data.defaults")
   local data = { prompts = defaults.prompts, categories = defaults.categories }
   M.save_data(data)
@@ -46,7 +46,7 @@ end
 function M.save_data(data)
   local storage_path = get_storage_path()
   ensure_directory_exists(storage_path)
-  
+
   local ok, encoded = pcall(vim.json.encode, data)
   if ok then
     local success = pcall(vim.fn.writefile, vim.split(encoded, "\n"), storage_path)
@@ -129,7 +129,7 @@ end
 function M.delete_category(category_id)
   local data = M.load_data()
   local category_name = nil
-  
+
   for i, cat in ipairs(data.categories) do
     if cat.id == category_id then
       category_name = cat.name
@@ -137,17 +137,17 @@ function M.delete_category(category_id)
       break
     end
   end
-  
+
   if not category_name then
     return false
   end
-  
+
   for _, prompt in ipairs(data.prompts) do
     if prompt.category == category_name then
       prompt.category = "Undefined"
     end
   end
-  
+
   return M.save_data(data)
 end
 

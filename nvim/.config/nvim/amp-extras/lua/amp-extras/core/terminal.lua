@@ -14,13 +14,13 @@ local M = {}
 ---@return boolean success
 function M.float_exec(cmd, opts)
   opts = opts or {}
-  
+
   local ok, snacks = pcall(require, "snacks")
   if not ok then
     vim.notify("amp-extras: snacks.nvim not found for terminal", vim.log.levels.ERROR)
     return false
   end
-  
+
   local terminal_opts = {
     win = {
       style = "float",
@@ -32,7 +32,7 @@ function M.float_exec(cmd, opts)
     },
     interactive = opts.interactive ~= false,
   }
-  
+
   snacks.terminal(cmd, terminal_opts)
   return true
 end
@@ -43,9 +43,9 @@ end
 ---@return boolean success
 function M.wait_for_key(cmd, opts)
   opts = opts or {}
-  
+
   local wrapped_cmd = cmd .. "; echo '\nPress any key to close...'; read -n 1"
-  
+
   return M.float_exec(wrapped_cmd, opts)
 end
 
@@ -56,7 +56,7 @@ end
 function M.amp_exec(args, opts)
   opts = opts or {}
   opts.title = opts.title or " Amp Output "
-  
+
   local cmd = "amp " .. args
   return M.wait_for_key(cmd, opts)
 end

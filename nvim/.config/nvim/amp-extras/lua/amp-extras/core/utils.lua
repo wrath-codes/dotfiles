@@ -83,6 +83,17 @@ function M.copy_to_clipboard(text)
   vim.notify("Copied to clipboard", vim.log.levels.INFO)
 end
 
+---Show success notification (green)
+---@param message string Message to display
+function M.notify_success(message)
+  local ok, snacks = pcall(require, "snacks")
+  if ok and snacks.notify then
+    snacks.notify(message, { level = "success" })
+  else
+    vim.notify(message, vim.log.levels.INFO)
+  end
+end
+
 ---Ensure directory exists
 ---@param path string Directory path
 ---@return boolean success

@@ -8,7 +8,12 @@ function M.setup()
       on_exit = function(_, exit_code)
         if exit_code == 0 then
           vim.schedule(function()
-            vim.notify("Amp updated successfully!", vim.log.levels.INFO)
+            local ok, snacks = pcall(require, "snacks")
+            if ok and snacks.notifier then
+              snacks.notify("Amp updated successfully!", { level = "success" })
+            else
+              vim.notify("Amp updated successfully! ✓", vim.log.levels.INFO)
+            end
           end)
         else
           vim.schedule(function()

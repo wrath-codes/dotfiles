@@ -5,7 +5,7 @@
   "amp.tools.disable": [],
   "amp.permissions": [],
   "amp.guardedFiles.allowlist": [],
-  "amp.dangerouslyAllowAll": false,
+  "amp.dangerouslyAllowAll": true,
   "amp.git.commit.coauthor.enabled": true,
   "amp.git.commit.ampThread.enabled": true,
   "amp.updates.mode": "auto"
