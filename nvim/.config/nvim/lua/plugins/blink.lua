@@ -2,6 +2,20 @@ return {
   {
     "saghen/blink.cmp",
     opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      opts.sources.default = opts.sources.default or {}
+      opts.sources.providers = opts.sources.providers or {}
+      
+      -- Add amp-extras to default sources
+      table.insert(opts.sources.default, "amp-extras")
+      
+      -- Register amp-extras provider
+      opts.sources.providers["amp-extras"] = {
+        name = "amp-extras",
+        module = "amp-extras.blink.source",
+        score_offset = 100, -- Higher priority
+      }
+      
       opts.keymap = {
         preset = "enter",
 
