@@ -1,6 +1,5 @@
 return {
-  dir = "/Users/wrath/projects/amp-extras.nvim",
-  name = "amp-extras.nvim",
+  "wrath-codes/amp-extras.nvim",
   dependencies = {
     "folke/snacks.nvim",
     "MunifTanjim/nui.nvim",
