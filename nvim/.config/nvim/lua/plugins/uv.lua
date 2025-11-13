@@ -11,22 +11,33 @@ return {
         notify_activate_venv = true,
         auto_commands = true,
         picker_integration = true,
-        
-        -- Disable default keymaps (we'll set custom ones)
-        keymaps = false,
+
+        keymaps = {
+          prefix = "<leader>v", -- Main prefix for uv commands
+          commands = true, -- Show uv commands menu
+          run_file = true, -- Run current file
+          run_selection = true, -- Run selected code
+          run_function = true, -- Run function
+          venv = true, -- Environment management
+          init = true, -- Initialize uv project
+          add = true, -- Add a package
+          remove = true, -- Remove a package
+          sync = true, -- Sync packages
+          sync_all = true, -- Sync all packages, extras and groups
+        },
+
+        -- Execution options
+        execution = {
+          -- Python run command template
+          run_command = "uv run python",
+
+          -- Show output in notifications
+          notify_output = true,
+
+          -- Notification timeout in ms
+          notification_timeout = 10000,
+        },
       })
     end,
-    keys = {
-      -- All under <leader>v* for venv/Python management
-      { "<leader>v", function() require("uv").show_commands() end, desc = "UV Commands Menu", ft = "python" },
-      { "<leader>vr", "<cmd>UVRunFile<cr>", desc = "UV Run File", ft = "python" },
-      { "<leader>vs", "<cmd>UVRunSelection<cr>", desc = "UV Run Selection", ft = "python", mode = "v" },
-      { "<leader>vf", "<cmd>UVRunFunction<cr>", desc = "UV Run Function", ft = "python" },
-      { "<leader>ve", function() require("uv").select_venv() end, desc = "UV Select Venv", ft = "python" },
-      { "<leader>vi", "<cmd>UVInit<cr>", desc = "UV Init Project", ft = "python" },
-      { "<leader>va", function() require("uv").add_package() end, desc = "UV Add Package", ft = "python" },
-      { "<leader>vd", function() require("uv").remove_package() end, desc = "UV Remove Package", ft = "python" },
-      { "<leader>vc", "<cmd>UVSync<cr>", desc = "UV Sync", ft = "python" },
-    },
   },
 }

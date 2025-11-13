@@ -39,23 +39,30 @@ end
 M.component = function()
   local harpoon = require("harpoon")
   local contents = {}
-  local marks_length = harpoon:list():length()
+  local list = harpoon:list()
   local current_file_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
   local letters = { "1", "2", "3", "4", "7", "8", "9", "0" }
+  local content_index = 1
 
-  for index = 1, math.min(marks_length, 8) do
-    local harpoon_file_path = harpoon:list():get(index).value
-    local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ":t")
+  -- Filter out nil entries and build display
+  for i = 1, list:length() do
+    local item = list:get(i)
+    if item and content_index <= 8 then
+      local harpoon_file_path = item.value
+      local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ":t")
 
-    if current_file_path == harpoon_file_path then
-      contents[index] = string.format(" %%#HarpoonNumberActive#%s %%#HarpoonActive#%s ", "[󰛢]", file_name)
-    else
-      contents[index] =
-        string.format(" %%#HarpoonNumberInactive#%s %%#HarpoonInactive#%s ", letters[index], file_name)
+      if current_file_path == harpoon_file_path then
+        contents[content_index] = string.format(" %%#HarpoonNumberActive#%s %%#HarpoonActive#%s ", "[󰛢]", file_name)
+      else
+        contents[content_index] =
+          string.format(" %%#HarpoonNumberInactive#%s %%#HarpoonInactive#%s ", letters[content_index], file_name)
+      end
+      content_index = content_index + 1
     end
   end
 
-  for index = marks_length + 1, 8 do
+  -- Fill remaining slots with empty
+  for index = content_index, 8 do
     contents[index] = string.format("%%#HarpoonNumberEmpty#%s%%#HarpoonEmpty#%s ", "[+]", "[Empty]")
   end
 

@@ -60,6 +60,7 @@ return {
         { "<leader>os", group = "Search" },
       })
     end,
+
     keys = {
       -- All Obsidian commands under <leader>o*
       -- Global commands (work from anywhere)

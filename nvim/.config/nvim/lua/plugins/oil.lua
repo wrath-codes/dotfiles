@@ -4,6 +4,9 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       default_file_explorer = true,
+      columns = {
+        "icon",
+      },
       keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
@@ -30,18 +33,29 @@ return {
           return name == ".." or name == ".git"
         end,
       },
+      watch_for_changes = true,
       float = {
         padding = 5,
-        max_width = 80,
-        max_height = 40,
+        max_width = 0.4,
+        max_height = 0.4,
         border = "rounded",
         win_options = {
+          wrap = true,
           winblend = 0,
+          winhl = "Normal:Normal,FloatBorder:DiagnosticInfo,FloatTitle:DiagnosticInfo",
         },
         preview_split = "above",
         override = function(conf)
           return conf
         end,
+      },
+      confirmation = {
+        max_width = 0.3,
+        max_height = 0.3,
+        border = "rounded",
+        win_options = {
+          winblend = 0,
+        },
       },
     },
     keys = {

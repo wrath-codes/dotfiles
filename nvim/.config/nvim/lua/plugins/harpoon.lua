@@ -9,10 +9,12 @@ return {
     config = function(_, opts)
       require("harpoon").setup(opts)
 
-      -- Register which-key group
+      -- Register which-key groups
       local wk = require("which-key")
       wk.add({
         { "<leader>h", group = "Harpoon" },
+        { "<leader>hd", group = "Harpoon Delete" },
+        { "<leader>hs", group = "Harpoon Swap" },
       })
     end,
     keys = function()
@@ -35,37 +37,133 @@ return {
           end,
           desc = "Harpoon Edit List",
         },
-        -- Remove current file from harpoon
+        -- Delete current file from harpoon
         {
-          "<leader>hd",
+          "<leader>hdc",
           function()
             local harpoon = require("harpoon")
             local list = harpoon:list()
             local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
-            for _, item in ipairs(list.items) do
-              if item.value == current_file then
-                list:remove(item)
-                vim.notify("󰛢 removed from harpoon", vim.log.levels.INFO)
-                break
+
+            local _, idx = list:get_by_value(current_file)
+            if idx then
+              list:remove_at(idx)
+              -- Compact items array by removing nils
+              local new_items = {}
+              for i = 1, list:length() do
+                if list.items[i] then
+                  table.insert(new_items, list.items[i])
+                end
               end
+              list.items = new_items
+              harpoon:sync()
+              vim.notify("󰛢 removed from harpoon", vim.log.levels.INFO)
             end
           end,
-          desc = "Harpoon Remove Current",
+          desc = "Delete Current",
+        },
+        -- Delete previous file from harpoon
+        {
+          "<leader>hdp",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+            local _, idx = list:get_by_value(current_file)
+            if idx and idx > 1 then
+              list:remove_at(idx - 1)
+              -- Compact items array by removing nils
+              local new_items = {}
+              for i = 1, list:length() do
+                if list.items[i] then
+                  table.insert(new_items, list.items[i])
+                end
+              end
+              list.items = new_items
+              harpoon:sync()
+              vim.notify("󰛢 removed from harpoon", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Delete Previous",
+        },
+        -- Delete next file from harpoon
+        {
+          "<leader>hdn",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+            local _, idx = list:get_by_value(current_file)
+            if idx and idx < list:length() then
+              list:remove_at(idx + 1)
+              -- Compact items array by removing nils
+              local new_items = {}
+              for i = 1, list:length() do
+                if list.items[i] then
+                  table.insert(new_items, list.items[i])
+                end
+              end
+              list.items = new_items
+              harpoon:sync()
+              vim.notify("󰛢 removed from harpoon", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Delete Next",
         },
         -- Previous/Next in harpoon list
         {
-          "<C-S-P>",
+          "<leader>hp",
           function()
             require("harpoon"):list():prev()
           end,
           desc = "Harpoon Prev",
         },
         {
-          "<C-S-N>",
+          "<leader>hn",
           function()
             require("harpoon"):list():next()
           end,
           desc = "Harpoon Next",
+        },
+        -- Swap with next
+        {
+          "<leader>hsn",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+            local _, idx = list:get_by_value(current_file)
+
+            if idx and idx < list:length() then
+              local temp = list.items[idx]
+              list.items[idx] = list.items[idx + 1]
+              list.items[idx + 1] = temp
+              harpoon:sync()
+              vim.notify("󰛢 swapped with next", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Swap with Next",
+        },
+        -- Swap with previous
+        {
+          "<leader>hsp",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+            local _, idx = list:get_by_value(current_file)
+
+            if idx and idx > 1 then
+              local temp = list.items[idx]
+              list.items[idx] = list.items[idx - 1]
+              list.items[idx - 1] = temp
+              harpoon:sync()
+              vim.notify("󰛢 swapped with previous", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Swap with Previous",
         },
       }
 
