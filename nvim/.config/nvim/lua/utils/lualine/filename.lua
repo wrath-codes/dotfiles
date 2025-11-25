@@ -5,8 +5,9 @@ function M.setup()
     "filename",
     file_status = true,
     newfile_status = true,
-    path = 1,
-    shorting_target = 40,
+    path = 4,
+    separator = { left = "", right = "" },
+    shorting_target = 20,
     symbols = {
       modified = "[+]",
       readonly = "[-]",

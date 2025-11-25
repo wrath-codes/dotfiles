@@ -6,10 +6,16 @@ return {
     name = "catppuccin",
     opts = {
       flavour = "mocha",
-      transparent_background = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
+      -- transparent_background = true,
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
+      integrations = {
+        navic = {
+          enabled = true,
+          custom_bg = "NONE", -- "lualine" will set background to mantle
+        },
       },
       custom_highlights = function(colors)
         return {

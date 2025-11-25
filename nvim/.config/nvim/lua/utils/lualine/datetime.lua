@@ -3,7 +3,7 @@ local M = {}
 function M.setup()
   return {
     "datetime",
-    format = "%d/%m/%Y %H:%M:%S",
+    format = "%dd/%MM/%yyyy %H:%M",
   }
 end
 

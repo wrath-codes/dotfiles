@@ -88,54 +88,40 @@ return {
 
 -- amp-extras-rs (Rust implementation)
 return {
-  dir = "/Users/wrath/projects/amp-extras-rs",
-  name = "amp-extras-rs",
+  dir = "/Users/wrath/projects/amp-extras.nvim",
+  name = "amp-extras.nvim",
   lazy = false,
+  dependencies = { "sourcegraph/amp.nvim" },
+  -- opts = {
+  --   -- prefix = "<leader>a", -- Default prefix
+  --   keymaps = {
+  --     -- Send commands (true = enable with default keymap, string = custom keymap, false = disable)
+  --     send_selection = true, -- <leader>ash
+  --     send_selection_ref = true, -- <leader>asl
+  --     send_buffer = true, -- <leader>asb
+  --     send_file_ref = true, -- <leader>asf
+  --     send_line_ref = true, -- <leader>asr
+  --     send_message = true, -- <leader>asm
+  --     login = true, -- <leader>ali
+  --     logout = true, -- <leader>alo
+  --     update = true, -- <leader>au
+  --   },
+  --   lualine = {
+  --     enabled = true,
+  --   },
+  -- },
+  -- config = function(_, opts)
   config = function()
-    -- Auto-start WebSocket server when Neovim starts
-    local amp = require('amp_extras')
-    
-    -- Start server
-    local result, err = amp.server_start()
-    if err then
-      vim.notify("amp-extras: Failed to start server: " .. err, vim.log.levels.ERROR)
-      return
-    end
-    
-    if result then
-      -- Setup notifications
-      local notif_result, notif_err = amp.setup_notifications()
-      if notif_err then
-        vim.notify("amp-extras: Failed to setup notifications: " .. notif_err, vim.log.levels.WARN)
-      end
-      
-      vim.notify(
-        string.format("amp-extras: WebSocket server started on port %d", result.port),
-        vim.log.levels.INFO
-      )
-    end
+    require("amp_extras").setup({})
 
     -- Register which-key groups
     local wk = require("which-key")
     wk.add({
       { "<leader>a", group = "Amp", mode = { "n", "v" } },
       { "<leader>as", group = "Send", mode = { "n", "v" } },
-      { "<leader>ax", group = "Server" },
+      { "<leader>al", group = "Account" },
+      { "<leader>ap", group = "Prompts" },
+      { "<leader>ai", group = "Interactive" },
     })
   end,
-  keys = {
-    -- Send commands (visual mode) - Now using Rust-registered commands
-    { "<leader>ash", ":'<,'>AmpSendSelection<cr>", desc = "Selection (Content)", mode = "v" },
-    { "<leader>asl", ":'<,'>AmpSendSelectionRef<cr>", desc = "Selection (Ref)", mode = "v" },
-
-    -- Send commands (normal mode) - Now using Rust-registered commands
-    { "<leader>asb", "<cmd>AmpSendBuffer<cr>", desc = "Buffer (Content)" },
-    { "<leader>asf", "<cmd>AmpSendFileRef<cr>", desc = "File (Ref)" },
-    { "<leader>asr", "<cmd>AmpSendLineRef<cr>", desc = "Line (Ref)" },
-
-    -- Server commands
-    { "<leader>axs", "<cmd>AmpServerStart<cr>", desc = "Start Server" },
-    { "<leader>axx", "<cmd>AmpServerStop<cr>", desc = "Stop Server" },
-    { "<leader>axc", "<cmd>AmpServerStatus<cr>", desc = "Server Status" },
-  },
 }

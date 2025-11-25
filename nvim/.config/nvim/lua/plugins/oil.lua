@@ -50,8 +50,9 @@ return {
         end,
       },
       confirmation = {
-        max_width = 0.3,
-        max_height = 0.3,
+        max_width = 0.4,
+        min_width = 0.2,
+        max_height = 0.2,
         border = "rounded",
         win_options = {
           winblend = 0,

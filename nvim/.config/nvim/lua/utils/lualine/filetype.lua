@@ -5,7 +5,9 @@ function M.setup()
     "filetype",
     colored = true,
     icon_only = true,
-    icon = { align = "left" },
+    icon = { align = "right", separator = "" },
+    padding = { left = 1, right = 0 },
+    separator = { left = "", right = "" },
     function()
       local filetype = vim.bo.filetype
       local upper_case_filetypes = {

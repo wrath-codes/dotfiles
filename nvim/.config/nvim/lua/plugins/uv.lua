@@ -36,6 +36,8 @@ return {
 
           -- Notification timeout in ms
           notification_timeout = 10000,
+
+          terminal = "vsplit",
         },
       })
     end,

@@ -1,29 +1,24 @@
 local M = {}
 
 function M.setup()
-  local harpoon = require("harpoon")
-
   -- Define visual settings for harpoon tabline with Catppuccin Mocha colors
+  local catppuccin = require("catppuccin.palettes").get_palette("mocha")
   local harpoon_colors = {
     active = {
-      text = "#cba6f7", -- Mauve
-      number = "#fab387", -- Peach
+      text = catppuccin.mauve, -- Mauve
+      number = catppuccin.peach,
     },
     inactive = {
-      text = "#6c7086", -- Surface2
-      number = "#9399b2", -- Overlay1
+      text = catppuccin.surface2, -- Surface2
+      number = catppuccin.overlay1, -- Overlay1
     },
-    grey = "#6c7086",
-    transparent = nil,
+    grey = catppuccin.overlay1, -- Overlay1
+    transparent = catppuccin.none,
   }
 
   vim.api.nvim_set_hl(0, "HarpoonInactive", { fg = harpoon_colors.inactive.text, bg = harpoon_colors.transparent })
   vim.api.nvim_set_hl(0, "HarpoonActive", { fg = harpoon_colors.active.text, bg = harpoon_colors.transparent })
-  vim.api.nvim_set_hl(
-    0,
-    "HarpoonNumberActive",
-    { fg = harpoon_colors.active.number, bg = harpoon_colors.transparent }
-  )
+  vim.api.nvim_set_hl(0, "HarpoonNumberActive", { fg = harpoon_colors.active.number, bg = harpoon_colors.transparent })
   vim.api.nvim_set_hl(
     0,
     "HarpoonNumberInactive",

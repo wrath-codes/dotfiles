@@ -112,6 +112,81 @@ return {
           end,
           desc = "Delete Next",
         },
+        -- Delete all harpoons to the left
+        {
+          "<leader>hdl",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+            local _, idx = list:get_by_value(current_file)
+            if idx then
+              -- Remove all items before current index
+              for i = idx - 1, 1, -1 do
+                list.items[i] = nil
+              end
+              -- Compact items array by removing nils
+              local new_items = {}
+              for i = 1, list:length() do
+                if list.items[i] then
+                  table.insert(new_items, list.items[i])
+                end
+              end
+              list.items = new_items
+              harpoon:sync()
+              vim.notify("󰛢 deleted all to the left", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Delete All Left",
+        },
+        -- Delete all harpoons to the right
+        {
+          "<leader>hdr",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+            local _, idx = list:get_by_value(current_file)
+            if idx then
+              -- Remove all items after current index
+              for i = list:length(), idx + 1, -1 do
+                list.items[i] = nil
+              end
+              -- Compact items array by removing nils
+              local new_items = {}
+              for i = 1, list:length() do
+                if list.items[i] then
+                  table.insert(new_items, list.items[i])
+                end
+              end
+              list.items = new_items
+              harpoon:sync()
+              vim.notify("󰛢 deleted all to the right", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Delete All Right",
+        },
+        -- Delete all other harpoons
+        {
+          "<leader>hdo",
+          function()
+            local harpoon = require("harpoon")
+            local list = harpoon:list()
+            local current_file = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+            local _, idx = list:get_by_value(current_file)
+            if idx then
+              -- Keep only current item, remove all others
+              local current_item = list.items[idx]
+              list.items = { current_item }
+              harpoon:sync()
+              vim.notify("󰛢 deleted all others", vim.log.levels.INFO)
+            end
+          end,
+          desc = "Delete All Others",
+        },
         -- Previous/Next in harpoon list
         {
           "<leader>hp",

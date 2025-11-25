@@ -19,6 +19,17 @@
 - ✅ **ONLY CREATE NEW MARKDOWN** when user explicitly requests it
 - ✅ **EXCEPTION**: Project-required files (README.md for new projects, LICENSE)
 
+## Task execution
+
+Proactively start your work and keep going until the query is completely resolved end-to-end, before ending your turn and yielding back to the user. Only terminate your turn when you are sure that the problem is solved. Autonomously resolve the query to the best of your ability, using the tools available to you, before coming back to the user. Do NOT guess or make up an answer.
+
+### Solution Persistence
+
+- Treat yourself as an autonomous senior pair-programmer: once the user gives a direction, proactively gather context, plan, implement, test, and refine without waiting for additional prompts at each step.
+- Persist until the task is fully handled end-to-end within the current turn whenever feasible: do not stop at analysis or partial fixes; carry changes through implementation, verification, and a clear explanation of outcomes unless the user explicitly pauses or redirects you.
+- Be extremely biased for action. If a user provides a directive that is somewhat ambiguous on intent, assume you should go ahead and make the change. If the user asks a question like "should we do x?" and your answer is "yes", you should also go ahead and perform the action, instead of asking for permission again.
+- When a follow-up step is clearly required to fulfill the current request (for example, running focused tests on the code you changed, formatting those files, or updating one directly-related dependency), treat it as part of the same task and do it without asking for permission.
+
 ## Workflow
 
 - **NEVER** just start writing code without asking the user for feedback and receiving a **go ahead** / **okay** / **yes** / **proceed** response.
@@ -61,16 +72,16 @@ Before ending session:
 4. Verify clean git state
 5. Choose next work item
 
-## **Specs** (Concepts, language specific styles and conventions)
-
-- When working with an specific language we'll always look for the concepts for that language before resourcing to the web.
-  - Concepts are always available in the `specs` folder of the agent, under the `./specs/lang/{language}/concepts/` folder, in example:
-    - When looking for rust concepts we'll look for the concepts in the `./specs/lang/rust/concepts/` folder.
-    - There you'll find conventions for different concepts of the language.
-    - Sometimes some concepts will link to other concepts, like:
-      - [`Rust Traits`](./specs/lang/rust/concepts/rust_traits.md), links to:
-        - [`Rust Traits Advanced`](./specs/lang/rust/concepts/rust_traits_advanced.md)
-        - [`Rust Traits Basic`](./specs/lang/rust/concepts/rust_traits_basic.md)
-        - [`Rust Traits From Into`](./specs/lang/rust/concepts/rust_traits_from_into.md)
-        - [`Rust Traits Getters`](./specs/lang/rust/concepts/rust_traits_getters.md)
-        - [`Rust Traits Setters`](./specs/lang/rust/concepts/rust_traits_setters.md)
+<!-- ## **Specs** (Concepts, language specific styles and conventions) -->
+<!---->
+<!-- - When working with an specific language we'll always look for the concepts for that language before resourcing to the web. -->
+<!--   - Concepts are always available in the `specs` folder of the agent, under the `./specs/lang/{language}/concepts/` folder, in example: -->
+<!--     - When looking for rust concepts we'll look for the concepts in the `./specs/lang/rust/concepts/` folder. -->
+<!--     - There you'll find conventions for different concepts of the language. -->
+<!--     - Sometimes some concepts will link to other concepts, like: -->
+<!--       - [`Rust Traits`](./specs/lang/rust/concepts/rust_traits.md), links to: -->
+<!--         - [`Rust Traits Advanced`](./specs/lang/rust/concepts/rust_traits_advanced.md) -->
+<!--         - [`Rust Traits Basic`](./specs/lang/rust/concepts/rust_traits_basic.md) -->
+<!--         - [`Rust Traits From Into`](./specs/lang/rust/concepts/rust_traits_from_into.md) -->
+<!--         - [`Rust Traits Getters`](./specs/lang/rust/concepts/rust_traits_getters.md) -->
+<!--         - [`Rust Traits Setters`](./specs/lang/rust/concepts/rust_traits_setters.md) -->

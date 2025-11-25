@@ -1,22 +1,22 @@
 {
   "amp.dangerouslyAllowAll": true,
   "amp.experimental.planMode": true,
+  "amp.experimental.dojoMode": true,
+  "amp.tryOpus": true,
   "amp.experimental.tools": [
     "codemod"
   ],
   "amp.git.commit.ampThread.enabled": true,
   "amp.git.commit.coauthor.enabled": true,
-  "amp.guardedFiles.allowlist": {},
-  "amp.internal.visibleModes": [
-    "free-next2"
-  ],
+  "amp.guardedFiles.allowlist": {
+    ".env": true
+  },
+  "amp.internal.visibleModes": [],
   "amp.mcpServers": {},
   "amp.notifications.enabled": true,
   "amp.notifications.system.enabled": true,
   "amp.permissions": [],
   "amp.mcpPermissions": [],
-  "amp.tools.disable": [
-    "semgrep_scan"
-  ],
+  "amp.tools.disable": [],
   "amp.updates.mode": "auto"
 }

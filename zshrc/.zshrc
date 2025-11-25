@@ -189,8 +189,12 @@ eval "$(uvx --generate-shell-completion zsh)"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/mc mc
+
+# :-$LANG prevents the export setting from breaking iTerm2.
+export LANG="${LC_ALL:-$LANG}"
+unset LC_ALL
 
 fastfetch
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/mc mc
