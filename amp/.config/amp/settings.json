@@ -1,4 +1,5 @@
 {
+  "amp.toolbox.path": "~/.config/amp/tools",
   "amp.dangerouslyAllowAll": true,
   "amp.experimental.planMode": true,
   "amp.experimental.dojoMode": true,
@@ -12,11 +13,15 @@
     ".env": true
   },
   "amp.internal.visibleModes": [],
-  "amp.mcpServers": {},
   "amp.notifications.enabled": true,
   "amp.notifications.system.enabled": true,
   "amp.permissions": [],
   "amp.mcpPermissions": [],
   "amp.tools.disable": [],
-  "amp.updates.mode": "auto"
+  "amp.updates.mode": "auto",
+  "amp.mcpServers": {
+    "ref": {
+      "url": "https://api.ref.tools/mcp?apiKey=ref-5b97ef71875f72153b3d"
+    }
+  }
 }

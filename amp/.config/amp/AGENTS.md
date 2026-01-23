@@ -42,36 +42,6 @@ Proactively start your work and keep going until the query is completely resolve
   5. If there are any questions or uncertainties, ask the user for clarification.
 - If **not**, ask the user how to proceed with the conversation, what's the next step, and what to do next.
 
-## **Beads** (Issue Tracking & Memory System)
-
-- **Beads is your project memory.** Use `bd` commands to track all work instead of scattered TODOs.
-- **Always use `--json` flag** for programmatic integration.
-
-### Commands
-
-- `bd list --json` - View all issues
-- `bd ready --json` - Show unblocked tasks ready to work on
-- `bd create "task title" --json` - Create new issue
-- `bd update <id> --status <status> --json` - Update issue (status: open, in_progress, closed)
-- `bd dep add <child-id> <parent-id> --type <type> --json` - Link dependencies (types: blocks, related, discovered-from)
-
-### Session Workflow
-
-1. Start: `bd ready --json` to see available work
-2. Work: `bd update <id> --status in_progress`
-3. Discover new work: `bd create` and link with `bd dep add`
-4. Complete: `bd update <id> --status closed`
-
-### Landing the Plane Protocol
-
-Before ending session:
-
-1. File/update all discovered issues
-2. Run quality gates (tests, linters)
-3. Commit `.beads/issues.jsonl` changes
-4. Verify clean git state
-5. Choose next work item
-
 <!-- ## **Specs** (Concepts, language specific styles and conventions) -->
 <!---->
 <!-- - When working with an specific language we'll always look for the concepts for that language before resourcing to the web. -->
