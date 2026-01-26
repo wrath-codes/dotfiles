@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     "obsidian-nvim/obsidian.nvim",
@@ -56,7 +58,7 @@ return {
       -- Register which-key groups
       local wk = require("which-key")
       wk.add({
-        { "<leader>o", group = "Obsidian" },
+        { "<leader>o",  group = "Obsidian" },
         { "<leader>os", group = "Search" },
       })
     end,
@@ -64,23 +66,23 @@ return {
     keys = {
       -- All Obsidian commands under <leader>o*
       -- Global commands (work from anywhere)
-      { "<leader>oo", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian Quick Switch" },
-      { "<leader>osa", "<cmd>ObsidianSearchAll<cr>", desc = "Search All" },
+      { "<leader>oo",  "<cmd>ObsidianQuickSwitch<cr>",    desc = "Obsidian Quick Switch" },
+      { "<leader>osa", "<cmd>ObsidianSearchAll<cr>",      desc = "Search All" },
       { "<leader>oss", "<cmd>ObsidianSearchSnippets<cr>", desc = "Search Snippets" },
 
       -- Markdown-only commands
-      { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "Obsidian New Note", ft = "markdown" },
-      { "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Obsidian Today", ft = "markdown" },
-      { "<leader>od", "<cmd>ObsidianYesterday<cr>", desc = "Obsidian Yesterday", ft = "markdown" },
-      { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Obsidian Backlinks", ft = "markdown" },
-      { "<leader>ol", "<cmd>ObsidianLinks<cr>", desc = "Obsidian Links", ft = "markdown" },
-      { "<leader>oc", "<cmd>ObsidianToggleCheckbox<cr>", desc = "Obsidian Toggle Checkbox", ft = "markdown" },
-      { "<leader>oa", "<cmd>ObsidianOpen<cr>", desc = "Obsidian Open in App", ft = "markdown" },
-      { "<leader>oT", "<cmd>ObsidianTemplate<cr>", desc = "Obsidian Template", ft = "markdown" },
-      { "<leader>of", "<cmd>ObsidianFollowLink<cr>", desc = "Obsidian Follow Link", ft = "markdown" },
+      { "<leader>on",  "<cmd>ObsidianNew<cr>",            desc = "Obsidian New Note",        ft = "markdown" },
+      { "<leader>ot",  "<cmd>ObsidianToday<cr>",          desc = "Obsidian Today",           ft = "markdown" },
+      { "<leader>od",  "<cmd>ObsidianYesterday<cr>",      desc = "Obsidian Yesterday",       ft = "markdown" },
+      { "<leader>ob",  "<cmd>ObsidianBacklinks<cr>",      desc = "Obsidian Backlinks",       ft = "markdown" },
+      { "<leader>ol",  "<cmd>ObsidianLinks<cr>",          desc = "Obsidian Links",           ft = "markdown" },
+      { "<leader>oc",  "<cmd>ObsidianToggleCheckbox<cr>", desc = "Obsidian Toggle Checkbox", ft = "markdown" },
+      { "<leader>oa",  "<cmd>ObsidianOpen<cr>",           desc = "Obsidian Open in App",     ft = "markdown" },
+      { "<leader>oT",  "<cmd>ObsidianTemplate<cr>",       desc = "Obsidian Template",        ft = "markdown" },
+      { "<leader>of",  "<cmd>ObsidianFollowLink<cr>",     desc = "Obsidian Follow Link",     ft = "markdown" },
 
       -- Custom snippet capture (visual mode)
-      { "<leader>oy", ":'<,'>ObsidianYankSnippet<cr>", desc = "Obsidian Yank Snippet", mode = "v" },
+      { "<leader>oy",  ":'<,'>ObsidianYankSnippet<cr>",   desc = "Obsidian Yank Snippet",    mode = "v" },
     },
   },
 }

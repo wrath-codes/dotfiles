@@ -35,5 +35,6 @@
     },
     "editor.codeActionsOnSave": {
 
-    }
+    },
+    "amp.experimental.reviewSubagent": true,
 }

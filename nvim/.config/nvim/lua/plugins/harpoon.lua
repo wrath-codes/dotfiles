@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     "ThePrimeagen/harpoon",
@@ -12,7 +14,7 @@ return {
       -- Register which-key groups
       local wk = require("which-key")
       wk.add({
-        { "<leader>h", group = "Harpoon" },
+        { "<leader>h",  group = "Harpoon" },
         { "<leader>hd", group = "Harpoon Delete" },
         { "<leader>hs", group = "Harpoon Swap" },
       })

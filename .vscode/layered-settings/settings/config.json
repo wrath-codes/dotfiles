@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": [
+    "./base.json",
+    "amp.json"
+  ],
+  "settings": {
+
+  }
+}

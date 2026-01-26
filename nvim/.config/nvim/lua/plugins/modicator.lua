@@ -1,22 +1,22 @@
+if vim.g.vscode then return {} end
+
 return {
-  {
-    "mawkler/modicator.nvim",
-    event = "BufEnter",
-    dependencies = "catppuccin/nvim",
-    opts = {
-      show_warnings = false,
-      highlights = {
-        defaults = {
-          bold = true,
-          italic = false,
-        },
+  "mawkler/modicator.nvim",
+  event = "BufEnter",
+  dependencies = "catppuccin/nvim",
+  opts = {
+    show_warnings = false,
+    highlights = {
+      defaults = {
+        bold = true,
+        italic = false,
       },
-      integration = {
-        lualine = {
-          enabled = true,
-          mode_section = nil,
-          highlight = "bg",
-        },
+    },
+    integration = {
+      lualine = {
+        enabled = true,
+        mode_section = nil,
+        highlight = "bg",
       },
     },
   },

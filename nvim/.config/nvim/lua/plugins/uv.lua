@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     "benomahony/uv.nvim",
@@ -14,16 +16,16 @@ return {
 
         keymaps = {
           prefix = "<leader>v", -- Main prefix for uv commands
-          commands = true, -- Show uv commands menu
-          run_file = true, -- Run current file
+          commands = true,      -- Show uv commands menu
+          run_file = true,      -- Run current file
           run_selection = true, -- Run selected code
-          run_function = true, -- Run function
-          venv = true, -- Environment management
-          init = true, -- Initialize uv project
-          add = true, -- Add a package
-          remove = true, -- Remove a package
-          sync = true, -- Sync packages
-          sync_all = true, -- Sync all packages, extras and groups
+          run_function = true,  -- Run function
+          venv = true,          -- Environment management
+          init = true,          -- Initialize uv project
+          add = true,           -- Add a package
+          remove = true,        -- Remove a package
+          sync = true,          -- Sync packages
+          sync_all = true,      -- Sync all packages, extras and groups
         },
 
         -- Execution options

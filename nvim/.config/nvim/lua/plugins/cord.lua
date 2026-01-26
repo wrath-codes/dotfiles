@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     'vyfor/cord.nvim',

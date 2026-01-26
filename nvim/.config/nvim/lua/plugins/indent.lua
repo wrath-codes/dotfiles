@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   "saghen/blink.indent",
   --- @module 'blink.indent'

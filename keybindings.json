@@ -325,6 +325,17 @@
     "key": "ctrl+g",
     "command": "workbench.panel.chat.view.copilot.focus",
     "when": "editorFocus"
+  },
+  // Editor Tab Navigation (Normal Mode)
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal' && !suggestWidgetVisible && !codeActionMenuVisible"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal' && !suggestWidgetVisible && !codeActionMenuVisible"
   }
 ]
 

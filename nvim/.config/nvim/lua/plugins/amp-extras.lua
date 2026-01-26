@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return {}
+end
+
 -- TEMPORARILY DISABLED: Migrating to amp-extras-rs (Rust implementation)
 -- Uncomment this when you want to switch back to the Lua version
 --[[
@@ -88,8 +92,9 @@ return {
 
 -- amp-extras-rs (Rust implementation)
 return {
-  dir = "/Users/wrath/projects/amp-extras.nvim",
-  name = "amp-extras.nvim",
+  -- dir = "/Users/wrath/projects/amp-extras.nvim",
+  -- name = "amp-extras.nvim",
+  "wrath-codes/amp-extras.nvim",
   lazy = false,
   dependencies = { "sourcegraph/amp.nvim" },
   -- opts = {
@@ -112,16 +117,24 @@ return {
   -- },
   -- config = function(_, opts)
   config = function()
-    require("amp_extras").setup({})
+    require("amp_extras").setup({
+      -- AmpTab v2 is enabled by default (features.amptab = true)
+      -- Uncomment to customize:
+      -- amptab = {
+      --   debounce_ms = 200,
+      --   render_mode = "smart", -- "ghost_text", "diff_preview", or "smart"
+      -- },
+    })
 
     -- Register which-key groups
     local wk = require("which-key")
     wk.add({
-      { "<leader>a", group = "Amp", mode = { "n", "v" } },
-      { "<leader>as", group = "Send", mode = { "n", "v" } },
+      { "<leader>a",  group = "Amp",        mode = { "n", "v" } },
+      { "<leader>as", group = "Send",       mode = { "n", "v" } },
       { "<leader>al", group = "Account" },
       { "<leader>ap", group = "Prompts" },
       { "<leader>ai", group = "Interactive" },
+      { "ga",         group = "AmpTab" },
     })
   end,
 }

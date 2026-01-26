@@ -196,5 +196,12 @@ complete -o nospace -C /opt/homebrew/bin/mc mc
 export LANG="${LC_ALL:-$LANG}"
 unset LC_ALL
 
+export AMP_API_KEY="sgamp_user_01JX1JQVY1MG9G5FQP0R657HEQ_1f087f1078d36c850c5cc7cd13bf900c6f2fb00f5c77d6acc0becbb45273118c"
+
 fastfetch
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/wrath/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

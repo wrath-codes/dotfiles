@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     "saghen/blink.cmp",
@@ -6,28 +8,31 @@ return {
       opts.sources.default = opts.sources.default or {}
       opts.sources.providers = opts.sources.providers or {}
 
-      -- TEMPORARILY DISABLED: Migrating to amp-extras-rs
-      -- Add amp-extras to default sources
-      -- table.insert(opts.sources.default, "amp-extras")
+      -- amp-extras @ mentions (for message buffers)
+      table.insert(opts.sources.default, "amp")
+      opts.sources.providers["amp"] = {
+        name = "amp",
+        module = "amp_extras.blink.source",
+        score_offset = 100,
+      }
 
-      -- Register amp-extras provider
-      -- opts.sources.providers["amp-extras"] = {
-      --   name = "amp-extras",
-      --   module = "amp-extras.blink.source",
-      --   score_offset = 100, -- Higher priority
-      -- }
+      -- AmpTab is now standalone ghost text (not a blink.cmp source)
+      -- Keymaps are set by amp_extras.amptab.setup() with default_keymaps = true:
+      --   gan/gap/gaa/gad/gat (normal mode)
+      --   <C-a>/<C-l>/<C-w> (insert mode)
 
       opts.keymap = {
         preset = "enter",
 
-        -- CRITICAL: Navigate with C-j/C-k (NOT Tab/S-Tab)
+        -- Navigate with C-j/C-k
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
 
-        -- Accept with Enter
+        -- Accept with Enter or Tab
         ["<CR>"] = { "accept", "fallback" },
+        ["<Tab>"] = { "accept", "fallback" },
 
-        -- Show/hide (C-y for show, C-e for hide)
+        -- Show/hide
         ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide" },
 

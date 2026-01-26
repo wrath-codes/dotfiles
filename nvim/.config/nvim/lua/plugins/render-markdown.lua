@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 -- Filename: ~/github/dotfiles-latest/neovim/neobean/lua/plugins/render-markdown.lua
 -- ~/github/dotfiles-latest/neovim/neobean/lua/plugins/render-markdown.lua
 

@@ -1,3 +1,5 @@
+if vim.g.vscode then return {} end
+
 return {
   {
     "folke/snacks.nvim",
@@ -18,11 +20,11 @@ return {
     },
     keys = {
       -- Disable default <leader>. for scratch buffer (we use it for code actions)
-      { "<leader>.", false },
-      { "<leader>S", false },
+      { "<leader>.",  false },
+      { "<leader>S",  false },
 
       -- Disable default <leader>e (we'll remap it)
-      { "<leader>E", false },
+      { "<leader>E",  false },
       { "<leader>fe", false },
       { "<leader>fE", false },
 
@@ -30,7 +32,10 @@ return {
       {
         "<leader>e",
         function()
-          require("snacks").explorer()
+          require("snacks").explorer({
+            hidden = true,
+            ignored = true,
+          })
         end,
         desc = "Explorer (Snacks)",
       },
