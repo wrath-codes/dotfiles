@@ -1,11 +1,12 @@
 {
   "amp.toolbox.path": "~/.config/amp/tools",
   "amp.dangerouslyAllowAll": true,
-  "amp.experimental.planMode": true,
-  "amp.experimental.dojoMode": true,
   "amp.tryOpus": true,
   "amp.experimental.tools": [
     "codemod"
+  ],
+  "amp.experimental.modes": [
+    "bombadil"
   ],
   "amp.git.commit.ampThread.enabled": true,
   "amp.git.commit.coauthor.enabled": true,
@@ -22,6 +23,18 @@
   "amp.mcpServers": {
     "ref": {
       "url": "https://api.ref.tools/mcp?apiKey=ref-5b97ef71875f72153b3d"
+    },
+    "duckdb": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-motherduck",
+        "--db-path",
+        ":memory:",
+        "--read-write",
+        "--allow-switch-databases"
+      ]
     }
-  }
+  },
+  "amp.terminal.theme": "catppuccin-mocha",
+  "amp.skills.path": "~/.config/amp/skills/"
 }
