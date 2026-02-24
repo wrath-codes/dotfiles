@@ -35,6 +35,6 @@
       ]
     }
   },
-  "amp.terminal.theme": "catppuccin-mocha",
+  "amp.terminal.theme": "terminal",
   "amp.skills.path": "~/.config/amp/skills/"
 }

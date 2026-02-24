@@ -192,6 +192,12 @@ eval "$(uvx --generate-shell-completion zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/mc mc
 
+# GO
+export PATH="/opt/homebrew/bin:$PATH"
+export GOROOT="/opt/homebrew/opt/go/libexec"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 # :-$LANG prevents the export setting from breaking iTerm2.
 export LANG="${LC_ALL:-$LANG}"
 unset LC_ALL
@@ -205,3 +211,6 @@ fpath=(/Users/wrath/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# bun completions
+[ -s "/Users/wrath/.bun/_bun" ] && source "/Users/wrath/.bun/_bun"

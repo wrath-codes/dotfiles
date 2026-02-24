@@ -23,6 +23,9 @@ require("lazy").setup({
     -- Primary Languages (Python/Rust focused)
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.rust" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.elixir" },
+    { import = "lazyvim.plugins.extras.lang.zig" },
 
     -- Web Development
     { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -45,6 +48,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typst" },
     { import = "lazyvim.plugins.extras.lang.git" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
 
     -- Completion Engine
     { import = "lazyvim.plugins.extras.coding.blink" },

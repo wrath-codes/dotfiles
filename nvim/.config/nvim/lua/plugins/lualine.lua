@@ -1,4 +1,6 @@
-if vim.g.vscode then return {} end
+if vim.g.vscode then
+  return {}
+end
 
 return {
 
@@ -11,7 +13,7 @@ return {
     local diff_component = require("utils.lualine.diff").setup()
     local filetype_component = require("utils.lualine.filetype").setup()
     local amp_component = require("amp_extras.lualine").component()
-    local amptab_component = require("amp_extras.amptab_v2.status").component()
+    -- local amptab_component = require("amp_extras.amptab_v2.status").component()
     local date_component = require("utils.lualine.date").setup()
     local time_component = require("utils.lualine.time").setup()
 
@@ -69,7 +71,7 @@ return {
           padding = { left = 0, right = 1 },
         },
         amp_component,
-        amptab_component,
+        -- amptab_component,
         {
           time_component,
           separator = {
