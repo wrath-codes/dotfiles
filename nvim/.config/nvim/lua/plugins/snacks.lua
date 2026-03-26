@@ -1,4 +1,6 @@
-if vim.g.vscode then return {} end
+if vim.g.vscode then
+  return {}
+end
 
 return {
   {
@@ -8,23 +10,27 @@ return {
       dashboard = {
         preset = {
           header = [[
-██╗    ██╗██████╗  █████╗ ████████╗██╗  ██╗
-██║    ██║██╔══██╗██╔══██╗╚══██╔══╝██║  ██║
-██║ █╗ ██║██████╔╝███████║   ██║   ███████║
-██║███╗██║██╔══██╗██╔══██║   ██║   ██╔══██║
-╚███╔███╔╝██║  ██║██║  ██║   ██║   ██║  ██║
- ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
-]],
+
+                                         ░██    ░██        
+                                         ░██    ░██        
+░██    ░██    ░██ ░██░████  ░██████   ░████████ ░████████  
+░██    ░██    ░██ ░███           ░██     ░██    ░██    ░██ 
+ ░██  ░████  ░██  ░██       ░███████     ░██    ░██    ░██ 
+  ░██░██ ░██░██   ░██      ░██   ░██     ░██    ░██    ░██ 
+   ░███   ░███    ░██       ░█████░██     ░████ ░██    ░██ 
+                                                           
+                                                           
+                                                            ]],
         },
       },
     },
     keys = {
       -- Disable default <leader>. for scratch buffer (we use it for code actions)
-      { "<leader>.",  false },
-      { "<leader>S",  false },
+      { "<leader>.", false },
+      { "<leader>S", false },
 
       -- Disable default <leader>e (we'll remap it)
-      { "<leader>E",  false },
+      { "<leader>E", false },
       { "<leader>fe", false },
       { "<leader>fE", false },
 
