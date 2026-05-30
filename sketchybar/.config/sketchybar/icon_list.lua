@@ -166,8 +166,15 @@ return {
 		Empire = "",
 		Rebel = "",
 		Cpu = "",
+		Memory = "󰍛",
+		Disk = "󰋊",
 		Nuke = "󰚤",
-		Bee = "󰾡",
+	},
+	pomodoro = {
+		Idle = "󰔠",
+		Work = "󰔟",
+		Break = "󰒲",
+		Paused = "󰏤",
 	},
 	vpn = {
 		On = "󰌘",
