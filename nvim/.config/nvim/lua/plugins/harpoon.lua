@@ -244,19 +244,11 @@ return {
         },
       }
 
-      -- Disable default <leader>1-9 mappings
-      for i = 1, 9 do
-        table.insert(keys, {
-          "<leader>" .. i,
-          false,
-        })
-      end
-
-      -- Add custom number key mappings for 8 harpoons (1-4, 7-0)
+      -- Add Control-number mappings for 8 harpoons (1-4, 7-0)
       local harpoon_keys = { "1", "2", "3", "4", "7", "8", "9", "0" }
       for idx, key in ipairs(harpoon_keys) do
         table.insert(keys, {
-          key,
+          "<C-" .. key .. ">",
           function()
             require("harpoon"):list():select(idx)
           end,

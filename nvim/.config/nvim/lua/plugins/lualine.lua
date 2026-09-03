@@ -12,8 +12,6 @@ return {
     local diagnostics_component = require("utils.lualine.diagnostics").setup()
     local diff_component = require("utils.lualine.diff").setup()
     local filetype_component = require("utils.lualine.filetype").setup()
-    local amp_component = require("amp_extras.lualine").component()
-    -- local amptab_component = require("amp_extras.amptab_v2.status").component()
     local date_component = require("utils.lualine.date").setup()
     local time_component = require("utils.lualine.time").setup()
 
@@ -70,7 +68,6 @@ return {
           separator = { left = "", right = theme_config.separators.component_separators.right },
           padding = { left = 0, right = 1 },
         },
-        amp_component,
         -- amptab_component,
         {
           time_component,
